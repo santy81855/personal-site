@@ -1,0 +1,17 @@
+.themeToggle {
+    background-color: rgb(var(--accent-color-light-2-rgb));
+    color: rgb(var(--text-color-rgb));
+    padding-inline: 1rem;
+    padding-block: 0.25rem;
+    border-radius: var(--border-radius);
+    border: none;
+
+    cursor: pointer;
+    transition: all 0.1s ease-in-out;
+}
+
+@media (pointer: fine) {
+    .themeToggle:hover {
+        outline-offset: 0.25rem;
+    }
+}
