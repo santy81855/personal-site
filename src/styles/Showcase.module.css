@@ -8,13 +8,27 @@
 }
 
 .section {
+    max-width: var(--max-width);
+    width: 100%;
+}
+
+.invertSection {
+    background-color: rgb(var(--text-color-rgb));
+    color: rgb(var(--background-color-rgb));
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-block-start: -5rem;
+}
+
+.titleContainer {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100%;
-    max-width: var(--max-width);
     padding-inline: var(--padding-inline-xlarge);
-    padding-block-start: var(--padding-block-large);
+    padding-block-start: var(--padding-block-xlarge);
     gap: var(--gap-large);
 }
 
@@ -45,14 +59,14 @@
     position: relative;
     width: 100%;
     display: flex;
+    flex-direction: column;
     justify-content: center;
-
-    margin-block-start: 10rem;
+    align-items: center;
+    margin-block-start: 12rem;
 }
 
 .imagesContainer {
-    width: calc(100% - 100px);
-
+    width: calc(100% - 2 * var(--padding-inline-xlarge));
     max-width: var(--max-width);
     position: relative;
     display: flex;
@@ -62,11 +76,14 @@
 }
 
 .arrowContainer {
+    width: calc(100% - 2 * var(--padding-inline-xlarge));
     right: 0;
     top: 0;
     display: flex;
     align-items: center;
     gap: var(--gap-large);
+    align-self: center;
+    justify-content: flex-end;
 }
 
 .leftArrow {
@@ -101,7 +118,6 @@
 .imageTitle {
     font-size: var(--font-size-large);
     font-weight: 600;
-    color: rgb(var(--accent-color-light-2-rgb));
 }
 
 .image {
@@ -112,7 +128,7 @@
 }
 
 .image1 {
-    top: calc(2 * var(--padding-block-xlarge) + 120px);
+    top: 120px;
     right: 120px;
     box-shadow: var(--card-box-shadow);
     z-index: 1;
@@ -121,7 +137,7 @@
 }
 
 .image2 {
-    top: calc(2 * var(--padding-block-xlarge) + 80px);
+    top: 80px;
     right: 80px;
     box-shadow: var(--card-box-shadow);
     z-index: 2;
@@ -130,7 +146,7 @@
 }
 
 .image3 {
-    top: calc(2 * var(--padding-block-xlarge) + 40px);
+    top: 40px;
     right: 40px;
     box-shadow: var(--card-box-shadow);
     z-index: 3;
@@ -139,18 +155,130 @@
 }
 
 .activeImage {
-    top: calc(2 * var(--padding-block-xlarge));
-    right: 0;
     box-shadow: var(--card-box-shadow);
     z-index: 4;
-    filter: blur(0);
+    filter: blur(0px);
 }
 
-.display1 {
-    background-color: rgb(var(--text-color-rgb));
+.sectionContainer {
+    max-width: var(--max-width);
+    width: calc(100% - 2 * var(--padding-inline-xlarge));
+    margin-block-start: 20rem;
+    display: flex;
+    flex-direction: column;
+    outline: 1px solid rgb(var(--accent-color-dark-1-rgb));
+    outline-offset: 1.5rem;
+    margin-block-end: 5rem;
+}
+
+.textHeader {
+    color: rgb(var(--accent-color-dark-1-rgb));
+    font-size: var(--font-size-small);
+    font-weight: 600;
+}
+
+.textTitle {
+    font-size: var(--font-size-x2large);
+    letter-spacing: -1px;
+    line-height: 1;
+    max-width: 500px;
+}
+
+.description {
+    font-size: var(--font-size-);
+}
+
+.technologyDescription {
+    display: flex;
+    flex-direction: column;
+}
+
+.technologyList {
+    display: flex;
+    gap: var(--gap-medium);
+    padding-block-start: var(--padding-block-small);
+    align-self: center;
+    flex-wrap: wrap;
+}
+
+.technologyList .item {
+    background-color: rgb(var(--accent-color-dark-1-rgb));
+    border-radius: var(--border-radius);
+    padding-inline: 1rem;
+}
+
+.codonImage {
+    margin-block-start: var(--padding-block-large);
+    align-self: center;
+    border-radius: var(--border-radius);
     width: 100%;
-    padding-block-start: 10rem;
-    color: rgb(var(--background-color-rgb));
+    max-width: 800px;
+    height: auto;
+}
+
+.featureContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-block-start: var(--padding-block-xlarge);
+    padding-block: var(--padding-block-large);
+    width: 100%;
+}
+
+.featureTitle {
+    padding-block-end: var(--padding-block-small);
+    color: rgb(var(--accent-color-dark-1-rgb));
+    font-size: var(--font-size-x2large);
+}
+
+.featureList {
+    display: flex;
+    justify-content: space-between;
+}
+
+.feature {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: min-content;
+}
+
+.feature p {
+    font-size: var(--font-size-small);
+    width: 90%;
+    padding-block-start: var(--padding-block-small);
+}
+
+.feature h1 {
+    font-size: var(--font-size-large);
+    font-weight: 600;
+    padding-block-end: var(--padding-block-small);
+}
+
+.featureGif {
+    width: 95%;
+    height: auto;
+}
+
+.downloadContainer {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-medium);
+    justify-content: center;
+    align-items: center;
+    margin-block-start: var(--padding-block-large);
+    padding-block: var(--padding-block-large);
+    width: 100%;
+}
+
+.downloadButton {
+    padding-inline: var(--padding-inline-large);
+    padding-block: var(--padding-block-small);
+    border-radius: var(--border-radius);
+    border: none;
+    background-color: rgb(var(--accent-color-dark-1-rgb));
 }
 
 @media screen and (max-width: 950px) {
@@ -160,21 +288,36 @@
     }
 }
 
+@media screen and (max-width: 830px) {
+    .featureList {
+        flex-direction: column;
+        gap: var(--gap-large);
+        justify-content: center;
+        align-items: center;
+    }
+    .feature {
+        width: 90%;
+    }
+    .featureTitle {
+        text-align: center;
+    }
+}
+
 @media screen and (max-width: 730px) {
     .image {
         width: 400px;
         height: 270px;
     }
     .image1 {
-        top: calc(2 * var(--padding-block-xlarge) + 60px);
+        top: 60px;
         right: 60px;
     }
     .image2 {
-        top: calc(2 * var(--padding-block-xlarge) + 40px);
+        top: 40px;
         right: 40px;
     }
     .image3 {
-        top: calc(2 * var(--padding-block-xlarge) + 20px);
+        top: 20px;
         right: 20px;
     }
 }
@@ -183,5 +326,9 @@
     .image {
         width: 300px;
         height: 202px;
+    }
+
+    .technologyList .item p {
+        overflow: auto;
     }
 }
