@@ -2,7 +2,8 @@ import Head from "next/head";
 import Image from "next/image";
 import { Inter } from "next/font/google";
 import styles from "@/styles/Showcase.module.css";
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
+import CodonSection from "@/components/CodonSection";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,38 +17,52 @@ export default function Showcase() {
 
     const [activeImage, setActiveImage] = useState(3);
 
+    const scrollToSection = (event) => {
+        const element = document.getElementById("codon");
+        if (element !== null) {
+            //element.scrollIntoView({ behavior: "smooth" });
+            const elementPosition = element.getBoundingClientRect().top;
+            const offsetPosition = elementPosition - 100;
+            document.body.scrollTo({
+                top: element.getBoundingClientRect().top - 100,
+                behavior: "smooth",
+            });
+        }
+    };
+
     const [imagesArray, setImagesArray] = useState([
         <Image
-            className={`${styles.image1} ${styles.image}`}
+            className={styles.image}
             src="/images/image1.png"
-            alt="Typo Image"
-            layout="fill"
-            objectFit="cover"
-            objectPosition="center"
-        />,
-        <Image
-            className={`${styles.image2} ${styles.image}`}
-            src="/images/image2.png"
             alt="Codon Image"
-            layout="fill"
-            objectFit="cover"
-            objectPosition="center"
+            height={441}
+            width={650}
+            priority={true}
+            onClick={(event) => scrollToSection(event)}
         />,
         <Image
-            className={`${styles.image3} ${styles.image}`}
+            className={styles.image}
+            src="/images/image2.png"
+            alt="Typo Image"
+            height={441}
+            width={650}
+            priority={true}
+        />,
+        <Image
+            className={styles.image}
             src="/images/image3.png"
             alt="Glass Cannon Image"
-            layout="fill"
-            objectFit="cover"
-            objectPosition="center"
+            height={441}
+            width={650}
+            priority={true}
         />,
         <Image
-            className={`${styles.activeImage} ${styles.image}`}
+            className={styles.image}
             src="/images/image4.png"
             alt="AI Resume Image"
-            layout="fill"
-            objectFit="cover"
-            objectPosition="center"
+            height={441}
+            width={650}
+            priority={true}
         />,
     ]);
 
@@ -61,9 +76,9 @@ export default function Showcase() {
                             className={`${styles.activeImage} ${styles.image}`}
                             src={image.props.src}
                             alt={image.props.alt}
-                            layout="fill"
-                            objectFit="cover"
-                            objectPosition="center"
+                            height={441}
+                            width={650}
+                            priority={true}
                         />
                     );
                 }
@@ -123,21 +138,28 @@ export default function Showcase() {
             </Head>
             <main className={`${styles.main} ${inter.className}`}>
                 <section className={styles.section}>
-                    <div className={`${styles.leftItem} ${styles.titleItem}`}>
-                        <p>example small title</p>
-                        <h1>
-                            Example big title for you that is amazing and cool
-                        </h1>
-                    </div>
-                    <div className={`${styles.rightItem} ${styles.titleItem}`}>
-                        <p>
-                            Example description of my work and technologies i am
-                            familiar with
-                        </p>
+                    <div className={styles.titleContainer}>
+                        <div
+                            className={`${styles.leftItem} ${styles.titleItem}`}
+                        >
+                            <p>example small title</p>
+                            <h1>
+                                Example big title for you that is amazing and
+                                cool
+                            </h1>
+                        </div>
+                        <div
+                            className={`${styles.rightItem} ${styles.titleItem}`}
+                        >
+                            <p>
+                                Example description of my work and technologies
+                                i am familiar with
+                            </p>
+                        </div>
                     </div>
                 </section>
-                <div className={styles.imageSectionContainer}>
-                    <div className={styles.imagesContainer}>
+                <section className={styles.section}>
+                    <div className={styles.imageSectionContainer}>
                         <div className={styles.arrowContainer}>
                             <div className={styles.imageTitle}>
                                 {imageTitles[activeImage]}
@@ -152,23 +174,25 @@ export default function Showcase() {
                                 onClick={() => cycleRight()}
                             ></div>
                         </div>
-                        <div className={`${styles.image1} ${styles.image}`}>
-                            {imagesArray[0]}
-                        </div>
-                        <div className={`${styles.image2} ${styles.image}`}>
-                            {imagesArray[1]}
-                        </div>
-                        <div className={`${styles.image3} ${styles.image}`}>
-                            {imagesArray[2]}
-                        </div>
-                        <div
-                            className={`${styles.activeImage} ${styles.image}`}
-                        >
-                            {imagesArray[3]}
+                        <div className={styles.imagesContainer}>
+                            <div className={`${styles.image1} ${styles.image}`}>
+                                {imagesArray[0]}
+                            </div>
+                            <div className={`${styles.image2} ${styles.image}`}>
+                                {imagesArray[1]}
+                            </div>
+                            <div className={`${styles.image3} ${styles.image}`}>
+                                {imagesArray[2]}
+                            </div>
+                            <div
+                                className={`${styles.activeImage} ${styles.image}`}
+                            >
+                                {imagesArray[3]}
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div className={styles.display1}>hi</div>
+                </section>
+                <CodonSection />
             </main>
         </>
     );
