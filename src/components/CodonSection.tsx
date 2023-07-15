@@ -2,10 +2,15 @@ import Image from "next/image";
 import styles from "@/styles/Showcase.module.css";
 
 const CodonSection = () => {
+    const technologyList = ["Python", "PyQt5", "QScintilla", "Git"];
     return (
         <section className={styles.invertSection}>
-            <div id="codon" key="codon" className={styles.sectionContainer}>
-                <p className={styles.textHeader}>TEXT EDITOR</p>
+            <div
+                id="codon"
+                key="codon"
+                className={styles.sectionContainerFirst}
+            >
+                <p className={styles.textHeader}>Python GUI</p>
                 <h1 className={styles.textTitle}>Codon Text Editor</h1>
                 <p className={styles.description}>
                     A feature-rich and lightweight text and code editor for
@@ -21,18 +26,11 @@ const CodonSection = () => {
                         priority={true}
                     />
                     <div className={styles.technologyList}>
-                        <div className={styles.item}>
-                            <p>Python</p>
-                        </div>
-                        <div className={styles.item}>
-                            <p>PyQt5</p>
-                        </div>
-                        <div className={styles.item}>
-                            <p>QScintilla</p>
-                        </div>
-                        <div className={styles.item}>
-                            <p>Git</p>
-                        </div>
+                        {technologyList.map((item, index) => (
+                            <div key={index} className={styles.item}>
+                                <p>{item}</p>
+                            </div>
+                        ))}
                     </div>
                 </div>
                 <div className={styles.featureContainer}>
