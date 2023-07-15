@@ -30,6 +30,17 @@ export default function Showcase() {
         }
     };
 
+    const resumeTechnologyList = [
+        "Node.js",
+        "Express",
+        "Passport",
+        "React",
+        "MongoDB",
+        "Git",
+        "OpenAI",
+        "AWS EC2",
+    ];
+
     const [imagesArray, setImagesArray] = useState([
         <Image
             className={styles.image}
@@ -79,6 +90,7 @@ export default function Showcase() {
                             height={441}
                             width={650}
                             priority={true}
+                            onClick={image.props.onClick}
                         />
                     );
                 }
@@ -193,6 +205,40 @@ export default function Showcase() {
                     </div>
                 </section>
                 <CodonSection />
+                <section className={styles.section}>
+                    <div className={styles.sectionContainer}>
+                        <p className={styles.textHeader}>AI Web Application</p>
+                        <h1 className={styles.textTitle}>AI Resume Builder</h1>
+                        <p className={styles.description}>
+                            A web application to help build a professional
+                            resume in minutes with the help of artificial
+                            intelligence.
+                        </p>
+
+                        <div className={styles.technologyDescription}>
+                            <Image
+                                className={styles.codonImage}
+                                src="/images/image4.png"
+                                alt="Resume Image"
+                                height={441}
+                                width={650}
+                                priority={true}
+                            />
+                            <div className={styles.technologyList}>
+                                <div className={styles.technologyList}>
+                                    {resumeTechnologyList.map((item, index) => (
+                                        <div
+                                            key={index}
+                                            className={styles.item}
+                                        >
+                                            <p>{item}</p>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
             </main>
         </>
     );

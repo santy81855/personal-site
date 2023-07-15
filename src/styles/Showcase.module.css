@@ -5,11 +5,16 @@
     flex-direction: column;
     align-items: center;
     position: relative;
+    background-color: rgb(var(--background-color-rgb));
 }
 
 .section {
     max-width: var(--max-width);
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .invertSection {
@@ -21,6 +26,7 @@
     justify-content: center;
     align-items: center;
     margin-block-start: -5rem;
+    position: relative;
 }
 
 .titleContainer {
@@ -160,15 +166,22 @@
     filter: blur(0px);
 }
 
+.sectionContainerFirst {
+    max-width: var(--max-width);
+    width: calc(100% - 2 * var(--padding-inline-xlarge));
+    display: flex;
+    flex-direction: column;
+    margin-block-end: 5rem;
+    margin-block-start: 20rem;
+}
+
 .sectionContainer {
     max-width: var(--max-width);
     width: calc(100% - 2 * var(--padding-inline-xlarge));
-    margin-block-start: 20rem;
     display: flex;
     flex-direction: column;
-    outline: 1px solid rgb(var(--accent-color-dark-1-rgb));
-    outline-offset: 1.5rem;
     margin-block-end: 5rem;
+    padding-block-start: var(--padding-block-xlarge);
 }
 
 .textHeader {
@@ -199,6 +212,9 @@
     padding-block-start: var(--padding-block-small);
     align-self: center;
     flex-wrap: wrap;
+    justify-content: center;
+    max-width: 800px;
+    width: 100%;
 }
 
 .technologyList .item {
@@ -210,7 +226,7 @@
 .codonImage {
     margin-block-start: var(--padding-block-large);
     align-self: center;
-    border-radius: var(--border-radius);
+
     width: 100%;
     max-width: 800px;
     height: auto;
@@ -279,6 +295,10 @@
     border-radius: var(--border-radius);
     border: none;
     background-color: rgb(var(--accent-color-dark-1-rgb));
+}
+
+.resumeTitleContainer {
+    margin-block-start: var(--padding-block-xlarge);
 }
 
 @media screen and (max-width: 950px) {
