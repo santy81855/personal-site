@@ -1,6 +1,6 @@
 :root {
     --max-width: 1100px;
-    --border-radius: 12px;
+    --border-radius: 15px;
     --font-mono: ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono",
         "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro",
         "Fira Mono", "Droid Sans Mono", "Courier New", monospace;
@@ -24,6 +24,7 @@
     --padding-block-medium: 1rem;
     --padding-block-large: 2rem;
     --padding-block-xlarge: 4rem;
+    --padding-block-x2large: 8rem;
     --gap-small: 0.5rem;
     --gap-medium: 1rem;
     --gap-large: 2rem;

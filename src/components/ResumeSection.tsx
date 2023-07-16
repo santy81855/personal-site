@@ -1,25 +1,31 @@
 import Image from "next/image";
 import styles from "@/styles/Showcase.module.css";
 
-const CodonSection = () => {
-    const technologyList = ["Python", "PyQt5", "QScintilla", "Git"];
+const ResumeSection = () => {
+    const resumeTechnologyList = [
+        "Node.js",
+        "Express",
+        "Passport",
+        "React",
+        "MongoDB",
+        "Git",
+        "OpenAI",
+        "AWS EC2",
+    ];
     return (
-        <section className={styles.invertSection}>
-            <div
-                id="codon"
-                key="codon"
-                className={styles.sectionContainerFirst}
-            >
-                <p className={styles.textHeader}>Python GUI</p>
-                <h1 className={styles.textTitle}>Codon Text Editor</h1>
+        <section className={styles.section}>
+            <div id="airesume" className={styles.sectionContainer}>
+                <p className={styles.textHeader}>AI Web Application</p>
+                <h1 className={styles.textTitle}>AI Resume Builder</h1>
                 <p className={styles.description}>
-                    A feature-rich and lightweight text and code editor for
-                    Windows computers.
+                    A web application to help build a professional resume in
+                    minutes with the help of artificial intelligence.
                 </p>
+
                 <div className={styles.technologyDescription}>
                     <div className={styles.technologyContainer}>
                         <div className={styles.technologyList}>
-                            {technologyList.map((item, index) => (
+                            {resumeTechnologyList.map((item, index) => (
                                 <div key={index} className={styles.item}>
                                     <p>{item}</p>
                                 </div>
@@ -27,8 +33,8 @@ const CodonSection = () => {
                         </div>
                         <Image
                             className={styles.mainImage}
-                            src="/images/codon-mockup-no-shadow-cropped.png"
-                            alt="Codon Image"
+                            src="/images/resume-mockup-no-shadow.png"
+                            alt="Resume Image"
                             height={441}
                             width={650}
                             priority={true}
@@ -76,12 +82,12 @@ const CodonSection = () => {
                 </div>
                 <div className={styles.downloadContainer}>
                     <a
-                        href="https://github.com/santy81855/Codon/raw/main/Codon_Installer.exe"
+                        href="https://myairesumes.com"
                         className={styles.downloadButton}
                     >
-                        Download
+                        Live Demo
                     </a>
-                    <a href="https://github.com/santy81855/Codon">
+                    <a href="https://github.com/santy81855/ResumeBuilder_Frontend">
                         <p> View on Github</p>
                     </a>
                 </div>
@@ -90,4 +96,4 @@ const CodonSection = () => {
     );
 };
 
-export default CodonSection;
+export default ResumeSection;

@@ -79,6 +79,7 @@
     flex-direction: column;
     justify-content: flex-end;
     align-items: flex-end;
+    height: 441px;
 }
 
 .arrowContainer {
@@ -127,16 +128,18 @@
 }
 
 .image {
-    transition: transform 0.5s ease-in-out;
     width: 650px;
     height: 441px;
     border: 1px solid rgb(var(--accent-color-light-1-rgb));
+    transition: transform 0.7s ease;
+    box-shadow: var(--card-box-shadow);
+    position: absolute;
+    z-index: 1;
 }
 
-.image1 {
+.image3 {
     top: 120px;
     right: 120px;
-    box-shadow: var(--card-box-shadow);
     z-index: 1;
     filter: blur(1px);
     position: absolute;
@@ -151,7 +154,7 @@
     position: absolute;
 }
 
-.image3 {
+.image1 {
     top: 40px;
     right: 40px;
     box-shadow: var(--card-box-shadow);
@@ -172,7 +175,7 @@
     display: flex;
     flex-direction: column;
     margin-block-end: 5rem;
-    margin-block-start: 20rem;
+    margin-block-start: 25rem;
 }
 
 .sectionContainer {
@@ -209,27 +212,31 @@
 .technologyList {
     display: flex;
     gap: var(--gap-medium);
-    padding-block-start: var(--padding-block-small);
     align-self: center;
     flex-wrap: wrap;
     justify-content: center;
-    max-width: 800px;
+    max-width: 1200px;
     width: 100%;
+}
+
+.technologyContainer {
+    padding-block-start: var(--padding-block-x2large);
 }
 
 .technologyList .item {
     background-color: rgb(var(--accent-color-dark-1-rgb));
     border-radius: var(--border-radius);
     padding-inline: 1rem;
+    padding-block: 0.25rem;
+    color: white;
 }
 
-.codonImage {
-    margin-block-start: var(--padding-block-large);
+.mainImage {
     align-self: center;
-
     width: 100%;
-    max-width: 800px;
+    max-width: 1200px;
     height: auto;
+    margin-block-start: var(--padding-block-small);
 }
 
 .featureContainer {
@@ -237,13 +244,16 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-block-start: var(--padding-block-xlarge);
-    padding-block: var(--padding-block-large);
+    margin-block-start: var(--padding-block-x2large);
     width: 100%;
+    outline: 2px solid rgb(var(--accent-color-dark-1-rgb));
+    border-radius: var(--border-radius);
+    padding-inline: var(--padding-inline-large);
+    padding-block: var(--padding-block-large);
 }
 
 .featureTitle {
-    padding-block-end: var(--padding-block-small);
+    padding-block-end: var(--padding-block-large);
     color: rgb(var(--accent-color-dark-1-rgb));
     font-size: var(--font-size-x2large);
 }
@@ -284,8 +294,7 @@
     gap: var(--gap-medium);
     justify-content: center;
     align-items: center;
-    margin-block-start: var(--padding-block-large);
-    padding-block: var(--padding-block-large);
+    padding-block-start: var(--padding-block-x2large);
     width: 100%;
 }
 
