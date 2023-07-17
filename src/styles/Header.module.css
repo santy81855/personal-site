@@ -1,0 +1,54 @@
+.header {
+    width: 100%;
+    position: sticky;
+    top: 0;
+    background-color: rgb(var(--background-color-rgb));
+    z-index: 10;
+}
+
+.navContainer {
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding-inline: var(--padding-inline-xlarge);
+    gap: var(--gap-medium);
+}
+
+.navContainer ul {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+}
+
+.navContainer li {
+    padding: 0;
+}
+
+.navContainer a {
+    text-decoration: none;
+    font-size: var(--font-size-large);
+}
+
+@media (pointer: fine) {
+    .navContainer li:hover {
+    }
+}
+
+.contactButton {
+    background-color: rgb(var(--background-color-rgb));
+    color: rgb(var(--accent-color-dark-1-rgb));
+    padding-inline: var(--padding-inline-large);
+    padding-block: var(--padding-block-medium);
+    border: 1px solid rgb(var(--accent-color-dark-1-rgb));
+
+    cursor: pointer;
+}
+
+.logoContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--gap-medium);
+}
