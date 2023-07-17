@@ -91,6 +91,9 @@
     justify-content: center;
     align-items: center;
     margin-block-start: 4rem;
+    transition: transform 0.7s ease-in-out;
+    transform: rotate(90deg) translateY(-2000px);
+    z-index: 1;
 }
 
 .imagesContainer {

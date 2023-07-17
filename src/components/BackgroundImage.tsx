@@ -7,6 +7,11 @@ const BackgroundImage = () => {
     const images = ["/images/personal-pic-1.png", "/images/personal-pic-4.png"];
 
     useEffect(() => {
+        const element = document.getElementById("backgroundImage");
+        if (element) {
+            element.style.transform = "rotateY(0)";
+        }
+
         const interval = setInterval(() => {
             setCurrentImageIndex((prevIndex) =>
                 prevIndex === images.length - 1 ? 0 : prevIndex + 1
@@ -22,6 +27,7 @@ const BackgroundImage = () => {
         <>
             {images.map((imageSrc, index) => (
                 <Image
+                    id="backgroundImage"
                     key={index}
                     className={`${styles.image} ${
                         currentImageIndex === index ? styles.imageVisible : ""

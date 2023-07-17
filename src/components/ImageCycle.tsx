@@ -17,6 +17,12 @@ const ImageCycle = () => {
     ]);
 
     useEffect(() => {
+        // bring the carousel into view
+        const element = document.getElementById("carousel");
+        if (element) {
+            element.style.transform = "translateY(0%) rotate(0deg)";
+        }
+
         if (window.innerWidth < 426) {
             setImageOffset(0);
         } else if (window.innerWidth < 585) {
@@ -41,7 +47,6 @@ const ImageCycle = () => {
     }, []);
 
     const cycleLeft = () => {
-        console.log(numCycles);
         // reorder the images based on the numCycles
         if (numCycles === 0) {
             numCycles = 3;
@@ -378,7 +383,7 @@ const ImageCycle = () => {
     };
 
     return (
-        <div className={styles.imageSectionContainer}>
+        <div id="carousel" className={styles.imageSectionContainer}>
             <div className={styles.arrowContainer}>
                 <div className={styles.imageTitle}></div>
                 <div

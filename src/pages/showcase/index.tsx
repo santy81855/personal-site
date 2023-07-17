@@ -1,18 +1,17 @@
 import Head from "next/head";
-import Image from "next/image";
 import { Inter } from "next/font/google";
 import styles from "@/styles/Showcase.module.css";
 import React from "react";
 import CodonSection from "@/components/CodonSection";
 import ResumeSection from "@/components/ResumeSection";
 import ImageCycle from "@/components/ImageCycle";
+import { useEffect } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Showcase() {
     const grain = (
         <>
-            {" "}
             <svg width="0" height="0">
                 <filter
                     id="grainy-blur"
@@ -36,6 +35,7 @@ export default function Showcase() {
             <div className={styles.grain}></div>
         </>
     );
+
     return (
         <>
             <Head>
@@ -49,7 +49,7 @@ export default function Showcase() {
             </Head>
             <main className={`${styles.main} ${inter.className}`}>
                 <section className={styles.section}>
-                    <div className={styles.titleContainer}>
+                    <div id="pageTitle" className={styles.titleContainer}>
                         <div
                             className={`${styles.leftItem} ${styles.titleItem}`}
                         >

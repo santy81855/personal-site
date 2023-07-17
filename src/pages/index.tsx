@@ -2,10 +2,22 @@ import Head from "next/head";
 import { Inter } from "next/font/google";
 import styles from "@/styles/Home.module.css";
 import BackgroundImage from "@/components/BackgroundImage";
+import React, { useEffect } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
+    useEffect(() => {
+        const title1 = document.getElementById("title1");
+        if (title1) {
+            title1.style.transform = "translateX(0)";
+        }
+        const title2 = document.getElementById("title2");
+        if (title2) {
+            title2.style.transform = "translateX(0)";
+        }
+    }, []);
+
     const grain = (
         <>
             {" "}
@@ -48,10 +60,16 @@ export default function Home() {
             </Head>
             <main className={`${styles.main} ${inter.className}`}>
                 <section className={styles.section}>
-                    <h1 className={styles.title}>
+                    <h1
+                        id="title1"
+                        className={`${styles.title} ${styles.title1}`}
+                    >
                         S<span>a</span>nt<span>i</span>ago
                     </h1>
-                    <h1 className={styles.title}>
+                    <h1
+                        id="title2"
+                        className={`${styles.title} ${styles.title2}`}
+                    >
                         G<span>a</span>rc<span>i</span>a
                     </h1>
                     <BackgroundImage />

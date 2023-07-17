@@ -37,3 +37,6 @@ next-env.d.ts
 
 # videos
 .mp4
+
+# key pair file
+*.ppk
