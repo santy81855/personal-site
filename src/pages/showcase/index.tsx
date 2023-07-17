@@ -2,14 +2,40 @@ import Head from "next/head";
 import Image from "next/image";
 import { Inter } from "next/font/google";
 import styles from "@/styles/Showcase.module.css";
-import React, { useState, useRef, useEffect } from "react";
+import React from "react";
 import CodonSection from "@/components/CodonSection";
 import ResumeSection from "@/components/ResumeSection";
-import ImageCycle from "@/lib/ImageCycle";
+import ImageCycle from "@/components/ImageCycle";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Showcase() {
+    const grain = (
+        <>
+            {" "}
+            <svg width="0" height="0">
+                <filter
+                    id="grainy-blur"
+                    x="-150%"
+                    y="-150%"
+                    width="400%"
+                    height="400%"
+                >
+                    <feGaussianBlur
+                        stdDeviation="39"
+                        result="blur"
+                    ></feGaussianBlur>
+                    <feTurbulence
+                        type="fractalNoise"
+                        baseFrequency=".537"
+                    ></feTurbulence>
+                    <feComposite in="blur"></feComposite>
+                    <feComposite in="blur" operator="in"></feComposite>
+                </filter>
+            </svg>
+            <div className={styles.grain}></div>
+        </>
+    );
     return (
         <>
             <Head>
@@ -27,23 +53,16 @@ export default function Showcase() {
                         <div
                             className={`${styles.leftItem} ${styles.titleItem}`}
                         >
-                            <p>example small title</p>
+                            <p className={styles.leftP}>MY PROJECTS</p>
                             <h1>
-                                Example big title for you that is amazing and
-                                cool
+                                Journey Through My Previous Projects: A Showcase
+                                of Past Works
                             </h1>
-                        </div>
-                        <div
-                            className={`${styles.rightItem} ${styles.titleItem}`}
-                        >
-                            <p>
-                                Example description of my work and technologies
-                                i am familiar with
-                            </p>
                         </div>
                     </div>
                 </section>
                 <section className={styles.section}>
+                    {grain}
                     <ImageCycle />
                 </section>
                 <CodonSection />

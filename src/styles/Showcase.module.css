@@ -5,7 +5,7 @@
     flex-direction: column;
     align-items: center;
     position: relative;
-    background-color: rgb(var(--background-color-rgb));
+    background-color: rgb(var(--background-color-rgb), 0.4);
 }
 
 .section {
@@ -15,6 +15,26 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    position: relative;
+}
+
+.grain {
+    position: absolute;
+    /* put in the middle along both axes */
+    top: 10%;
+    right: 0%;
+    /* responsive, but upper capped radius */
+    padding: min(45vmin, 30em);
+    border-radius: 50%; /* turn square to disc */
+    background: /* throw in different colours */ conic-gradient(
+        green,
+        yellow,
+        orange,
+        red,
+        purple
+    );
+    filter: url(#grainy-blur); /* the magic */
+    z-index: -1;
 }
 
 .invertSection {
@@ -36,6 +56,7 @@
     padding-inline: var(--padding-inline-xlarge);
     padding-block-start: var(--padding-block-xlarge);
     gap: var(--gap-large);
+    width: 100%;
 }
 
 .titleItem {
@@ -45,12 +66,13 @@
     align-items: flex-start;
 }
 
-.leftItem p {
+.leftP {
     font-size: var(--font-size-small);
-    font-weight: 600;
+    font-weight: 800;
 }
 
-.rightItem p {
+.rightP {
+    padding-block-start: var(--padding-block-medium);
     font-size: var(--font-size-small);
 }
 
@@ -68,7 +90,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-block-start: 12rem;
+    margin-block-start: 4rem;
 }
 
 .imagesContainer {
@@ -131,42 +153,10 @@
     width: 650px;
     height: 441px;
     border: 1px solid rgb(var(--accent-color-light-1-rgb));
-    transition: transform 0.7s ease;
+    transition: transform 0.7s ease-in-out;
     box-shadow: var(--card-box-shadow);
     position: absolute;
     z-index: 1;
-}
-
-.image3 {
-    top: 120px;
-    right: 120px;
-    z-index: 1;
-    filter: blur(1px);
-    position: absolute;
-}
-
-.image2 {
-    top: 80px;
-    right: 80px;
-    box-shadow: var(--card-box-shadow);
-    z-index: 2;
-    filter: blur(1px);
-    position: absolute;
-}
-
-.image1 {
-    top: 40px;
-    right: 40px;
-    box-shadow: var(--card-box-shadow);
-    z-index: 3;
-    filter: blur(1px);
-    position: absolute;
-}
-
-.activeImage {
-    box-shadow: var(--card-box-shadow);
-    z-index: 4;
-    filter: blur(0px);
 }
 
 .sectionContainerFirst {
@@ -310,14 +300,7 @@
     margin-block-start: var(--padding-block-xlarge);
 }
 
-@media screen and (max-width: 950px) {
-    .image {
-        width: 500px;
-        height: 338px;
-    }
-}
-
-@media screen and (max-width: 830px) {
+@media screen and (max-width: 860px) {
     .featureList {
         flex-direction: column;
         gap: var(--gap-large);
@@ -330,34 +313,82 @@
     .featureTitle {
         text-align: center;
     }
+    .image {
+        width: 516px;
+        height: 350px;
+    }
+    .imageChild {
+        width: 516px;
+        height: 350px;
+    }
+    .invertSection {
+        margin-block-start: -10rem;
+    }
 }
 
 @media screen and (max-width: 730px) {
     .image {
-        width: 400px;
-        height: 270px;
+        width: 442px;
+        height: 300px;
     }
-    .image1 {
-        top: 60px;
-        right: 60px;
+    .imageChild {
+        width: 442px;
+        height: 300px;
     }
-    .image2 {
-        top: 40px;
-        right: 40px;
-    }
-    .image3 {
-        top: 20px;
-        right: 20px;
+    .invertSection {
+        margin-block-start: -15rem;
     }
 }
 
-@media screen and (max-width: 530px) {
+@media screen and (max-width: 585px) {
     .image {
-        width: 300px;
-        height: 202px;
+        width: 385px;
+        height: 260px;
+    }
+    .imageChild {
+        width: 385px;
+        height: 260px;
+    }
+
+    .invertSection {
+        margin-block-start: -18rem;
     }
 
     .technologyList .item p {
         overflow: auto;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .image {
+        width: 315px;
+        height: 215px;
+    }
+    .imageChild {
+        width: 315px;
+        height: 215px;
+    }
+    .invertSection {
+        margin-block-start: -20rem;
+    }
+    .imageSectionContainer {
+        margin-block-start: 3rem;
+    }
+}
+
+@media screen and (max-width: 394px) {
+    .image {
+        aspect-ratio: 1.474;
+        width: 100%;
+        height: auto;
+        border: none;
+    }
+    .imageChild {
+        aspect-ratio: 1.474;
+        width: 100%;
+        height: auto;
+    }
+    .invertSection {
+        margin-block-start: -22rem;
     }
 }

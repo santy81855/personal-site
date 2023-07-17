@@ -16,6 +16,7 @@
     --font-size-large: 1.25rem;
     --font-size-xlarge: 1.5rem;
     --font-size-x2large: 2rem;
+    --font-size-x3large: 3rem;
     --padding-inline-small: 0.5rem;
     --padding-inline-medium: 1rem;
     --padding-inline-large: 1.5rem;
@@ -36,7 +37,7 @@
 }
 
 :root.dark-theme {
-    --background-color-rgb: 20, 20, 20;
+    --background-color-rgb: 41, 41, 41;
     --text-color-rgb: 240, 240, 240;
     --card-box-shadow: 0 0 20px 10px rgb(var(--background-color-rgb), 0.1);
     --left-arrow-url: url("../../public/images/left-icon-dark.png");

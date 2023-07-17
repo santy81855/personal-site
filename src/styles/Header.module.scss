@@ -1,0 +1,289 @@
+.header {
+    width: 100%;
+    position: sticky;
+    overflow-x: hidden;
+    top: 0;
+    background-color: rgb(var(--background-color-rgb));
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+}
+
+.navContainer {
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding-inline: var(--padding-inline-xlarge);
+    gap: var(--gap-medium);
+    max-width: var(--max-width);
+}
+
+.navContainer ul {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+}
+
+.navContainer li {
+    padding: 0;
+}
+
+.navContainer a {
+    text-decoration: none;
+    font-size: var(--font-size-large);
+}
+
+.contactButton {
+    background-color: rgb(var(--background-color-rgb));
+    color: rgb(var(--accent-color-dark-1-rgb));
+    padding-inline: var(--padding-inline-large);
+    padding-block: var(--padding-block-medium);
+    border: 1px solid rgb(var(--accent-color-dark-1-rgb));
+    cursor: pointer;
+}
+
+.logoContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--gap-medium);
+}
+
+.rightContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--gap-large);
+}
+
+.hamburgerButton {
+    background-color: transparent;
+    color: rgb(var(--text-color-rgb));
+    border: none;
+    transform: scale(1.6);
+    cursor: pointer;
+    padding-inline: var(--padding-inline-small);
+}
+
+.themeContainer {
+    position: absolute;
+    top: var(--padding-block-large);
+    left: var(--padding-block-large);
+    padding-inline: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.closeButton {
+    position: absolute;
+    top: var(--padding-block-medium);
+    right: var(--padding-block-large);
+    font-size: var(--font-size-x2large);
+    cursor: pointer;
+
+    padding: 0.5rem;
+    width: 40px;
+    text-align: center;
+}
+
+.verticalMenu {
+    position: fixed;
+    top: 0;
+    right: -70vw;
+    min-width: 70vw;
+    height: 100vh;
+    background-color: rgb(var(--text-color-rgb));
+    color: rgb(var(--background-color-rgb));
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: var(--gap-large);
+    z-index: 10;
+    transition: transform 0.5s ease-in-out;
+    border-left: 1px solid black;
+    z-index: 1;
+}
+
+.grain {
+    position: absolute;
+    /* put in the middle along both axes */
+    left: 0%;
+    bottom: 30%;
+    opacity: 0.1;
+
+    /* responsive, but upper capped radius */
+    padding: min(45vmin, 20em);
+    border-radius: 50%; /* turn square to disc */
+    background: /* throw in different colours */ conic-gradient(
+        red,
+        purple,
+        green,
+        yellow,
+        orange
+    );
+    filter: url(#grainy-blur); /* the magic */
+    z-index: -1;
+}
+
+.verticalMenu ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: var(--gap-large);
+    width: calc(100% - 2 * var(--padding-inline-xlarge));
+}
+
+.verticalMenu li {
+    width: 100%;
+}
+
+.verticalMenu p {
+    width: 100%;
+    text-align: center;
+    font-size: var(--font-size-x2large);
+    transition: all 0.3s ease-in-out;
+    font-weight: 600;
+}
+
+@media screen and (max-width: 700px) {
+    .rightContainer {
+        justify-self: flex-end;
+        width: 100%;
+        align-items: center;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .contactButton p {
+        font-size: 0.7rem;
+    }
+}
+
+@media (pointer: fine) {
+    .verticalMenu p:hover {
+        color: rgb(var(--accent-color-dark-1-rgb));
+
+        letter-spacing: 4px;
+    }
+}
+
+.highlightedItem {
+    color: rgb(var(--accent-color-dark-1-rgb));
+
+    letter-spacing: 4px;
+}
+
+@-webkit-keyframes criss-cross-left {
+    0% {
+        left: -20px;
+    }
+    50% {
+        left: 50%;
+        width: 20px;
+        height: 20px;
+    }
+    100% {
+        left: 50%;
+        width: 375px;
+        height: 375px;
+    }
+}
+
+@keyframes criss-cross-left {
+    0% {
+        left: -20px;
+    }
+    50% {
+        left: 50%;
+        width: 20px;
+        height: 20px;
+    }
+    100% {
+        left: 50%;
+        width: 375px;
+        height: 375px;
+    }
+}
+@-webkit-keyframes criss-cross-right {
+    0% {
+        right: -20px;
+    }
+    50% {
+        right: 50%;
+        width: 20px;
+        height: 20px;
+    }
+    100% {
+        right: 50%;
+        width: 375px;
+        height: 375px;
+    }
+}
+@keyframes criss-cross-right {
+    0% {
+        right: -20px;
+    }
+    50% {
+        right: 50%;
+        width: 20px;
+        height: 20px;
+    }
+    100% {
+        right: 50%;
+        width: 375px;
+        height: 375px;
+    }
+}
+.contactButton {
+    position: relative;
+    color: rgb(var(--accent-color-dark-1-rgb));
+    display: block;
+    overflow: hidden;
+    max-width: 250px;
+    text-transform: uppercase;
+    border: 1px solid currentColor;
+}
+.contactButton p {
+    position: relative;
+    z-index: 1;
+}
+.contactButton:before,
+.contactButton:after {
+    position: absolute;
+    top: 50%;
+    content: "";
+    width: 20px;
+    height: 20px;
+    background-color: rgb(var(--accent-color-dark-1-rgb));
+    border-radius: 50%;
+    z-index: 0;
+}
+.contactButton:before {
+    left: -20px;
+    transform: translate(-50%, -50%);
+}
+.contactButton:after {
+    right: -20px;
+    transform: translate(50%, -50%);
+}
+.contactButton:hover {
+    color: rgb(var(--text-color-rgb));
+}
+.contactButton:hover:before {
+    -webkit-animation: criss-cross-left 0.8s both;
+    animation: criss-cross-left 0.8s both;
+    -webkit-animation-direction: alternate;
+    animation-direction: alternate;
+}
+.contactButton:hover:after {
+    -webkit-animation: criss-cross-right 0.8s both;
+    animation: criss-cross-right 0.8s both;
+    -webkit-animation-direction: alternate;
+    animation-direction: alternate;
+}

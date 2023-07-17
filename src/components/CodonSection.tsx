@@ -1,5 +1,6 @@
 import Image from "next/image";
 import styles from "@/styles/Showcase.module.css";
+import React from "react";
 
 const CodonSection = () => {
     const technologyList = ["Python", "PyQt5", "QScintilla", "Git"];

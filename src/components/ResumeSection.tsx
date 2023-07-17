@@ -6,6 +6,7 @@ const ResumeSection = () => {
         "Node.js",
         "Express",
         "Passport",
+        "AI",
         "React",
         "MongoDB",
         "Git",

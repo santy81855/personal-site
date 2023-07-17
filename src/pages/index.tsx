@@ -1,22 +1,37 @@
 import Head from "next/head";
-import Image from "next/image";
 import { Inter } from "next/font/google";
 import styles from "@/styles/Home.module.css";
+import BackgroundImage from "@/components/BackgroundImage";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
-    const backgroundImage = () => {
-        return (
-            <Image
-                className={styles.image}
-                src="/images/headshot.png"
-                alt="My Image"
-                width={500}
-                height={1000}
-            />
-        );
-    };
+    const grain = (
+        <>
+            {" "}
+            <svg width="0" height="0">
+                <filter
+                    id="grainy-blur"
+                    x="-150%"
+                    y="-150%"
+                    width="400%"
+                    height="400%"
+                >
+                    <feGaussianBlur
+                        stdDeviation="39"
+                        result="blur"
+                    ></feGaussianBlur>
+                    <feTurbulence
+                        type="fractalNoise"
+                        baseFrequency=".537"
+                    ></feTurbulence>
+                    <feComposite in="blur"></feComposite>
+                    <feComposite in="blur" operator="in"></feComposite>
+                </filter>
+            </svg>
+            <div className={styles.grain}></div>
+        </>
+    );
     return (
         <>
             <Head>
@@ -39,14 +54,8 @@ export default function Home() {
                     <h1 className={styles.title}>
                         G<span>a</span>rc<span>i</span>a
                     </h1>
-                    <p className={styles.description}>
-                        Software Engineer: Dedicated and detail-oriented
-                        professional with a passion for solving complex problems
-                        through innovative coding solutions. Software Engineer:
-                        Dedicated and detail-oriented professional with a
-                        passion for solving complex problems through innovative
-                        coding solutions.
-                    </p>
+                    <BackgroundImage />
+                    {grain}
                 </section>
             </main>
         </>
