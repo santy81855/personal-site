@@ -41,9 +41,10 @@ const ImageCycle = () => {
     }, []);
 
     const cycleLeft = () => {
+        console.log(numCycles);
         // reorder the images based on the numCycles
         if (numCycles === 0) {
-            numCycles++;
+            numCycles = 3;
             // get the codon id
             const codon = document.getElementById("Codon");
             if (codon !== null) {
@@ -80,7 +81,77 @@ const ImageCycle = () => {
                 aiResume.style.zIndex = "3";
             }
         } else if (numCycles === 1) {
-            numCycles++;
+            numCycles--;
+            // get the codon id
+            const codon = document.getElementById("Codon");
+            if (codon !== null) {
+                // put it where it was
+                codon.style.transform = `translate(${0}px, ${0}px)`;
+                codon.style.filter = "grayscale(100%)  brightness(0.4)";
+                codon.style.zIndex = "1";
+            }
+            // get the typo id
+            const typo = document.getElementById("Typo");
+            if (typo !== null) {
+                // move it down 1 space
+                typo.style.transform = `translate(${0}px, ${0}px)`;
+                typo.style.filter = "grayscale(100%)  brightness(0.4)";
+                typo.style.zIndex = "2";
+            }
+            // get the glass cannon id
+            const glassCannon = document.getElementById("Glass Cannon");
+            if (glassCannon !== null) {
+                // move it down 1 space
+                glassCannon.style.transform = `translate(${0}px, ${0}px)`;
+                glassCannon.style.filter = "grayscale(100%)  brightness(0.4)";
+                glassCannon.style.zIndex = "3";
+            }
+            // get the ai resume id
+            const aiResume = document.getElementById("AI Resume");
+            if (aiResume !== null) {
+                // move it down 1 spaces
+                aiResume.style.transform = `translate(${0}px, ${0}px)`;
+                aiResume.style.filter = "blur(0px)";
+                aiResume.style.zIndex = "4";
+            }
+        } else if (numCycles === 2) {
+            numCycles--;
+            // get the codon id
+            const codon = document.getElementById("Codon");
+            if (codon !== null) {
+                // move it up and to the right by 1 spaces
+                codon.style.transform = `translate(${imageOffset}px, ${-imageOffset}px)`;
+                codon.style.filter = "grayscale(100%)  brightness(0.4)";
+                codon.style.zIndex = "2";
+            }
+            // get the typo id
+            const typo = document.getElementById("Typo");
+            if (typo !== null) {
+                // move it up 1 space
+                typo.style.transform = `translate(${imageOffset}px, ${-imageOffset}px)`;
+                typo.style.filter = "grayscale(100%)  brightness(0.4)";
+                typo.style.zIndex = "3";
+            }
+            // get the glass cannon id
+            const glassCannon = document.getElementById("Glass Cannon");
+            if (glassCannon !== null) {
+                // move it up 1 space
+                glassCannon.style.transform = `translate(${imageOffset}px, ${-imageOffset}px)`;
+                glassCannon.style.filter = "blur(0px)";
+                glassCannon.style.zIndex = "4";
+            }
+            // get the ai resume id
+            const aiResume = document.getElementById("AI Resume");
+            if (aiResume !== null) {
+                // move it down 3 spaces
+                aiResume.style.transform = `translate(${-imageOffset * 3}px, ${
+                    imageOffset * 3
+                }px)`;
+                aiResume.style.filter = "grayscale(100%)  brightness(0.4)";
+                aiResume.style.zIndex = "1";
+            }
+        } else if (numCycles === 3) {
+            numCycles--;
             // get the codon id
             const codon = document.getElementById("Codon");
             if (codon !== null) {
@@ -121,76 +192,6 @@ const ImageCycle = () => {
                 }px)`;
                 aiResume.style.filter = "grayscale(100%)  brightness(0.4)";
                 aiResume.style.zIndex = "2";
-            }
-        } else if (numCycles === 2) {
-            numCycles++;
-            // get the codon id
-            const codon = document.getElementById("Codon");
-            if (codon !== null) {
-                // move it up and to the right by 1 spaces
-                codon.style.transform = `translate(${imageOffset}px, ${-imageOffset}px)`;
-                codon.style.filter = "grayscale(100%)  brightness(0.4)";
-                codon.style.zIndex = "2";
-            }
-            // get the typo id
-            const typo = document.getElementById("Typo");
-            if (typo !== null) {
-                // move it up 1 space
-                typo.style.transform = `translate(${imageOffset}px, ${-imageOffset}px)`;
-                typo.style.filter = "grayscale(100%)  brightness(0.4)";
-                typo.style.zIndex = "3";
-            }
-            // get the glass cannon id
-            const glassCannon = document.getElementById("Glass Cannon");
-            if (glassCannon !== null) {
-                // move it up 1 space
-                glassCannon.style.transform = `translate(${imageOffset}px, ${-imageOffset}px)`;
-                glassCannon.style.filter = "blur(0px)";
-                glassCannon.style.zIndex = "4";
-            }
-            // get the ai resume id
-            const aiResume = document.getElementById("AI Resume");
-            if (aiResume !== null) {
-                // move it down 3 spaces
-                aiResume.style.transform = `translate(${-imageOffset * 3}px, ${
-                    imageOffset * 3
-                }px)`;
-                aiResume.style.filter = "grayscale(100%)  brightness(0.4)";
-                aiResume.style.zIndex = "1";
-            }
-        } else if (numCycles === 3) {
-            numCycles = 0;
-            // get the codon id
-            const codon = document.getElementById("Codon");
-            if (codon !== null) {
-                // put it where it was
-                codon.style.transform = `translate(${0}px, ${0}px)`;
-                codon.style.filter = "grayscale(100%)  brightness(0.4)";
-                codon.style.zIndex = "1";
-            }
-            // get the typo id
-            const typo = document.getElementById("Typo");
-            if (typo !== null) {
-                // move it down 1 space
-                typo.style.transform = `translate(${0}px, ${0}px)`;
-                typo.style.filter = "grayscale(100%)  brightness(0.4)";
-                typo.style.zIndex = "2";
-            }
-            // get the glass cannon id
-            const glassCannon = document.getElementById("Glass Cannon");
-            if (glassCannon !== null) {
-                // move it down 1 space
-                glassCannon.style.transform = `translate(${0}px, ${0}px)`;
-                glassCannon.style.filter = "grayscale(100%)  brightness(0.4)";
-                glassCannon.style.zIndex = "3";
-            }
-            // get the ai resume id
-            const aiResume = document.getElementById("AI Resume");
-            if (aiResume !== null) {
-                // move it down 1 spaces
-                aiResume.style.transform = `translate(${0}px, ${0}px)`;
-                aiResume.style.filter = "blur(0px)";
-                aiResume.style.zIndex = "4";
             }
         }
     };
