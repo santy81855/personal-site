@@ -413,10 +413,9 @@ const ImageCycle = () => {
                         id="CodonScroll"
                         src="/images/codon-tile.png"
                         alt="Codon Image"
-                        height={1300}
-                        width={1918}
+                        height={441}
+                        width={650}
                         priority={true}
-                        layout="responsive"
                     />
                 </div>
                 <div
@@ -434,10 +433,9 @@ const ImageCycle = () => {
                         id="TypoScroll"
                         src="/images/typo-tile.png"
                         alt="Typo Image"
-                        height={1300}
-                        width={1918}
+                        height={441}
+                        width={650}
                         priority={true}
-                        layout="responsive"
                     />
                 </div>
                 <div
@@ -474,8 +472,8 @@ const ImageCycle = () => {
                         id="AIResumeScroll"
                         src="/images/ai-resume-tile.png"
                         alt="AI Resume Image"
-                        height={1300}
-                        width={1918}
+                        height={441}
+                        width={650}
                         priority={true}
                         layout="responsive"
                         onClick={(event) => scrollToSection(event)}
