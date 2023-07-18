@@ -64,7 +64,7 @@ export default function Home() {
                         id="title1"
                         className={`${styles.title} ${styles.title1}`}
                     >
-                        S<span>a</span>t<span>i</span>ago
+                        S<span>a</span>nt<span>i</span>ago
                     </h1>
                     <h1
                         id="title2"
