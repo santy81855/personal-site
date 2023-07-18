@@ -149,20 +149,20 @@ const Header: React.FC = () => {
                     >
                         <p>Get in touch</p>
                     </button>
-                    {shortNav && (
-                        <button
-                            className={styles.hamburgerButton}
-                            onClick={handleMenuClick}
-                        >
-                            &#9776;
-                        </button>
-                    )}
+
+                    <button
+                        className={styles.hamburgerButton}
+                        onClick={handleMenuClick}
+                    >
+                        &#9776;
+                    </button>
                 </div>
                 <div
                     id="verticalMenu"
                     ref={verticalMenuRef}
                     className={styles.verticalMenu}
                 >
+                    {grain}
                     <div
                         className={styles.closeButton}
                         onClick={closeVerticalMenu}
@@ -189,7 +189,6 @@ const Header: React.FC = () => {
                             </Link>
                         </li>
                     </ul>
-                    {grain}
                 </div>
             </nav>
         </header>

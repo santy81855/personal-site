@@ -39,7 +39,7 @@ export default function Showcase() {
     return (
         <>
             <Head>
-                <title>Project showcase.</title>
+                <title>Showcase</title>
                 <meta name="description" content="List of my projects." />
                 <meta
                     name="viewport"

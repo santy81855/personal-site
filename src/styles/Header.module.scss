@@ -106,17 +106,18 @@
     transition: transform 0.5s ease-in-out;
     border-left: 1px solid black;
     z-index: 1;
+    overflow: hidden;
 }
 
 .grain {
     position: absolute;
     /* put in the middle along both axes */
-    left: 0%;
-    bottom: 30%;
-    opacity: 0.1;
+    left: calc(35vw - 15rem);
+    bottom: calc(50vh - 15rem);
+    opacity: 0.3;
 
     /* responsive, but upper capped radius */
-    padding: min(45vmin, 20em);
+    padding: 15rem;
     border-radius: 50%; /* turn square to disc */
     background: /* throw in different colours */ conic-gradient(
         red,

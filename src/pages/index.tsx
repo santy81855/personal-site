@@ -47,7 +47,7 @@ export default function Home() {
     return (
         <>
             <Head>
-                <title>Santiago Garcia's Personal Site</title>
+                <title>Santiago Garcia</title>
                 <meta
                     name="description"
                     content="A portfolio website for Santiago Garcia built with Next.js."
