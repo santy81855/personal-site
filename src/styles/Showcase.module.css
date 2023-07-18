@@ -35,7 +35,7 @@
         purple
     );
     filter: url(#grainy-blur); /* the magic */
-    z-index: -1;
+    z-index: 0;
 }
 
 .invertSection {
