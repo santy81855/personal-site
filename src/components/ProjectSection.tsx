@@ -88,7 +88,13 @@ const ProjectSection: FC<ProjectSectionProps> = ({
                         />
                     </div>
                 </div>
-                <div className={styles.featureContainer}>
+                <div
+                    className={
+                        isOddProject === true
+                            ? styles.featureContainer
+                            : styles.featureContainerFlip
+                    }
+                >
                     <h1 className={styles.featureTitle}>Features</h1>
                     <div className={styles.featureList}>
                         {featureList.map(

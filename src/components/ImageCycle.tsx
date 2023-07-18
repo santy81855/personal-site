@@ -420,6 +420,22 @@ const ImageCycle = () => {
                         behavior: "smooth",
                     });
                 }
+            } else if (eventId == "GlassCannonScroll") {
+                const element = document.getElementById("cannon");
+                if (element !== null) {
+                    document.body.scrollTo({
+                        top: element.getBoundingClientRect().top - 100,
+                        behavior: "smooth",
+                    });
+                }
+            } else if (eventId == "TypoScroll") {
+                const element = document.getElementById("typo");
+                if (element !== null) {
+                    document.body.scrollTo({
+                        top: element.getBoundingClientRect().top - 100,
+                        behavior: "smooth",
+                    });
+                }
             }
         }
     };
@@ -472,6 +488,7 @@ const ImageCycle = () => {
                         filter: "grayscale(100%)  brightness(0.4)",
                         transform: `rotate(${imageAngle * 2}deg)`,
                     }}
+                    onClick={(event) => scrollToSection(event)}
                 >
                     <Image
                         className={styles.imageChild}
@@ -494,6 +511,7 @@ const ImageCycle = () => {
                         filter: "grayscale(100%)  brightness(0.4)",
                         transform: `rotate(${imageAngle}deg)`,
                     }}
+                    onClick={(event) => scrollToSection(event)}
                 >
                     <Image
                         className={styles.imageChild}
@@ -514,6 +532,7 @@ const ImageCycle = () => {
                         top: "0px",
                         right: "0px",
                     }}
+                    onClick={(event) => scrollToSection(event)}
                 >
                     <Image
                         className={styles.imageChild}
@@ -524,7 +543,6 @@ const ImageCycle = () => {
                         width={650}
                         unoptimized={true}
                         priority={true}
-                        onClick={(event) => scrollToSection(event)}
                     />
                 </div>
             </div>

@@ -149,19 +149,19 @@ export default function Showcase() {
                         "Git",
                         "AI",
                     ]}
-                    mainImageURL="/images/typo-tile.png"
+                    mainImageURL="/images/typo-main-image.gif"
                     featureList={[
                         {
                             title: "Multiple Modes",
                             description:
                                 "Test your typing speed and accuracy with multiple modes, including a custom mode where you can type AI generated text.",
-                            imageURL: "/images/codon-syntax.gif",
+                            imageURL: "/images/typo-feature-mode.gif",
                         },
                         {
                             title: "Pick a Theme",
                             description:
                                 "Choose from a variety of themes to customize your typing experience.",
-                            imageURL: "/images/codon-map.gif",
+                            imageURL: "/images/typo-feature-theme.gif",
                         },
                     ]}
                     firstButtonLink="https://github.com/santy81855/Typo/raw/main/Typo_Installer.exe"
@@ -174,21 +174,21 @@ export default function Showcase() {
                     sectionId="cannon"
                     textHeader="3D Unity Game"
                     textTitle="Glass Cannon"
-                    description="A 3D wave survival game made in Unity. Try to survive as long as possible against an endless wave of enemies."
+                    description="A 3D wave survival game made in Unity. Try to survive as long as possible against an endless wave of enemies. One hit and you're dead."
                     techList={["Unity 3D", "Blender", "C#", "AI", "Git"]}
                     mainImageURL="/images/glass-cannon-tile.png"
                     featureList={[
                         {
-                            title: "AI Generator",
+                            title: "Power-up Store",
                             description:
-                                "Let the AI do the work for you. Simply enter your information and let the AI generate a professional resume for you.",
-                            imageURL: "/images/codon-syntax.gif",
+                                "Use the points you earn from killing enemies to buy power-ups to help you survive longer.",
+                            imageURL: "/images/cannon-feature-store.gif",
                         },
                         {
-                            title: "Endless Resumes",
+                            title: "AI Level Scaling",
                             description:
-                                "Create a different resume for every application. Stand out from the rest by tailoring each resume to the job you are applying for.",
-                            imageURL: "/images/codon-map.gif",
+                                "The AI will scale in difficulty as you progress through the waves. The longer you survive, the harder it gets.",
+                            imageURL: "/images/cannon-feature-scaling.gif",
                         },
                     ]}
                     firstButtonLink="https://github.com/santy81855/Glass_Cannon/archive/refs/heads/main.zip"
