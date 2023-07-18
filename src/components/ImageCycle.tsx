@@ -7,7 +7,8 @@ const ImageCycle = () => {
     const resumeRef = useRef<HTMLDivElement>(null);
     const typoRef = useRef<HTMLDivElement>(null);
     const glassCannonRef = useRef<HTMLDivElement>(null);
-    const [imageOffset, setImageOffset] = useState(40);
+    const [imageOffset, setImageOffset] = useState(10);
+    const [imageAngle, setImageAngle] = useState(-2);
     var numCycles = 0;
     const [imageTitles, setImageTitles] = useState([
         "Codon",
@@ -25,18 +26,24 @@ const ImageCycle = () => {
 
         if (window.innerWidth < 426) {
             setImageOffset(0);
+            setImageAngle(0);
         } else if (window.innerWidth < 585) {
             setImageOffset(10);
+            setImageAngle(-2);
         } else if (window.innerWidth < 700) {
-            setImageOffset(20);
+            setImageOffset(10);
+            setImageAngle(-2);
         }
         function handleResize() {
             if (window.innerWidth < 426) {
                 setImageOffset(0);
+                setImageAngle(0);
             } else if (window.innerWidth < 585) {
                 setImageOffset(10);
+                setImageAngle(-2);
             } else if (window.innerWidth < 700) {
-                setImageOffset(20);
+                setImageOffset(10);
+                setImageAngle(-2);
             }
         }
         window.addEventListener("resize", handleResize);
@@ -46,9 +53,17 @@ const ImageCycle = () => {
         };
     }, []);
 
+    const showTitle = (index: number) => {
+        const element = document.getElementById("title");
+        if (element) {
+            element.textContent = imageTitles[index];
+        }
+    };
+
     const cycleLeft = () => {
         // reorder the images based on the numCycles
         if (numCycles === 0) {
+            showTitle(0);
             numCycles = 3;
             // get the codon id
             const codon = document.getElementById("Codon");
@@ -64,7 +79,9 @@ const ImageCycle = () => {
             const typo = document.getElementById("Typo");
             if (typo !== null) {
                 // move it down 1 space
-                typo.style.transform = `translate(${-imageOffset}px, ${imageOffset}px)`;
+                typo.style.transform = `translate(${-imageOffset}px, ${imageOffset}px) rotate(${
+                    imageAngle * 3
+                }deg)`;
                 typo.style.filter = "grayscale(100%)  brightness(0.4)";
                 typo.style.zIndex = "1";
             }
@@ -72,7 +89,9 @@ const ImageCycle = () => {
             const glassCannon = document.getElementById("Glass Cannon");
             if (glassCannon !== null) {
                 // move it down 1 space
-                glassCannon.style.transform = `translate(${-imageOffset}px, ${imageOffset}px)`;
+                glassCannon.style.transform = `translate(${-imageOffset}px, ${imageOffset}px) rotate(${
+                    imageAngle * 2
+                }deg)`;
                 // unblur it
                 glassCannon.style.filter = "grayscale(100%)  brightness(0.4)";
                 glassCannon.style.zIndex = "2";
@@ -81,17 +100,20 @@ const ImageCycle = () => {
             const aiResume = document.getElementById("AI Resume");
             if (aiResume !== null) {
                 // move it down 1 space
-                aiResume.style.transform = `translate(${-imageOffset}px, ${imageOffset}px)`;
+                aiResume.style.transform = `translate(${-imageOffset}px, ${imageOffset}px) rotate(${imageAngle}deg)`;
                 aiResume.style.filter = "grayscale(100%)  brightness(0.4)";
                 aiResume.style.zIndex = "3";
             }
         } else if (numCycles === 1) {
+            showTitle(3);
             numCycles--;
             // get the codon id
             const codon = document.getElementById("Codon");
             if (codon !== null) {
                 // put it where it was
-                codon.style.transform = `translate(${0}px, ${0}px)`;
+                codon.style.transform = `translate(${0}px, ${0}px) rotate(${
+                    imageAngle * 3
+                }deg)`;
                 codon.style.filter = "grayscale(100%)  brightness(0.4)";
                 codon.style.zIndex = "1";
             }
@@ -99,7 +121,9 @@ const ImageCycle = () => {
             const typo = document.getElementById("Typo");
             if (typo !== null) {
                 // move it down 1 space
-                typo.style.transform = `translate(${0}px, ${0}px)`;
+                typo.style.transform = `translate(${0}px, ${0}px) rotate(${
+                    imageAngle * 2
+                }deg)`;
                 typo.style.filter = "grayscale(100%)  brightness(0.4)";
                 typo.style.zIndex = "2";
             }
@@ -107,7 +131,7 @@ const ImageCycle = () => {
             const glassCannon = document.getElementById("Glass Cannon");
             if (glassCannon !== null) {
                 // move it down 1 space
-                glassCannon.style.transform = `translate(${0}px, ${0}px)`;
+                glassCannon.style.transform = `translate(${0}px, ${0}px) rotate(${imageAngle}deg)`;
                 glassCannon.style.filter = "grayscale(100%)  brightness(0.4)";
                 glassCannon.style.zIndex = "3";
             }
@@ -120,12 +144,15 @@ const ImageCycle = () => {
                 aiResume.style.zIndex = "4";
             }
         } else if (numCycles === 2) {
+            showTitle(2);
             numCycles--;
             // get the codon id
             const codon = document.getElementById("Codon");
             if (codon !== null) {
                 // move it up and to the right by 1 spaces
-                codon.style.transform = `translate(${imageOffset}px, ${-imageOffset}px)`;
+                codon.style.transform = `translate(${imageOffset}px, ${-imageOffset}px) rotate(${
+                    imageAngle * 2
+                }deg)`;
                 codon.style.filter = "grayscale(100%)  brightness(0.4)";
                 codon.style.zIndex = "2";
             }
@@ -133,7 +160,7 @@ const ImageCycle = () => {
             const typo = document.getElementById("Typo");
             if (typo !== null) {
                 // move it up 1 space
-                typo.style.transform = `translate(${imageOffset}px, ${-imageOffset}px)`;
+                typo.style.transform = `translate(${imageOffset}px, ${-imageOffset}px) rotate(${imageAngle}deg)`;
                 typo.style.filter = "grayscale(100%)  brightness(0.4)";
                 typo.style.zIndex = "3";
             }
@@ -151,11 +178,12 @@ const ImageCycle = () => {
                 // move it down 3 spaces
                 aiResume.style.transform = `translate(${-imageOffset * 3}px, ${
                     imageOffset * 3
-                }px)`;
+                }px) rotate(${imageAngle * 3}deg)`;
                 aiResume.style.filter = "grayscale(100%)  brightness(0.4)";
                 aiResume.style.zIndex = "1";
             }
         } else if (numCycles === 3) {
+            showTitle(1);
             numCycles--;
             // get the codon id
             const codon = document.getElementById("Codon");
@@ -163,7 +191,7 @@ const ImageCycle = () => {
                 // move it up and to the right by 2 spaces
                 codon.style.transform = `translate(${imageOffset * 2}px, ${
                     -imageOffset * 2
-                }px)`;
+                }px) rotate(${imageAngle}deg)`;
                 codon.style.filter = "grayscale(100%)  brightness(0.4)";
                 codon.style.zIndex = "3";
             }
@@ -183,7 +211,7 @@ const ImageCycle = () => {
                 // move it to the bottom
                 glassCannon.style.transform = `translate(${
                     -imageOffset * 2
-                }px, ${imageOffset * 2}px)`;
+                }px, ${imageOffset * 2}px) rotate(${imageAngle * 3}deg)`;
                 // unblur it
                 glassCannon.style.filter = "grayscale(100%)  brightness(0.4)";
                 glassCannon.style.zIndex = "1";
@@ -194,7 +222,7 @@ const ImageCycle = () => {
                 // move it down 2 spaces
                 aiResume.style.transform = `translate(${-imageOffset * 2}px, ${
                     imageOffset * 2
-                }px)`;
+                }px) rotate(${imageAngle * 2}deg)`;
                 aiResume.style.filter = "grayscale(100%)  brightness(0.4)";
                 aiResume.style.zIndex = "2";
             }
@@ -204,12 +232,15 @@ const ImageCycle = () => {
     const cycleRight = () => {
         // reorder the images based on the numCycles
         if (numCycles === 0) {
+            showTitle(2);
             numCycles++;
             // get the codon id
             const codon = document.getElementById("Codon");
             if (codon !== null) {
                 // move it up and to the right
-                codon.style.transform = `translate(${imageOffset}px, ${-imageOffset}px)`;
+                codon.style.transform = `translate(${imageOffset}px, ${-imageOffset}px) rotate(${
+                    imageAngle * 2
+                }deg)`;
                 codon.style.filter = "grayscale(100%)  brightness(0.4)";
                 codon.style.zIndex = "2";
             }
@@ -217,7 +248,7 @@ const ImageCycle = () => {
             const typo = document.getElementById("Typo");
             if (typo !== null) {
                 // move it up and to the right
-                typo.style.transform = `translate(${imageOffset}px, ${-imageOffset}px)`;
+                typo.style.transform = `translate(${imageOffset}px, ${-imageOffset}px) rotate(${imageAngle}deg)`;
                 typo.style.filter = "grayscale(100%)  brightness(0.4)";
                 typo.style.zIndex = "3";
             }
@@ -236,11 +267,12 @@ const ImageCycle = () => {
                 // move it down 3 spaces
                 aiResume.style.transform = `translate(${-imageOffset * 3}px, ${
                     imageOffset * 3
-                }px)`;
+                }px) rotate(${imageAngle * 3}deg)`;
                 aiResume.style.filter = "grayscale(100%)  brightness(0.4)";
                 aiResume.style.zIndex = "1";
             }
         } else if (numCycles === 1) {
+            showTitle(1);
             numCycles++;
             // get the codon id
             const codon = document.getElementById("Codon");
@@ -248,7 +280,7 @@ const ImageCycle = () => {
                 // move it up and to the right by 2 spaces
                 codon.style.transform = `translate(${imageOffset * 2}px, ${
                     -imageOffset * 2
-                }px)`;
+                }px) rotate(${imageAngle}deg)`;
                 codon.style.filter = "grayscale(100%)  brightness(0.4)";
                 codon.style.zIndex = "3";
             }
@@ -268,7 +300,7 @@ const ImageCycle = () => {
                 // move it to the bottom
                 glassCannon.style.transform = `translate(${
                     -imageOffset * 2
-                }px, ${imageOffset * 2}px)`;
+                }px, ${imageOffset * 2}px) rotate(${imageAngle * 3}deg)`;
                 // unblur it
                 glassCannon.style.filter = "grayscale(100%)  brightness(0.4)";
                 glassCannon.style.zIndex = "1";
@@ -279,11 +311,12 @@ const ImageCycle = () => {
                 // move it down 2 spaces
                 aiResume.style.transform = `translate(${-imageOffset * 2}px, ${
                     imageOffset * 2
-                }px)`;
+                }px) rotate(${imageAngle * 2}deg)`;
                 aiResume.style.filter = "grayscale(100%)  brightness(0.4)";
                 aiResume.style.zIndex = "2";
             }
         } else if (numCycles === 2) {
+            showTitle(0);
             numCycles++;
             // get the codon id
             const codon = document.getElementById("Codon");
@@ -299,7 +332,9 @@ const ImageCycle = () => {
             const typo = document.getElementById("Typo");
             if (typo !== null) {
                 // move it down 1 space
-                typo.style.transform = `translate(${-imageOffset}px, ${imageOffset}px)`;
+                typo.style.transform = `translate(${-imageOffset}px, ${imageOffset}px) rotate(${
+                    imageAngle * 3
+                }deg)`;
                 typo.style.filter = "grayscale(100%)  brightness(0.4)";
                 typo.style.zIndex = "1";
             }
@@ -307,7 +342,9 @@ const ImageCycle = () => {
             const glassCannon = document.getElementById("Glass Cannon");
             if (glassCannon !== null) {
                 // move it down 1 space
-                glassCannon.style.transform = `translate(${-imageOffset}px, ${imageOffset}px)`;
+                glassCannon.style.transform = `translate(${-imageOffset}px, ${imageOffset}px) rotate(${
+                    imageAngle * 2
+                }deg)`;
                 glassCannon.style.filter = "grayscale(100%)  brightness(0.4)";
                 glassCannon.style.zIndex = "2";
             }
@@ -315,17 +352,20 @@ const ImageCycle = () => {
             const aiResume = document.getElementById("AI Resume");
             if (aiResume !== null) {
                 // move it down 1 spaces
-                aiResume.style.transform = `translate(${-imageOffset}px, ${imageOffset}px)`;
+                aiResume.style.transform = `translate(${-imageOffset}px, ${imageOffset}px) rotate(${imageAngle}deg)`;
                 aiResume.style.filter = "grayscale(100%)  brightness(0.4)";
                 aiResume.style.zIndex = "3";
             }
         } else if (numCycles === 3) {
+            showTitle(3);
             numCycles = 0;
             // get the codon id
             const codon = document.getElementById("Codon");
             if (codon !== null) {
                 // put it where it was
-                codon.style.transform = `translate(${0}px, ${0}px)`;
+                codon.style.transform = `translate(${0}px, ${0}px) rotate(${
+                    imageAngle * 3
+                }deg)`;
                 codon.style.filter = "grayscale(100%)  brightness(0.4)";
                 codon.style.zIndex = "1";
             }
@@ -333,7 +373,9 @@ const ImageCycle = () => {
             const typo = document.getElementById("Typo");
             if (typo !== null) {
                 // move it down 1 space
-                typo.style.transform = `translate(${0}px, ${0}px)`;
+                typo.style.transform = `translate(${0}px, ${0}px) rotate(${
+                    imageAngle * 2
+                }deg)`;
                 typo.style.filter = "grayscale(100%)  brightness(0.4)";
                 typo.style.zIndex = "2";
             }
@@ -341,7 +383,7 @@ const ImageCycle = () => {
             const glassCannon = document.getElementById("Glass Cannon");
             if (glassCannon !== null) {
                 // move it down 1 space
-                glassCannon.style.transform = `translate(${0}px, ${0}px)`;
+                glassCannon.style.transform = `translate(${0}px, ${0}px) rotate(${imageAngle}deg)`;
                 glassCannon.style.filter = "grayscale(100%)  brightness(0.4)";
                 glassCannon.style.zIndex = "3";
             }
@@ -385,7 +427,7 @@ const ImageCycle = () => {
     return (
         <div id="carousel" className={styles.imageSectionContainer}>
             <div className={styles.arrowContainer}>
-                <div className={styles.imageTitle}></div>
+                <p id="title">AI Resume</p>
                 <div
                     className={styles.leftArrow}
                     onClick={() => cycleLeft()}
@@ -405,6 +447,7 @@ const ImageCycle = () => {
                         top: imageOffset * 3 + "px",
                         right: imageOffset * 3 + "px",
                         filter: "grayscale(100%)  brightness(0.4)",
+                        transform: `rotate(${imageAngle * 3}deg)`,
                     }}
                     onClick={(event) => scrollToSection(event)}
                 >
@@ -427,6 +470,7 @@ const ImageCycle = () => {
                         top: imageOffset * 2 + "px",
                         right: imageOffset * 2 + "px",
                         filter: "grayscale(100%)  brightness(0.4)",
+                        transform: `rotate(${imageAngle * 2}deg)`,
                     }}
                 >
                     <Image
@@ -448,6 +492,7 @@ const ImageCycle = () => {
                         top: imageOffset + "px",
                         right: imageOffset + "px",
                         filter: "grayscale(100%)  brightness(0.4)",
+                        transform: `rotate(${imageAngle}deg)`,
                     }}
                 >
                     <Image

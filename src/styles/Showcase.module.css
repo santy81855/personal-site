@@ -46,7 +46,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-block-start: -5rem;
+    margin-block-start: -10rem;
     position: relative;
 }
 
@@ -148,9 +148,9 @@
     cursor: pointer;
 }
 
-.imageTitle {
+.arrowContainer p {
     font-size: var(--font-size-large);
-    font-weight: 600;
+    font-weight: 400;
 }
 
 .image {
@@ -326,7 +326,7 @@
         height: 350px;
     }
     .invertSection {
-        margin-block-start: -10rem;
+        margin-block-start: -15rem;
     }
 }
 
@@ -393,7 +393,10 @@
         height: auto;
     }
     .invertSection {
-        margin-block-start: -22rem;
+        margin-block-start: -20rem;
+    }
+    .arrowContainer p {
+        font-size: var(--font-size-medium);
     }
 }
 
