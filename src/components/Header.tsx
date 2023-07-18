@@ -13,6 +13,7 @@ const Header: React.FC = () => {
     const homeRef = useRef<HTMLParagraphElement>(null);
     const showcaseRef = useRef<HTMLParagraphElement>(null);
     const contactRef = useRef<HTMLParagraphElement>(null);
+    const verticalMenuWidth = 100;
 
     useEffect(() => {
         if (window.innerWidth < 700) {
@@ -54,7 +55,7 @@ const Header: React.FC = () => {
                 element.style.transform = "translateX(0)";
                 setisVerticalMenuOpen(false);
             } else {
-                element.style.transform = "translateX(-70vw)";
+                element.style.transform = `translateX(-${verticalMenuWidth}vw)`;
                 // add a class to the text representing the page you are currently on
                 if (currentUrl === "/") {
                     homeRef?.current?.classList.add(styles.highlightedItem);
@@ -164,7 +165,6 @@ const Header: React.FC = () => {
                     ref={verticalMenuRef}
                     className={styles.verticalMenu}
                 >
-                    {grain}
                     <div
                         className={styles.closeButton}
                         onClick={closeVerticalMenu}

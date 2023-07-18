@@ -2,8 +2,7 @@ import Head from "next/head";
 import { Inter } from "next/font/google";
 import styles from "@/styles/Showcase.module.css";
 import React from "react";
-import CodonSection from "@/components/CodonSection";
-import ResumeSection from "@/components/ResumeSection";
+import ProjectSection from "@/components/ProjectSection";
 import ImageCycle from "@/components/ImageCycle";
 import { useEffect } from "react";
 
@@ -67,9 +66,145 @@ export default function Showcase() {
                     {grain}
                     <ImageCycle />
                 </section>
-                <CodonSection />
-                <ResumeSection />
+                <ProjectSection
+                    isFirstProject={true}
+                    isOddProject={true}
+                    hasDemo={false}
+                    sectionId="codon"
+                    textHeader="Python GUI"
+                    textTitle="Codon Text Editor"
+                    description="A feature-rich and lightweight text and code editor for
+                    Windows computers."
+                    techList={["Python", "PyQt5", "QScintilla", "CSS", "Git"]}
+                    mainImageURL="/images/codon-mockup-no-shadow-cropped.png"
+                    featureList={[
+                        {
+                            title: "Syntax Highlighting",
+                            description:
+                                "Syntax highlighting will automatically detect the file type and is available for python, c, c#, c++, css, java,  and json.",
+                            imageURL: "/images/codon-syntax.gif",
+                        },
+                        {
+                            title: "Code Map",
+                            description:
+                                "Easily and efficiently scroll through your files with the help of the code, which is always in view.",
+                            imageURL: "/images/codon-map.gif",
+                        },
+                    ]}
+                    firstButtonLink="https://github.com/santy81855/Codon/raw/main/Codon_Installer.exe"
+                    githubLink="https://github.com/santy81855/Codon"
+                />
+                <ProjectSection
+                    isFirstProject={false}
+                    isOddProject={false}
+                    hasDemo={true}
+                    sectionId="airesume"
+                    textHeader="AI Web Application"
+                    textTitle="AI Resume Builder"
+                    description="A web application to help build a professional resume in
+                    minutes with the help of artificial intelligence."
+                    techList={[
+                        "Node.js",
+                        "Express",
+                        "Passport",
+                        "AI",
+                        "React",
+                        "MongoDB",
+                        "Git",
+                        "OpenAI",
+                        "AWS",
+                    ]}
+                    mainImageURL="/images/resume-mockup-no-shadow.png"
+                    featureList={[
+                        {
+                            title: "AI Generator",
+                            description:
+                                "Let the AI do the work for you. Simply enter your information and let the AI generate a professional resume for you.",
+                            imageURL: "/images/ai-resume-feature-ai.gif",
+                        },
+                        {
+                            title: "Endless Resumes",
+                            description:
+                                "Create a different resume for every application. Stand out from the rest by tailoring each resume to the job you are applying for.",
+                            imageURL: "/images/ai-resume-feature-resumes.png",
+                        },
+                    ]}
+                    firstButtonLink="https://myairesumes.com"
+                    githubLink="https://github.com/santy81855/ResumeBuilder_Frontend"
+                />
+                <ProjectSection
+                    isFirstProject={false}
+                    isOddProject={true}
+                    hasDemo={false}
+                    sectionId="typo"
+                    textHeader="Python GUI"
+                    textTitle="Typo"
+                    description="A typing speed test application that allows you to test both your typing speed and accuracy."
+                    techList={[
+                        "Python",
+                        "PyQt5",
+                        "Firebase",
+                        "Firestore",
+                        "CSS",
+                        "Git",
+                        "AI",
+                    ]}
+                    mainImageURL="/images/typo-tile.png"
+                    featureList={[
+                        {
+                            title: "Multiple Modes",
+                            description:
+                                "Test your typing speed and accuracy with multiple modes, including a custom mode where you can type AI generated text.",
+                            imageURL: "/images/codon-syntax.gif",
+                        },
+                        {
+                            title: "Pick a Theme",
+                            description:
+                                "Choose from a variety of themes to customize your typing experience.",
+                            imageURL: "/images/codon-map.gif",
+                        },
+                    ]}
+                    firstButtonLink="https://github.com/santy81855/Typo/raw/main/Typo_Installer.exe"
+                    githubLink="https://github.com/santy81855/Typo"
+                />
+                <ProjectSection
+                    isFirstProject={false}
+                    isOddProject={false}
+                    hasDemo={false}
+                    sectionId="cannon"
+                    textHeader="3D Unity Game"
+                    textTitle="Glass Cannon"
+                    description="A 3D wave survival game made in Unity. Try to survive as long as possible against an endless wave of enemies."
+                    techList={["Unity 3D", "Blender", "C#", "AI", "Git"]}
+                    mainImageURL="/images/glass-cannon-tile.png"
+                    featureList={[
+                        {
+                            title: "AI Generator",
+                            description:
+                                "Let the AI do the work for you. Simply enter your information and let the AI generate a professional resume for you.",
+                            imageURL: "/images/codon-syntax.gif",
+                        },
+                        {
+                            title: "Endless Resumes",
+                            description:
+                                "Create a different resume for every application. Stand out from the rest by tailoring each resume to the job you are applying for.",
+                            imageURL: "/images/codon-map.gif",
+                        },
+                    ]}
+                    firstButtonLink="https://github.com/santy81855/Glass_Cannon/archive/refs/heads/main.zip"
+                    githubLink="https://github.com/santy81855/Glass_Cannon"
+                />
             </main>
         </>
     );
 }
+/*
+    sectionId: string,
+    textHeader: string,
+    textTitle: string,
+    description: string,
+    techList: string[],
+    mainImage: string,
+    firstButtonLink: string,
+    githubLink: string
+*/
