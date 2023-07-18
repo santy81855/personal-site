@@ -34,10 +34,9 @@ const BackgroundImage = () => {
                     }`}
                     src={imageSrc}
                     alt={`Image ${index + 1}`}
-                    width={500}
-                    height={1000}
+                    width={2730}
+                    height={3929}
                     priority={index === currentImageIndex}
-                    unoptimized={true}
                 />
             ))}
         </>

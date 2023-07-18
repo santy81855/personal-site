@@ -71,14 +71,6 @@
     transition: transform 1s ease-in-out;
 }
 
-.title1 {
-    transform: translateX(-2000px);
-}
-
-.title2 {
-    transform: translateX(2000px);
-}
-
 .title span {
     color: rgb(var(--accent-color-dark-1-rgb));
 }
