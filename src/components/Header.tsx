@@ -9,10 +9,10 @@ const Header: React.FC = () => {
     const currentUrl = router.asPath;
     const [shortNav, setshortNav] = useState(false);
     const [isVerticalMenuOpen, setisVerticalMenuOpen] = useState(false);
-    const verticalMenuRef = useRef(null);
-    const homeRef = useRef(null);
-    const showcaseRef = useRef(null);
-    const contactRef = useRef(null);
+    const verticalMenuRef = useRef<HTMLDivElement>(null);
+    const homeRef = useRef<HTMLParagraphElement>(null);
+    const showcaseRef = useRef<HTMLParagraphElement>(null);
+    const contactRef = useRef<HTMLParagraphElement>(null);
 
     useEffect(() => {
         if (window.innerWidth < 700) {
