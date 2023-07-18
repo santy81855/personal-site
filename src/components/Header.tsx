@@ -149,13 +149,15 @@ const Header: React.FC = () => {
                     >
                         <p>Get in touch</p>
                     </button>
-
-                    <button
-                        className={styles.hamburgerButton}
+                    <div
+                        className={styles.hamburgerContainer}
                         onClick={handleMenuClick}
                     >
-                        &#9776;
-                    </button>
+                        {shortNav && <p>Menu</p>}
+                        <button className={styles.hamburgerButton}>
+                            &#9776;
+                        </button>
+                    </div>
                 </div>
                 <div
                     id="verticalMenu"

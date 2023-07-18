@@ -47,7 +47,9 @@ export default function Showcase() {
                 />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-            <main className={`${styles.main} ${inter.className}`}>
+            <main
+                className={`${styles.main} ${inter.className} ${styles.fadeIn}`}
+            >
                 <section className={styles.section}>
                     <div id="pageTitle" className={styles.titleContainer}>
                         <div

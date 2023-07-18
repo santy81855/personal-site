@@ -58,6 +58,17 @@
     gap: var(--gap-large);
 }
 
+.hamburgerContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--gap-small);
+}
+
+.hamburgerContainer p {
+    font-size: var(--font-size-large);
+}
+
 .hamburgerButton {
     background-color: transparent;
     color: rgb(var(--text-color-rgb));
@@ -163,6 +174,12 @@
 @media screen and (max-width: 400px) {
     .contactButton p {
         font-size: 0.7rem;
+    }
+}
+
+@media screen and (max-width: 315px) {
+    .hamburgerContainer p {
+        font-size: var(--font-size-small);
     }
 }
 

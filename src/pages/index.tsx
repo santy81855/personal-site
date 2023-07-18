@@ -74,17 +74,19 @@ export default function Home() {
                 />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-            <main className={`${styles.main} ${inter.className}`}>
+            <main
+                className={`${styles.main} ${inter.className} ${styles.fadeIn}`}
+            >
                 <section className={styles.section}>
                     <h1
                         id="title1"
-                        className={`${styles.title} ${styles.title1}`}
+                        className={`${styles.title} ${styles.slideInRight}`}
                     >
                         S<span>a</span>nt<span>i</span>ago
                     </h1>
                     <h1
                         id="title2"
-                        className={`${styles.title} ${styles.title2}`}
+                        className={`${styles.title} ${styles.slideInLeft}`}
                     >
                         G<span>a</span>rc<span>i</span>a
                     </h1>
