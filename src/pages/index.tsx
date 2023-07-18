@@ -60,6 +60,7 @@ export default function Home() {
             </Head>
             <main className={`${styles.main} ${inter.className}`}>
                 <section className={styles.section}>
+                    <BackgroundImage />
                     <h1
                         id="title1"
                         className={`${styles.title} ${styles.title1}`}
@@ -72,7 +73,6 @@ export default function Home() {
                     >
                         G<span>a</span>rc<span>i</span>a
                     </h1>
-                    <BackgroundImage />
                     {grain}
                 </section>
             </main>
