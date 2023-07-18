@@ -16,6 +16,22 @@ export default function Home() {
         if (title2) {
             title2.style.transform = "translateX(0)";
         }
+
+        const doc = document.documentElement;
+        doc.style.setProperty("--doc-height", `${window.innerHeight}px`);
+        console.log(window.innerHeight);
+
+        function handleResize() {
+            const doc = document.documentElement;
+            doc.style.setProperty("--doc-height", `${window.innerHeight}px`);
+        }
+
+        window.addEventListener("resize", handleResize);
+
+        // Clean up event listener when component is unmounted
+        return () => {
+            window.removeEventListener("resize", handleResize);
+        };
     }, []);
 
     const grain = (
@@ -60,7 +76,6 @@ export default function Home() {
             </Head>
             <main className={`${styles.main} ${inter.className}`}>
                 <section className={styles.section}>
-                    <BackgroundImage />
                     <h1
                         id="title1"
                         className={`${styles.title} ${styles.title1}`}
@@ -73,6 +88,7 @@ export default function Home() {
                     >
                         G<span>a</span>rc<span>i</span>a
                     </h1>
+                    <BackgroundImage />
                     {grain}
                 </section>
             </main>

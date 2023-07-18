@@ -1,5 +1,5 @@
 .main {
-    height: calc(100vh - 80px);
+    height: calc(var(--doc-height) - 80px);
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -43,7 +43,6 @@
 
 .section h1 {
     z-index: 2;
-    background-color: red;
 }
 
 .image {

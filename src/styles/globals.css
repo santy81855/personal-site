@@ -1,5 +1,6 @@
 :root {
     --max-width: 1100px;
+    --doc-height: 100%;
     --border-radius: 15px;
     --font-mono: ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono",
         "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro",
