@@ -416,6 +416,7 @@ const ImageCycle = () => {
                         height={441}
                         width={650}
                         priority={true}
+                        unoptimized={true}
                     />
                 </div>
                 <div
@@ -436,6 +437,7 @@ const ImageCycle = () => {
                         height={441}
                         width={650}
                         priority={true}
+                        unoptimized={true}
                     />
                 </div>
                 <div
@@ -456,6 +458,7 @@ const ImageCycle = () => {
                         height={441}
                         width={650}
                         priority={true}
+                        unoptimized={true}
                     />
                 </div>
                 <div
@@ -474,8 +477,8 @@ const ImageCycle = () => {
                         alt="AI Resume Image"
                         height={441}
                         width={650}
+                        unoptimized={true}
                         priority={true}
-                        layout="responsive"
                         onClick={(event) => scrollToSection(event)}
                     />
                 </div>
