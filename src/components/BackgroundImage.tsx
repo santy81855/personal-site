@@ -4,7 +4,7 @@ import styles from "@/styles/Home.module.css";
 
 const BackgroundImage = () => {
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
-    const images = ["/images/personal-pic-4.png"];
+    const images = ["/images/personal-pic-4.png", "/images/personal-pic-6.png"];
 
     useEffect(() => {
         const element = document.getElementById("backgroundImage");
@@ -17,7 +17,7 @@ const BackgroundImage = () => {
                 setCurrentImageIndex((prevIndex) =>
                     prevIndex === images.length - 1 ? 0 : prevIndex + 1
                 );
-            }, 7000); // 7 seconds
+            }, 4000); // 7 seconds
             return () => {
                 clearInterval(interval);
             };

@@ -25,8 +25,8 @@ const ImageCycle = () => {
         }
 
         if (window.innerWidth < 426) {
-            setImageOffset(0);
-            setImageAngle(0);
+            setImageOffset(5);
+            setImageAngle(-1);
         } else if (window.innerWidth < 585) {
             setImageOffset(10);
             setImageAngle(-2);
@@ -36,8 +36,8 @@ const ImageCycle = () => {
         }
         function handleResize() {
             if (window.innerWidth < 426) {
-                setImageOffset(0);
-                setImageAngle(0);
+                setImageOffset(5);
+                setImageAngle(-1);
             } else if (window.innerWidth < 585) {
                 setImageOffset(10);
                 setImageAngle(-2);
