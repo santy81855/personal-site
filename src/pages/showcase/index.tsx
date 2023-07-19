@@ -4,7 +4,6 @@ import styles from "@/styles/Showcase.module.css";
 import React from "react";
 import ProjectSection from "@/components/ProjectSection";
 import ImageCycle from "@/components/ImageCycle";
-import { useEffect } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 

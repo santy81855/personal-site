@@ -4,7 +4,7 @@ import styles from "@/styles/Home.module.css";
 
 const BackgroundImage = () => {
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
-    const images = ["/images/personal-pic-1.png", "/images/personal-pic-4.png"];
+    const images = ["/images/personal-pic-4.png"];
 
     useEffect(() => {
         const element = document.getElementById("backgroundImage");
@@ -12,15 +12,16 @@ const BackgroundImage = () => {
             element.style.transform = "rotateY(0)";
         }
 
-        const interval = setInterval(() => {
-            setCurrentImageIndex((prevIndex) =>
-                prevIndex === images.length - 1 ? 0 : prevIndex + 1
-            );
-        }, 7000); // 7 seconds
-
-        return () => {
-            clearInterval(interval);
-        };
+        if (images.length > 1) {
+            const interval = setInterval(() => {
+                setCurrentImageIndex((prevIndex) =>
+                    prevIndex === images.length - 1 ? 0 : prevIndex + 1
+                );
+            }, 7000); // 7 seconds
+            return () => {
+                clearInterval(interval);
+            };
+        }
     }, []);
 
     return (
