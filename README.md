@@ -66,14 +66,23 @@ Using PuTTY:
 -   Click "Open".
 -   Login as: ubuntu.
 
-### Step 6: Install Node.js
+### Step 6: Create a swap space to avoid running out of memory during bulid
+
+Run the following commands:
+
+-   sudo fallocate -l 1G /swapfile
+-   sudo chmod 600 /swapfile
+-   sudo mkswap /swapfile
+-   sudo swapon /swapfile
+
+### Step 7: Install Node.js
 
 Run the following commands:
 
 -   `curl -sL https://deb.nodesource.com/setup_16.x | sudo -E bash -`
 -   `sudo apt install nodejs`
 
-### Step 7: Configure Git Access (Optional)
+### Step 8: Configure Git Access (Optional)
 
 If you want to make changes with Git on the instance:
 
@@ -81,14 +90,14 @@ If you want to make changes with Git on the instance:
 -   Access the public key using `cat ~/.ssh/id_rsa.pub`.
 -   Add it to your GitHub account.
 
-### Step 8: Clone Repository
+### Step 9: Clone Repository
 
 Clone the repository:
 
 -   cd into the repository
 -   Run `npm i` to install all necessary dependencies for the website.
 
-### Step 9: Install Backend Dependencies
+### Step 10: Install Backend Dependencies
 
 -   Get SSL certificate for your custom domain: [instructions](https://certbot.eff.org/instructions?ws=other&os=ubuntufocal).
     -   Make note of the path to the certificate and key
@@ -118,7 +127,7 @@ Clone the repository:
 
     -   Restart NGINX with `sudo service nginx restart`
 
-### Step 10: Build and Deploy
+### Step 11: Build and Deploy
 
 -   Install PM2 with `sudo npm install pm2 -g`
 -   Run `npm run build` to build the static files of the project.

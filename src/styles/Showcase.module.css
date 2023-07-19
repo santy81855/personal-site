@@ -170,7 +170,7 @@
     box-shadow: var(--card-box-shadow);
     position: absolute;
     z-index: 1;
-    transition: transform 0.5s ease-in 0s;
+    transition: transform 0.5s ease-in;
     -webkit-transition: -webkit-transform 0.5s ease-in;
     -o-trasition: transform 0.5s ease-in;
 }
