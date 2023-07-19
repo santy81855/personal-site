@@ -263,11 +263,27 @@
     left: -5000px;
     bottom: calc(-var(--padding-block-large));
     width: 10000px;
-    outline: 2px solid rgb(var(--accent-color-dark-1-rgb));
+    outline: 3px solid rgb(var(--accent-color-dark-1-rgb));
+    outline-offset: -1px;
     height: 100%;
     background-color: rgb(var(--accent-color-dark-1-rgb));
     z-index: 0;
     transform: rotate(3deg);
+    padding-block: var(--padding-block-large);
+}
+
+.featureContainerFlip::after {
+    content: "";
+    position: absolute;
+    right: -5000px;
+    bottom: calc(-var(--padding-block-large));
+    width: 10000px;
+    outline: 3px solid rgb(var(--accent-color-dark-1-rgb));
+    outline-offset: -1px;
+    height: 100%;
+    background-color: rgb(var(--accent-color-dark-1-rgb));
+    z-index: 0;
+    transform: rotate(-3deg);
     padding-block: var(--padding-block-large);
 }
 
@@ -290,7 +306,8 @@
     left: -5000px;
     bottom: calc(var(--padding-block-large) * -2);
     width: 10000px;
-    outline: 2px solid rgb(var(--accent-color-dark-1-rgb));
+    outline: 3px solid rgb(var(--accent-color-dark-1-rgb));
+    outline-offset: -1px;
     height: 100%;
     background-color: rgb(var(--accent-color-dark-1-rgb));
     z-index: 0;
