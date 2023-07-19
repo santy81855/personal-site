@@ -75,7 +75,6 @@ const ImageCycle = () => {
         }
         // give it the proper z-index
         element.style.zIndex = `${len - b}`;
-
         // if the element is being moved back to its original position
         if (a === b) {
             element.style.transform = `rotate(${
@@ -121,9 +120,27 @@ const ImageCycle = () => {
                 state++;
             }
         }
+
+        // needs to start with index (state - 1)
+        if (state === 0) {
+            moveImage(images[images.length - 1], images.length - 1, -1);
+            for (let i = state; i < imageUrls.length - 1; i++) {
+                moveImage(images[i], i, i - state);
+            }
+        } else {
+            for (let i = state - 1; i < imageUrls.length; i++) {
+                moveImage(images[i], i, i - state);
+            }
+            for (let i = 0; i < state - 1; i++) {
+                moveImage(images[i], i, i - state);
+            }
+        }
+
+        /*
         images.forEach((image, index) => {
             moveImage(image, index, index - state);
-        });
+        });*/
+
         // update the title
         showTitle(state);
     };
