@@ -27,6 +27,7 @@
     width: 10000px;
     height: 100%;
     background-color: rgb(var(--accent-color-dark-1-rgb), 1);
+    z-index: -1;
 }
 
 .section h1 {
@@ -43,7 +44,7 @@
 
 .contactCard {
     margin-block-start: -5rem;
-    max-width: 600px;
+    max-width: 800px;
     width: calc(100% - var(--padding-inline-xlarge) * 2);
     display: flex;
     z-index: 1;

@@ -73,12 +73,6 @@ const ImageCycle = () => {
         if (element === null) {
             return;
         }
-        // give it the proper filter
-        element.style.filter =
-            b === 0 ? "blur(0px)" : "grayscale(100%)  brightness(0.4)";
-        // give it the proper z-index
-        element.style.zIndex = `${len - b}`;
-        // give it the proper transform
 
         // if the element is being moved back to its original position
         if (a === b) {
@@ -100,6 +94,12 @@ const ImageCycle = () => {
                 -imageOffset * distance
             }px, ${imageOffset * distance}px) rotate(${imageAngle * b}deg)`;
         }
+        // give it the proper filter
+        element.style.filter =
+            b === 0 ? "blur(0px)" : "grayscale(100%)  brightness(0.4)";
+        // give it the proper z-index
+        element.style.zIndex = `${len - b}`;
+        // give it the proper transform
     };
 
     const cycleImages = (direction: string) => {

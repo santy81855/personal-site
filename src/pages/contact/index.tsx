@@ -2,6 +2,7 @@ import Head from "next/head";
 import { Inter } from "next/font/google";
 import styles from "@/styles/Contact.module.css";
 import React, { useRef } from "react";
+import Image from "next/image";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -38,13 +39,3 @@ export default function Contact() {
         </>
     );
 }
-/*
-    sectionId: string,
-    textHeader: string,
-    textTitle: string,
-    description: string,
-    techList: string[],
-    mainImage: string,
-    firstButtonLink: string,
-    githubLink: string
-*/
