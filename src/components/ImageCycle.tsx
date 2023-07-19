@@ -73,33 +73,32 @@ const ImageCycle = () => {
         if (element === null) {
             return;
         }
+        // give it the proper z-index
+        element.style.zIndex = `${len - b}`;
 
         // if the element is being moved back to its original position
         if (a === b) {
-            element.style.transform = `translate(${0}px, ${0}px) rotate(${
+            element.style.transform = `rotate(${
                 imageAngle * b
-            }deg)`;
+            }deg) translate(${0}px, ${0}px)`;
         }
         // if the element is moving to the right, e.g. (position 3 to 1)
         else if (a > b) {
             const distance = a - b;
-            element.style.transform = `translate(${imageOffset * distance}px, ${
-                -imageOffset * distance
-            }px) rotate(${imageAngle * b}deg)`;
+            element.style.transform = `rotate(${imageAngle * b}deg) translate(${
+                imageOffset * distance
+            }px, ${-imageOffset * distance}px)`;
         }
         // if the element is moving to the left, e.g. (position 1 to 3)
         else if (a < b) {
             const distance = b - a;
-            element.style.transform = `translate(${
+            element.style.transform = `rotate(${imageAngle * b}deg) translate(${
                 -imageOffset * distance
-            }px, ${imageOffset * distance}px) rotate(${imageAngle * b}deg)`;
+            }px, ${imageOffset * distance}px)`;
         }
         // give it the proper filter
         element.style.filter =
             b === 0 ? "blur(0px)" : "grayscale(100%)  brightness(0.4)";
-        // give it the proper z-index
-        element.style.zIndex = `${len - b}`;
-        // give it the proper transform
     };
 
     const cycleImages = (direction: string) => {
