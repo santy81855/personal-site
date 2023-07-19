@@ -14,16 +14,54 @@ const Header: React.FC = () => {
     const showcaseRef = useRef<HTMLParagraphElement>(null);
     const contactRef = useRef<HTMLParagraphElement>(null);
     const verticalMenuWidth = 100;
+    const fadeInDelay = 400;
 
     useEffect(() => {
         if (window.innerWidth < 700) {
             setshortNav(true);
+        }
+        // if the window is big then show the fade in animations for the header items
+        else {
+            // do something 1 second after the component is mounted
+            setTimeout(() => {
+                const logo = document.getElementById("logoContainer");
+                if (logo) {
+                    logo.style.opacity = "1";
+                }
+                console.log(shortNav);
+            }, fadeInDelay);
+            setTimeout(() => {
+                const menu = document.getElementById("horizontalMenuContainer");
+                if (menu) {
+                    menu.style.opacity = "1";
+                }
+            }, fadeInDelay * 2);
+            setTimeout(() => {
+                const rightContainer =
+                    document.getElementById("rightContainer");
+                if (rightContainer) {
+                    rightContainer.style.opacity = "1";
+                }
+            }, fadeInDelay * 3);
         }
         function handleResize() {
             if (window.innerWidth < 700) {
                 setshortNav(true);
             } else {
                 setshortNav(false);
+                const logo = document.getElementById("logoContainer");
+                if (logo) {
+                    logo.style.opacity = "1";
+                }
+                const menu = document.getElementById("horizontalMenuContainer");
+                if (menu) {
+                    menu.style.opacity = "1";
+                }
+                const rightContainer =
+                    document.getElementById("rightContainer");
+                if (rightContainer) {
+                    rightContainer.style.opacity = "1";
+                }
             }
         }
         const handleClick = (event: { target: any }) => {
@@ -92,44 +130,20 @@ const Header: React.FC = () => {
         setisVerticalMenuOpen(false);
     };
 
-    const grain = (
-        <>
-            {" "}
-            <svg width="0" height="0">
-                <filter
-                    id="grainy-blur"
-                    x="-150%"
-                    y="-150%"
-                    width="400%"
-                    height="400%"
-                >
-                    <feGaussianBlur
-                        stdDeviation="39"
-                        result="blur"
-                    ></feGaussianBlur>
-                    <feTurbulence
-                        type="fractalNoise"
-                        baseFrequency=".537"
-                    ></feTurbulence>
-                    <feComposite in="blur"></feComposite>
-                    <feComposite in="blur" operator="in"></feComposite>
-                </filter>
-            </svg>
-            <div className={styles.grain}></div>
-        </>
-    );
-
     return (
         <header className={styles.header}>
             <nav className={styles.navContainer}>
                 {!shortNav && (
-                    <div className={styles.logoContainer}>
+                    <div id="logoContainer" className={styles.logoContainer}>
                         logo
                         <ThemeToggle />
                     </div>
                 )}
                 {!shortNav && (
-                    <ul>
+                    <ul
+                        id="horizontalMenuContainer"
+                        className={styles.horizontalMenu}
+                    >
                         <li>
                             <Link href="/">Home</Link>
                         </li>
@@ -141,7 +155,7 @@ const Header: React.FC = () => {
                         </li>
                     </ul>
                 )}
-                <div className={styles.rightContainer}>
+                <div id="rightContainer" className={styles.rightContainer}>
                     <button
                         className={styles.contactButton}
                         aria-label="get-in-touch"

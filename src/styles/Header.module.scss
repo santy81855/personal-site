@@ -49,6 +49,13 @@
     justify-content: center;
     align-items: center;
     gap: var(--gap-medium);
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.horizontalMenu {
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
 }
 
 .rightContainer {
@@ -56,6 +63,8 @@
     justify-content: space-between;
     align-items: center;
     gap: var(--gap-large);
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
 }
 
 .hamburgerContainer {
@@ -163,6 +172,13 @@
     font-weight: 0;
 }
 
+@media (pointer: fine) {
+    .verticalMenu p:hover {
+        color: rgb(var(--accent-color-dark-1-rgb));
+        letter-spacing: 4px;
+    }
+}
+
 @media screen and (max-width: 700px) {
     .rightContainer {
         justify-self: flex-end;
@@ -180,14 +196,6 @@
 @media screen and (max-width: 315px) {
     .hamburgerContainer p {
         font-size: var(--font-size-small);
-    }
-}
-
-@media (pointer: fine) {
-    .verticalMenu p:hover {
-        color: rgb(var(--accent-color-dark-1-rgb));
-
-        letter-spacing: 4px;
     }
 }
 
@@ -265,7 +273,8 @@
     overflow: hidden;
     max-width: 250px;
     text-transform: uppercase;
-    border: 1px solid currentColor;
+    border-radius: border-radius;
+    border: none;
 }
 .contactButton p {
     position: relative;
@@ -291,7 +300,7 @@
     transform: translate(50%, -50%);
 }
 .contactButton:hover {
-    color: rgb(var(--text-color-rgb));
+    color: rgb(241, 241, 241);
 }
 .contactButton:hover:before {
     -webkit-animation: criss-cross-left 0.8s both;
