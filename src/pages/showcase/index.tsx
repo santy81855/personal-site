@@ -68,36 +68,8 @@ export default function Showcase() {
                 <ProjectSection
                     isFirstProject={true}
                     isOddProject={true}
-                    hasDemo={false}
-                    sectionId="codon"
-                    textHeader="Python GUI"
-                    textTitle="Codon Text Editor"
-                    description="A feature-rich and lightweight text and code editor for
-                    Windows computers."
-                    techList={["Python", "PyQt5", "QScintilla", "CSS", "Git"]}
-                    mainImageURL="/images/codon-mockup-no-shadow-cropped.png"
-                    featureList={[
-                        {
-                            title: "Syntax Highlighting",
-                            description:
-                                "Syntax highlighting will automatically detect the file type and is available for python, c, c#, c++, css, java,  and json.",
-                            imageURL: "/images/codon-syntax.gif",
-                        },
-                        {
-                            title: "Code Map",
-                            description:
-                                "Easily and efficiently scroll through your files with the help of the code, which is always in view.",
-                            imageURL: "/images/codon-map.gif",
-                        },
-                    ]}
-                    firstButtonLink="https://github.com/santy81855/Codon/raw/main/Codon_Installer.exe"
-                    githubLink="https://github.com/santy81855/Codon"
-                />
-                <ProjectSection
-                    isFirstProject={false}
-                    isOddProject={false}
                     hasDemo={true}
-                    sectionId="airesume"
+                    sectionId="project1scroll"
                     textHeader="AI Web Application"
                     textTitle="AI Resume Builder"
                     description="A web application to help build a professional resume in
@@ -133,9 +105,64 @@ export default function Showcase() {
                 />
                 <ProjectSection
                     isFirstProject={false}
+                    isOddProject={false}
+                    hasDemo={false}
+                    sectionId="project2scroll"
+                    textHeader="Python GUI"
+                    textTitle="Codon Text Editor"
+                    description="A feature-rich and lightweight text and code editor for
+                    Windows computers."
+                    techList={["Python", "PyQt5", "QScintilla", "CSS", "Git"]}
+                    mainImageURL="/images/codon-mockup-no-shadow-cropped.png"
+                    featureList={[
+                        {
+                            title: "Syntax Highlighting",
+                            description:
+                                "Syntax highlighting will automatically detect the file type and is available for python, c, c#, c++, css, java,  and json.",
+                            imageURL: "/images/codon-syntax.gif",
+                        },
+                        {
+                            title: "Code Map",
+                            description:
+                                "Easily and efficiently scroll through your files with the help of the code, which is always in view.",
+                            imageURL: "/images/codon-map.gif",
+                        },
+                    ]}
+                    firstButtonLink="https://github.com/santy81855/Codon/raw/main/Codon_Installer.exe"
+                    githubLink="https://github.com/santy81855/Codon"
+                />
+                <ProjectSection
+                    isFirstProject={false}
                     isOddProject={true}
                     hasDemo={false}
-                    sectionId="typo"
+                    sectionId="project3scroll"
+                    textHeader="3D Unity Game"
+                    textTitle="Glass Cannon"
+                    description="A 3D wave survival game made in Unity. Try to survive as long as possible against an endless wave of enemies. One hit and you're dead."
+                    techList={["Unity 3D", "Blender", "C#", "AI", "Git"]}
+                    mainImageURL="/images/glass-cannon-tile.png"
+                    featureList={[
+                        {
+                            title: "Power-up Store",
+                            description:
+                                "Use the points you earn from killing enemies to buy power-ups to help you survive longer.",
+                            imageURL: "/images/cannon-feature-store.gif",
+                        },
+                        {
+                            title: "AI Level Scaling",
+                            description:
+                                "The AI will scale in difficulty as you progress through the waves. The longer you survive, the harder it gets.",
+                            imageURL: "/images/cannon-feature-scaling.gif",
+                        },
+                    ]}
+                    firstButtonLink="https://github.com/santy81855/Glass_Cannon/archive/refs/heads/main.zip"
+                    githubLink="https://github.com/santy81855/Glass_Cannon"
+                />
+                <ProjectSection
+                    isFirstProject={false}
+                    isOddProject={false}
+                    hasDemo={false}
+                    sectionId="project4scroll"
                     textHeader="Python GUI"
                     textTitle="Typo"
                     description="A typing speed test application that allows you to test both your typing speed and accuracy."
@@ -165,33 +192,6 @@ export default function Showcase() {
                     ]}
                     firstButtonLink="https://github.com/santy81855/Typo/raw/main/Typo_Installer.exe"
                     githubLink="https://github.com/santy81855/Typo"
-                />
-                <ProjectSection
-                    isFirstProject={false}
-                    isOddProject={false}
-                    hasDemo={false}
-                    sectionId="cannon"
-                    textHeader="3D Unity Game"
-                    textTitle="Glass Cannon"
-                    description="A 3D wave survival game made in Unity. Try to survive as long as possible against an endless wave of enemies. One hit and you're dead."
-                    techList={["Unity 3D", "Blender", "C#", "AI", "Git"]}
-                    mainImageURL="/images/glass-cannon-tile.png"
-                    featureList={[
-                        {
-                            title: "Power-up Store",
-                            description:
-                                "Use the points you earn from killing enemies to buy power-ups to help you survive longer.",
-                            imageURL: "/images/cannon-feature-store.gif",
-                        },
-                        {
-                            title: "AI Level Scaling",
-                            description:
-                                "The AI will scale in difficulty as you progress through the waves. The longer you survive, the harder it gets.",
-                            imageURL: "/images/cannon-feature-scaling.gif",
-                        },
-                    ]}
-                    firstButtonLink="https://github.com/santy81855/Glass_Cannon/archive/refs/heads/main.zip"
-                    githubLink="https://github.com/santy81855/Glass_Cannon"
                 />
             </main>
         </>
