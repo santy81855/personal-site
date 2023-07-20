@@ -114,8 +114,7 @@ const ImageCycle = () => {
                 state++;
             }
         }
-
-        // needs to start with index (state - 1)
+        // update the images in the order starting from the one about to be in the front
         if (state === 0) {
             moveImage(images[images.length - 1], images.length - 1, -1);
             for (let i = state; i < imageUrls.length - 1; i++) {
@@ -129,13 +128,6 @@ const ImageCycle = () => {
                 moveImage(images[i], i, i - state);
             }
         }
-
-        /*
-        images.forEach((image, index) => {
-            moveImage(image, index, index - state);
-        });*/
-
-        // update the title
         showTitle(state);
     };
 
@@ -143,12 +135,9 @@ const ImageCycle = () => {
         event: React.MouseEvent<HTMLDivElement, MouseEvent>
     ) => {
         const { target } = event;
-        console.log(target);
         if (target) {
             const eventId = (target as HTMLDivElement).id;
             const element = document.getElementById(`${eventId}scroll`);
-            console.log(element);
-
             if (element !== null) {
                 document.body.scrollTo({
                     top: element.getBoundingClientRect().top - 100,

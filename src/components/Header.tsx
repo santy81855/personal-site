@@ -114,10 +114,6 @@ const Header: React.FC = () => {
         };
     }, [isVerticalMenuOpen]);
 
-    const buttonClicked = () => {
-        console.log("button clicked");
-    };
-
     const handleMenuClick = () => {
         const element = document.getElementById("verticalMenu");
         if (element) {
@@ -126,7 +122,6 @@ const Header: React.FC = () => {
                 element.classList.add(styles.closeMenu);
                 setisVerticalMenuOpen(false);
             } else {
-                console.log("hey");
                 element.classList.add(styles.openMenu);
                 element.classList.remove(styles.closeMenu);
                 // add a class to the text representing the page you are currently on
@@ -201,7 +196,6 @@ const Header: React.FC = () => {
                         className={styles.contactButton}
                         aria-label="get-in-touch"
                         tabIndex={0}
-                        onClick={buttonClicked}
                         href="mailto:santy@santiagogarcia.dev"
                     >
                         <p>Get in touch</p>

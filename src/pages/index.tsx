@@ -10,15 +10,11 @@ export default function Home() {
     useEffect(() => {
         const doc = document.documentElement;
         doc.style.setProperty("--doc-height", `${window.innerHeight}px`);
-        console.log(window.innerHeight);
-
         function handleResize() {
             const doc = document.documentElement;
             doc.style.setProperty("--doc-height", `${window.innerHeight}px`);
         }
-
         window.addEventListener("resize", handleResize);
-
         // Clean up event listener when component is unmounted
         return () => {
             window.removeEventListener("resize", handleResize);

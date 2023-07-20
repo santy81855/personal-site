@@ -24,11 +24,9 @@ export default function ThemeToggle() {
         // set the theme in local storage
 
         if (localStorage.getItem("theme") === "light") {
-            console.log("setting to dark");
             localStorage.setItem("theme", "dark");
         } else {
             localStorage.setItem("theme", "light");
-            console.log("setting to light");
         }
     };
 
