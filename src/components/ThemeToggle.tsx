@@ -1,10 +1,17 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useEffect, FC } from "react";
 import styles from "@/styles/ThemeToggle.module.css";
 
-export default function ThemeToggle() {
-    const [isDarkTheme, setIsDarkTheme] = useState(false);
+interface ProjectSectionProps {
+    // setting the interfacec for the props for the dark theme
+    isDarkTheme: boolean;
+    setIsDarkTheme: (isDarkTheme: boolean) => void;
+}
 
+const ThemeToggle: FC<ProjectSectionProps> = ({
+    isDarkTheme,
+    setIsDarkTheme,
+}) => {
     useEffect(() => {
         let curTheme = localStorage.getItem("theme");
         if (curTheme === null) {
@@ -37,4 +44,6 @@ export default function ThemeToggle() {
             </button>
         </>
     );
-}
+};
+
+export default ThemeToggle;

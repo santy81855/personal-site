@@ -16,6 +16,8 @@ const Header: React.FC = () => {
     const contactRef = useRef<HTMLParagraphElement>(null);
     const fadeInDelay = 1000;
 
+    const [isDarkTheme, setIsDarkTheme] = useState(false);
+
     useEffect(() => {
         if (window.innerWidth < 700) {
             setshortNav(true);
@@ -174,7 +176,10 @@ const Header: React.FC = () => {
                             alt="Santiago Garcia Logo"
                             unoptimized={true}
                         />
-                        <ThemeToggle />
+                        <ThemeToggle
+                            isDarkTheme={isDarkTheme}
+                            setIsDarkTheme={setIsDarkTheme}
+                        />
                     </div>
                 )}
                 {!shortNav && (
@@ -224,7 +229,10 @@ const Header: React.FC = () => {
                         &times;
                     </div>
                     <div className={styles.themeContainer}>
-                        <ThemeToggle />
+                        <ThemeToggle
+                            isDarkTheme={isDarkTheme}
+                            setIsDarkTheme={setIsDarkTheme}
+                        />
                     </div>
                     <ul>
                         <li>
