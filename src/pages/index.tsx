@@ -8,14 +8,17 @@ const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
     useEffect(() => {
-        /* fade in animation for the home page
+        // fade in animation for the home page
         setTimeout(() => {
-            const element = document.getElementById("homeSection");
-            if (element) {
-                element.style.opacity = "1";
+            const title1 = document.getElementById("title1");
+            if (title1) {
+                title1.style.transform = "translateX(0)";
             }
-        }, 800);
-        */
+            const title2 = document.getElementById("title2");
+            if (title2) {
+                title2.style.transform = "translateX(0)";
+            }
+        }, 2400);
 
         const doc = document.documentElement;
         doc.style.setProperty("--doc-height", `${window.innerHeight}px`);
@@ -80,13 +83,13 @@ export default function Home() {
                 <section id="homeSection" className={styles.section}>
                     <h1
                         id="title1"
-                        className={`${styles.title} ${styles.slideInRight}`}
+                        className={`${styles.title} ${styles.slideRight}`}
                     >
                         S<span>a</span>nt<span>i</span>ago
                     </h1>
                     <h1
                         id="title2"
-                        className={`${styles.title} ${styles.slideInLeft}`}
+                        className={`${styles.title} ${styles.slideLeft}`}
                     >
                         G<span>a</span>rc<span>i</span>a
                     </h1>

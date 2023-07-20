@@ -75,7 +75,7 @@ body::after {
     background-color: rgb(var(--background-color-rgb));
     /* Animation properties */
     animation-name: slideup;
-    animation-duration: 3200ms;
+    animation-duration: 4s;
     animation-timing-function: ease;
     animation-iteration-count: 1;
     animation-play-state: running;

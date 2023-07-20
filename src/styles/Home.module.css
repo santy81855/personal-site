@@ -72,6 +72,14 @@
     transition: transform 1s ease-in-out;
 }
 
+.slideLeft {
+    transform: translateX(100%);
+}
+
+.slideRight {
+    transform: translateX(-100vw);
+}
+
 .title span {
     color: rgb(var(--accent-color-dark-1-rgb));
 }
@@ -114,12 +122,22 @@
     }
 }
 
-.slideInRight {
-    animation: slideInFromRight 0.5s ease-out;
+.slideInRighte {
+    animation-name: slideInFromRight;
+    animation-duration: 0.5s;
+    animation-timing-function: ease-out;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    animation-delay: 4s;
 }
 
-.slideInLeft {
-    animation: slideInFromLeft 0.5s ease-out;
+.slideInLefte {
+    animation-name: slideInFromLeft;
+    animation-duration: 0.5s;
+    animation-timing-function: ease-out;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    animation-delay: 4s;
 }
 
 .fadeIn {

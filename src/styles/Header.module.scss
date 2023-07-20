@@ -318,13 +318,11 @@
     }
 }
 
-@media (pointer: coarse) {
-    .contactButton {
-        background-color: rgb(var(--background-color-rgb));
-        color: rgb(var(--accent-color-dark-1-rgb));
-        padding-inline: var(--padding-inline-large);
-        padding-block: var(--padding-block-medium);
-        border: 1px solid rgb(var(--accent-color-dark-1-rgb));
-        cursor: pointer;
-    }
+.contactButton {
+    background-color: rgb(var(--background-color-rgb));
+    color: rgb(var(--accent-color-dark-1-rgb));
+    padding-inline: var(--padding-inline-large);
+    padding-block: var(--padding-block-medium);
+    border: 1px solid rgb(var(--accent-color-dark-1-rgb));
+    cursor: pointer;
 }
