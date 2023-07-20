@@ -344,6 +344,7 @@
     padding-block: var(--padding-block-medium);
     border: 1px solid rgb(var(--accent-color-dark-1-rgb));
     cursor: pointer;
+    text-transform: none;
 }
 
 @keyframes openMenuAnimation {
