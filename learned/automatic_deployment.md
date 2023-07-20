@@ -43,6 +43,8 @@
         ```bash
         sudo apt-get install putty-tools
         puttygen your-key.ppk -O private-openssh -o your-key.pem
+        mv your-key.pem ~/.ssh/
+        chmod 400 ~/.ssh/your-key.pem
         ```
 
 -   In your github repository, go to: Settings > Secrets and variables > Actions > New repository secret
