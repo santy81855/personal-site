@@ -17,12 +17,6 @@ const ImageCycle = () => {
     ];
 
     useEffect(() => {
-        // bring the carousel into view
-        const element = document.getElementById("carousel");
-        if (element) {
-            element.style.transform = "translateY(0%) rotate(0deg)";
-        }
-
         if (window.innerWidth < 426) {
             setImageOffset(5);
             setImageAngle(-1);
