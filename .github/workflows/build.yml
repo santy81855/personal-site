@@ -10,9 +10,10 @@ jobs:
         runs-on: ubuntu-latest
 
         steps:
-            - name: Clear Known Hosts
-              run: ssh-keygen -R 18.218.214.183
-
+      
+            - name: Print Secret Value
+              run: echo "DEPLOY_SSH_PRIVATE_KEY: ${{ secrets.DEPLOY_SSH_PRIVATE_KEY }}"
+              
             - name: Checkout code
               uses: actions/checkout@v2
 
