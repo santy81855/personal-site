@@ -34,7 +34,7 @@
         purple
     );
     filter: url(#grainy-blur); /* the magic */
-    z-index: 10;
+    z-index: -1;
 }
 
 .normalSection {

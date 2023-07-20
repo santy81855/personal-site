@@ -4,7 +4,7 @@
     overflow-x: hidden;
     top: 0;
     background-color: rgb(var(--background-color-rgb));
-    z-index: 1000;
+    z-index: 100;
     display: flex;
     justify-content: center;
 }
@@ -104,7 +104,7 @@
     position: fixed;
     top: 0;
     right: -100vw;
-    min-width: 100vw;
+    width: 100vw;
     height: 100vh;
     background-color: rgb(var(--text-color-rgb));
     color: rgb(var(--background-color-rgb));
@@ -118,6 +118,22 @@
     border-left: 1px solid black;
     z-index: 1;
     overflow: hidden;
+}
+
+.openMenu {
+    animation-name: openMenuAnimation;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: 1;
+}
+
+.closeMenu {
+    animation-name: closeMenuAnimation;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: 1;
 }
 
 .grain {
@@ -328,4 +344,22 @@
     padding-block: var(--padding-block-medium);
     border: 1px solid rgb(var(--accent-color-dark-1-rgb));
     cursor: pointer;
+}
+
+@keyframes openMenuAnimation {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-100vw);
+    }
+}
+
+@keyframes closeMenuAnimation {
+    0% {
+        transform: translateX(-100vw);
+    }
+    100% {
+        transform: translateX(0);
+    }
 }

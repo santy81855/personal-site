@@ -33,28 +33,46 @@ const Header: React.FC = () => {
                 }
             }, fadeInDelay * 2);
         }
-        // if the window is big then show the fade in animations for the header items
+        // if the window is big then show the fade in animations for the header items only on the home page
         else {
-            // do something 1 second after the component is mounted
-            setTimeout(() => {
-                const logo = document.getElementById("logoContainer");
-                if (logo) {
-                    logo.style.opacity = "1";
-                }
-            }, fadeInDelay);
-            setTimeout(() => {
-                const menu = document.getElementById("horizontalMenuContainer");
-                if (menu) {
-                    menu.style.opacity = "1";
-                }
-            }, fadeInDelay * 2);
-            setTimeout(() => {
+            if (currentUrl === "/") {
+                // do something 1 second after the component is mounted
+                setTimeout(() => {
+                    const logo = document.getElementById("logoContainer");
+                    if (logo) {
+                        logo.style.opacity = "1";
+                    }
+                }, fadeInDelay);
+                setTimeout(() => {
+                    const menu = document.getElementById(
+                        "horizontalMenuContainer"
+                    );
+                    if (menu) {
+                        menu.style.opacity = "1";
+                    }
+                }, fadeInDelay * 2);
+                setTimeout(() => {
+                    const rightContainer =
+                        document.getElementById("rightContainer");
+                    if (rightContainer) {
+                        rightContainer.style.opacity = "1";
+                    }
+                }, fadeInDelay * 3);
+            } else {
                 const rightContainer =
                     document.getElementById("rightContainer");
                 if (rightContainer) {
                     rightContainer.style.opacity = "1";
                 }
-            }, fadeInDelay * 3);
+                const menu = document.getElementById("horizontalMenuContainer");
+                if (menu) {
+                    menu.style.opacity = "1";
+                }
+                const logo = document.getElementById("logoContainer");
+                if (logo) {
+                    logo.style.opacity = "1";
+                }
+            }
         }
         function handleResize() {
             if (window.innerWidth < 700) {
@@ -99,14 +117,18 @@ const Header: React.FC = () => {
     const buttonClicked = () => {
         console.log("button clicked");
     };
+
     const handleMenuClick = () => {
         const element = document.getElementById("verticalMenu");
         if (element) {
             if (isVerticalMenuOpen === true) {
-                element.style.transform = "translateX(0)";
+                element.classList.remove(styles.openMenu);
+                element.classList.add(styles.closeMenu);
                 setisVerticalMenuOpen(false);
             } else {
-                element.style.transform = `translateX(-${verticalMenuWidth}vw)`;
+                console.log("hey");
+                element.classList.add(styles.openMenu);
+                element.classList.remove(styles.closeMenu);
                 // add a class to the text representing the page you are currently on
                 if (currentUrl === "/") {
                     homeRef?.current?.classList.add(styles.highlightedItem);
@@ -139,7 +161,8 @@ const Header: React.FC = () => {
     const closeVerticalMenu = () => {
         const element = document.getElementById("verticalMenu");
         if (!element) return;
-        element.style.transform = "translateX(0)";
+        element.classList.remove(styles.openMenu);
+        element.classList.add(styles.closeMenu);
         setisVerticalMenuOpen(false);
     };
 
