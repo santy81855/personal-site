@@ -8,9 +8,6 @@ const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
     useEffect(() => {
-        // fade in animation for the home page
-        setTimeout(() => {}, 2400);
-
         const doc = document.documentElement;
         doc.style.setProperty("--doc-height", `${window.innerHeight}px`);
         console.log(window.innerHeight);
@@ -82,7 +79,7 @@ export default function Home() {
                         id="title2"
                         className={`${styles.title} ${styles.slideInLeft}`}
                     >
-                        G<span>a</span>rc<span>i</span>a.
+                        G<span>a</span>rc<span>i</span>a
                     </h1>
                     <BackgroundImage />
                     {grain}
