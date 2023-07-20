@@ -19,9 +19,6 @@ jobs:
             - name: Build the Next.js app
               run: npm run build
 
-            - name: Debug Output - Display SSH Private Key
-              run: echo "$DEPLOY_SSH_PRIVATE_KEY"
-
             - name: Deploy to EC2 instance
               run: |
                   scp -r ./* ubuntu@18.218.214.183:/deployment
