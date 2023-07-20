@@ -27,6 +27,7 @@
     animation-iteration-count: 1;
     animation-play-state: running;
 }
+
 @keyframes slideRight {
     0% {
         left: 0%;

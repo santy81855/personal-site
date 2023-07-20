@@ -3,6 +3,7 @@ import ThemeToggle from "@/components/ThemeToggle";
 import Link from "next/link";
 import React, { useEffect, useState, useRef } from "react";
 import { useRouter } from "next/router";
+import Image from "next/image";
 
 const Header: React.FC = () => {
     const router = useRouter();
@@ -13,8 +14,7 @@ const Header: React.FC = () => {
     const homeRef = useRef<HTMLParagraphElement>(null);
     const showcaseRef = useRef<HTMLParagraphElement>(null);
     const contactRef = useRef<HTMLParagraphElement>(null);
-    const verticalMenuWidth = 100;
-    const fadeInDelay = 1300;
+    const fadeInDelay = 1000;
 
     useEffect(() => {
         if (window.innerWidth < 700) {
@@ -171,7 +171,14 @@ const Header: React.FC = () => {
             <nav className={styles.navContainer}>
                 {!shortNav && (
                     <div id="logoContainer" className={styles.logoContainer}>
-                        logo
+                        <Image
+                            id="logo"
+                            src="/images/logo.png"
+                            width={64.2}
+                            height={40}
+                            alt="Santiago Garcia Logo"
+                            unoptimized={true}
+                        />
                         <ThemeToggle />
                     </div>
                 )}
@@ -186,21 +193,20 @@ const Header: React.FC = () => {
                         <li>
                             <Link href="/showcase">Showcase</Link>
                         </li>
-                        <li>
-                            <Link href="/contact">Contact</Link>
-                        </li>
                     </ul>
                 )}
                 <div id="rightContainer" className={styles.rightContainer}>
-                    <button
+                    <Link
                         id="contactButton"
                         className={styles.contactButton}
                         aria-label="get-in-touch"
                         tabIndex={0}
                         onClick={buttonClicked}
+                        href="mailto:santiagogarcia@gmail.com"
                     >
                         <p>Get in touch</p>
-                    </button>
+                    </Link>
+
                     <div
                         id="hamburgerContainer"
                         className={styles.hamburgerContainer}
@@ -235,11 +241,6 @@ const Header: React.FC = () => {
                         <li>
                             <Link href="/showcase" onClick={closeVerticalMenu}>
                                 <p ref={showcaseRef}>Showcase</p>
-                            </Link>
-                        </li>
-                        <li>
-                            <Link href="/contact" onClick={closeVerticalMenu}>
-                                <p ref={contactRef}>Contact</p>
                             </Link>
                         </li>
                     </ul>

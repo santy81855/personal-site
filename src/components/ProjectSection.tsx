@@ -123,9 +123,22 @@ const ProjectSection: FC<ProjectSectionProps> = ({
                     </div>
                 </div>
                 <div className={styles.downloadContainer}>
-                    <a href={firstButtonLink} className={styles.downloadButton}>
-                        {hasDemo === true ? "View Demo" : "Download"}
-                    </a>
+                    {hasDemo === true ? (
+                        <a
+                            href={firstButtonLink}
+                            target="_blank"
+                            className={styles.downloadButton}
+                        >
+                            View Demo
+                        </a>
+                    ) : (
+                        <a
+                            href={firstButtonLink}
+                            className={styles.downloadButton}
+                        >
+                            Download
+                        </a>
+                    )}
                     <a href={githubLink}>
                         <p> View on Github</p>
                     </a>
