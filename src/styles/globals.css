@@ -64,6 +64,23 @@ body {
     position: relative;
 }
 
+body::after {
+    position: absolute;
+    content: "";
+    left: 100%;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 50000;
+    background-color: rgb(var(--background-color-rgb));
+    /* Animation properties */
+    animation-name: slideup;
+    animation-duration: 3200ms;
+    animation-timing-function: ease;
+    animation-iteration-count: 1;
+    animation-play-state: running;
+}
+
 a {
     color: inherit;
     text-decoration: none;
@@ -72,5 +89,14 @@ a {
 @media (prefers-color-scheme: dark) {
     html {
         color-scheme: dark;
+    }
+}
+
+@keyframes slideup {
+    0% {
+        left: 0%;
+    }
+    100% {
+        left: 100%;
     }
 }

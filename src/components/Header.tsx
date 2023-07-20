@@ -14,11 +14,24 @@ const Header: React.FC = () => {
     const showcaseRef = useRef<HTMLParagraphElement>(null);
     const contactRef = useRef<HTMLParagraphElement>(null);
     const verticalMenuWidth = 100;
-    const fadeInDelay = 400;
+    const fadeInDelay = 800;
 
     useEffect(() => {
         if (window.innerWidth < 700) {
             setshortNav(true);
+            setTimeout(() => {
+                const contactButton = document.getElementById("contactButton");
+                if (contactButton) {
+                    contactButton.style.opacity = "1";
+                }
+            }, fadeInDelay);
+            setTimeout(() => {
+                const hamburgerContainer =
+                    document.getElementById("hamburgerContainer");
+                if (hamburgerContainer) {
+                    hamburgerContainer.style.opacity = "1";
+                }
+            }, fadeInDelay * 2);
         }
         // if the window is big then show the fade in animations for the header items
         else {
@@ -28,7 +41,6 @@ const Header: React.FC = () => {
                 if (logo) {
                     logo.style.opacity = "1";
                 }
-                console.log(shortNav);
             }, fadeInDelay);
             setTimeout(() => {
                 const menu = document.getElementById("horizontalMenuContainer");
@@ -47,6 +59,7 @@ const Header: React.FC = () => {
         function handleResize() {
             if (window.innerWidth < 700) {
                 setshortNav(true);
+                const logo = document.getElementById("logoContainer");
             } else {
                 setshortNav(false);
                 const logo = document.getElementById("logoContainer");
@@ -157,6 +170,7 @@ const Header: React.FC = () => {
                 )}
                 <div id="rightContainer" className={styles.rightContainer}>
                     <button
+                        id="contactButton"
                         className={styles.contactButton}
                         aria-label="get-in-touch"
                         tabIndex={0}
@@ -165,6 +179,7 @@ const Header: React.FC = () => {
                         <p>Get in touch</p>
                     </button>
                     <div
+                        id="hamburgerContainer"
                         className={styles.hamburgerContainer}
                         onClick={handleMenuClick}
                     >

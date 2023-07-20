@@ -35,15 +35,6 @@
     font-size: var(--font-size-large);
 }
 
-.contactButton {
-    background-color: rgb(var(--background-color-rgb));
-    color: rgb(var(--accent-color-dark-1-rgb));
-    padding-inline: var(--padding-inline-large);
-    padding-block: var(--padding-block-medium);
-    border: 1px solid rgb(var(--accent-color-dark-1-rgb));
-    cursor: pointer;
-}
-
 .logoContainer {
     display: flex;
     justify-content: center;
@@ -172,18 +163,22 @@
     font-weight: 0;
 }
 
-@media (pointer: fine) {
-    .verticalMenu p:hover {
-        color: rgb(var(--accent-color-dark-1-rgb));
-        letter-spacing: 4px;
-    }
-}
-
 @media screen and (max-width: 700px) {
     .rightContainer {
         justify-self: flex-end;
         width: 100%;
         align-items: center;
+        opacity: 1;
+    }
+    .logoContainer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: var(--gap-medium);
+        opacity: 1;
+    }
+    .horizontalMenu {
+        opacity: 1;
     }
 }
 
@@ -266,51 +261,70 @@
         height: 375px;
     }
 }
-.contactButton {
-    position: relative;
-    color: rgb(var(--accent-color-dark-1-rgb));
-    display: block;
-    overflow: hidden;
-    max-width: 250px;
-    text-transform: uppercase;
-    border-radius: border-radius;
-    border: none;
+
+@media (pointer: fine) {
+    .verticalMenu p:hover {
+        color: rgb(var(--accent-color-dark-1-rgb));
+        letter-spacing: 4px;
+    }
+    .contactButton {
+        position: relative;
+        color: rgb(var(--accent-color-dark-1-rgb));
+        background-color: rgb(var(--background-color-rgb));
+        display: block;
+        overflow: hidden;
+        max-width: 250px;
+        text-transform: uppercase;
+        border-radius: border-radius;
+        border: none;
+    }
+    .contactButton p {
+        position: relative;
+        z-index: 1;
+    }
+    .contactButton:before,
+    .contactButton:after {
+        position: absolute;
+        top: 50%;
+        content: "";
+        width: 20px;
+        height: 20px;
+        background-color: rgb(var(--accent-color-dark-1-rgb));
+        border-radius: 50%;
+        z-index: 0;
+    }
+    .contactButton:before {
+        left: -20px;
+        transform: translate(-50%, -50%);
+    }
+    .contactButton:after {
+        right: -20px;
+        transform: translate(50%, -50%);
+    }
+    .contactButton:hover {
+        color: rgb(241, 241, 241);
+    }
+    .contactButton:hover:before {
+        -webkit-animation: criss-cross-left 0.8s both;
+        animation: criss-cross-left 0.8s both;
+        -webkit-animation-direction: alternate;
+        animation-direction: alternate;
+    }
+    .contactButton:hover:after {
+        -webkit-animation: criss-cross-right 0.8s both;
+        animation: criss-cross-right 0.8s both;
+        -webkit-animation-direction: alternate;
+        animation-direction: alternate;
+    }
 }
-.contactButton p {
-    position: relative;
-    z-index: 1;
-}
-.contactButton:before,
-.contactButton:after {
-    position: absolute;
-    top: 50%;
-    content: "";
-    width: 20px;
-    height: 20px;
-    background-color: rgb(var(--accent-color-dark-1-rgb));
-    border-radius: 50%;
-    z-index: 0;
-}
-.contactButton:before {
-    left: -20px;
-    transform: translate(-50%, -50%);
-}
-.contactButton:after {
-    right: -20px;
-    transform: translate(50%, -50%);
-}
-.contactButton:hover {
-    color: rgb(241, 241, 241);
-}
-.contactButton:hover:before {
-    -webkit-animation: criss-cross-left 0.8s both;
-    animation: criss-cross-left 0.8s both;
-    -webkit-animation-direction: alternate;
-    animation-direction: alternate;
-}
-.contactButton:hover:after {
-    -webkit-animation: criss-cross-right 0.8s both;
-    animation: criss-cross-right 0.8s both;
-    -webkit-animation-direction: alternate;
-    animation-direction: alternate;
+
+@media (pointer: coarse) {
+    .contactButton {
+        background-color: rgb(var(--background-color-rgb));
+        color: rgb(var(--accent-color-dark-1-rgb));
+        padding-inline: var(--padding-inline-large);
+        padding-block: var(--padding-block-medium);
+        border: 1px solid rgb(var(--accent-color-dark-1-rgb));
+        cursor: pointer;
+    }
 }
