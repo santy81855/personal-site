@@ -21,7 +21,7 @@ jobs:
 
             - name: Deploy to EC2 instance
               run: |
-                  scp -r ./* ubuntu@${{ secrets.SSH_HOST }}:/home/ubuntu/deployment
+                  rsync -avz ./* ubuntu@${{ secrets.SSH_HOST }}:/home/ubuntu/deployment
                   ssh ubuntu@${{ secrets.SSH_HOST }} 'cd home/ubuntu/deployment && bash deploy.sh'
               env:
                   DEPLOY_SSH_PRIVATE_KEY: ${{ secrets.DEPLOY_SSH_PRIVATE_KEY }}
