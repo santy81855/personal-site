@@ -20,7 +20,7 @@ jobs:
               run: npm run build
             
             - name: DEBUG LOG
-              run: echo "SSH Private Key: $DEPLOY_SSH_PRIVATE_KEY"
+              run: echo "SSH Private Key: ${{ secrets.DEPLOY_SSH_PRIVATE_KEY }}"
 
             - name: Deploy to EC2 instance
               run: |
