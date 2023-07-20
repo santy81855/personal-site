@@ -13,12 +13,6 @@ jobs:
             - name: Checkout code
               uses: actions/checkout@v2
 
-            - name: Install dependencies
-              run: npm install
-
-            - name: Build the Next.js app
-              run: npm run build
-
             - name: Install SSH Key
               uses: shimataro/ssh-key-action@v2
               with:
@@ -29,6 +23,4 @@ jobs:
               run: ssh-keyscan -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
 
             - name: Deploy to EC2 instance
-              run: |
-                  rsync -az ./* ubuntu@${{ secrets.SSH_HOST }}:/home/ubuntu/deployment
-                  ssh ubuntu@${{ secrets.SSH_HOST }} 'cd /home/ubuntu/deployment && bash deploy.sh'
+              run: ssh ubuntu@${{ secrets.SSH_HOST }} 'cd /home/ubuntu/personal-site/deployment && bash deploy.sh'

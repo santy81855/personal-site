@@ -76,13 +76,13 @@ export default function Home() {
                         id="title1"
                         className={`${styles.title} ${styles.slideInRight}`}
                     >
-                        S<span>a</span>nt<span>i</span>ago...
+                        S<span>a</span>nt<span>i</span>ago
                     </h1>
                     <h1
                         id="title2"
                         className={`${styles.title} ${styles.slideInLeft}`}
                     >
-                        G<span>a</span>rc<span>i</span>a
+                        G<span>a</span>rc<span>i</span>a.
                     </h1>
                     <BackgroundImage />
                     {grain}
