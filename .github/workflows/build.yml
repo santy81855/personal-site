@@ -10,12 +10,6 @@ jobs:
         runs-on: ubuntu-latest
 
         steps:
-      
-            - name: Print Secret Value
-              run: echo "DEPLOY_SSH_PRIVATE_KEY: ${{ secrets.DEPLOY_SSH_PRIVATE_KEY }}"
-              env:
-                DEPLOY_SSH_PRIVATE_KEY: ${{ secrets.DEPLOY_SSH_PRIVATE_KEY }}
-
             - name: Checkout code
               uses: actions/checkout@v2
 
