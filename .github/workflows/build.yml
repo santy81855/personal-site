@@ -18,9 +18,9 @@ jobs:
 
             - name: Build the Next.js app
               run: npm run build
-
-            - name: Reset known hosts
-              run: ssh-keygen -R 18.218.214.183
+            
+            - name: DEBUG LOG
+              run: echo "SSH Private Key: $DEPLOY_SSH_PRIVATE_KEY"
 
             - name: Deploy to EC2 instance
               run: |
