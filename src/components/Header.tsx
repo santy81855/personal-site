@@ -14,7 +14,7 @@ const Header: React.FC = () => {
     const showcaseRef = useRef<HTMLParagraphElement>(null);
     const contactRef = useRef<HTMLParagraphElement>(null);
     const verticalMenuWidth = 100;
-    const fadeInDelay = 800;
+    const fadeInDelay = 1300;
 
     useEffect(() => {
         if (window.innerWidth < 700) {
