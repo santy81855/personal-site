@@ -171,7 +171,7 @@ const Header: React.FC = () => {
                         <Image
                             id="logo"
                             src="/images/logo.png"
-                            width={64}
+                            width={44}
                             height={40}
                             alt="Santiago Garcia Logo"
                             unoptimized={true}
