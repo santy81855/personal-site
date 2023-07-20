@@ -202,7 +202,7 @@ const Header: React.FC = () => {
                         aria-label="get-in-touch"
                         tabIndex={0}
                         onClick={buttonClicked}
-                        href="mailto:santiagogarcia@gmail.com"
+                        href="mailto:santy@santiagogarcia.dev"
                     >
                         <p>Get in touch</p>
                     </Link>
