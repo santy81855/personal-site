@@ -1,0 +1,27 @@
+name: Build and Deploy
+
+on:
+    push:
+        branches:
+            - main
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v2
+
+            - name: Install dependencies
+              run: npm install
+
+            - name: Build the Next.js app
+              run: npm run build
+
+            - name: Deploy to EC2 instance
+              run: |
+                  scp -r ./* ubuntu@18.218.214.183:/deployment
+                  ssh ubuntu@18.218.214.183 'cd /deployment && bash deploy.sh'
+              env:
+                  DEPLOY_SSH_PRIVATE_KEY: ${{ secrets.DEPLOY_SSH_PRIVATE_KEY }}

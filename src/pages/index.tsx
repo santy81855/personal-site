@@ -76,7 +76,7 @@ export default function Home() {
                         id="title1"
                         className={`${styles.title} ${styles.slideInRight}`}
                     >
-                        S<span>a</span>nt<span>i</span>ago
+                        S<span>a</span>nt<span>i</span>ago.
                     </h1>
                     <h1
                         id="title2"
