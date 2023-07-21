@@ -1,6 +1,7 @@
 :root {
     --max-width: 1200px;
     --doc-height: 100%;
+    --header-height: 80px;
     --border-radius: 15px;
     --font-mono: ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono",
         "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro",
@@ -62,6 +63,7 @@ body {
     color: rgb(var(--text-color-rgb));
     background-color: rgb(var(--background-color-rgb));
     position: relative;
+    margin-block-start: var(--header-height);
 }
 
 a {
