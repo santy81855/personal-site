@@ -77,6 +77,7 @@ export default function Showcase() {
                     techList={[
                         "Node.js",
                         "Express",
+                        "Stripe",
                         "Passport",
                         "AI",
                         "React",
