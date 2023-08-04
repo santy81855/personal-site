@@ -13,4 +13,4 @@ npm install
 npm run build
 
 # Restart the Node.js app using pm2
-pm2 restart personal-site
+sudo pm2 restart personal-site
