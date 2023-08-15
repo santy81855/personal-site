@@ -7,17 +7,24 @@ const ImageCycle = () => {
     const [imageAngle, setImageAngle] = useState(-2);
     var state = 0;
     // keep the titles in sync with the images
-    const imageTitles = ["AI Resume", "Codon", "Glass Cannon", "Typo"];
+    const imageTitles = [
+        "AI Resume",
+        "Cozy Type",
+        "Codon",
+        "Glass Cannon",
+        "Typo",
+    ];
     // add new images to the bottom of the list
     const imageUrls = [
         "/images/ai-resume-tile.png",
+        "/images/cozy-type-demo.png",
         "/images/codon-tile.png",
         "/images/glass-cannon-tile.png",
         "/images/typo-tile.png",
     ];
 
     useEffect(() => {
-        if (window.innerWidth < 426) {
+        if (window.innerWidth < 440) {
             setImageOffset(5);
             setImageAngle(-1);
         } else if (window.innerWidth < 585) {
@@ -28,7 +35,7 @@ const ImageCycle = () => {
             setImageAngle(-2);
         }
         function handleResize() {
-            if (window.innerWidth < 426) {
+            if (window.innerWidth < 440) {
                 setImageOffset(5);
                 setImageAngle(-1);
             } else if (window.innerWidth < 585) {
@@ -190,7 +197,6 @@ const ImageCycle = () => {
                                 height={441}
                                 width={650}
                                 priority={true}
-                                unoptimized={true}
                             />
                         </div>
                     );

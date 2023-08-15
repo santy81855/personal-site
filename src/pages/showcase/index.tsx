@@ -85,6 +85,7 @@ export default function Showcase() {
                         "Git",
                         "OpenAI",
                         "AWS",
+                        "Nginx",
                     ]}
                     mainImageURL="/images/resume-mockup-no-shadow.png"
                     featureList={[
@@ -107,8 +108,48 @@ export default function Showcase() {
                 <ProjectSection
                     isFirstProject={false}
                     isOddProject={false}
-                    hasDemo={false}
+                    hasDemo={true}
                     sectionId="project2scroll"
+                    textHeader="React Web Application"
+                    textTitle="Cozy Type"
+                    description="Embark on a typing journey on a cozy typing test website. Achieve rankings from Bronze 1 all the way up to Legend, track progress, and enjoy a relaxing ambiance with rain and thunder. Start typing today!"
+                    techList={[
+                        "Node.js",
+                        "Next.js",
+                        "TypeScript",
+                        "OAuth",
+                        "NextAuth",
+                        "React",
+                        "PostgreSQL",
+                        "Prisma",
+                        "REST API",
+                        "Git",
+                        "AWS",
+                        "Nginx",
+                    ]}
+                    mainImageURL="/images/cozy-type-main.gif"
+                    featureList={[
+                        {
+                            title: "Track Your Progress",
+                            description:
+                                "Store every typing test you take and track your progress over time.",
+                            imageURL: "/images/test-result-feature.gif",
+                        },
+                        {
+                            title: "Get Ranked in Typing",
+                            description:
+                                "Increase your rank as you increase your typing speed. Try to make it to the top rank: Legend.",
+                            imageURL: "/images/rank-feature.png",
+                        },
+                    ]}
+                    firstButtonLink="https://typing.santiagogarcia.dev"
+                    githubLink="https://github.com/santy81855/typing-website"
+                />
+                <ProjectSection
+                    isFirstProject={false}
+                    isOddProject={true}
+                    hasDemo={false}
+                    sectionId="project3scroll"
                     textHeader="Python GUI"
                     textTitle="Codon Text Editor"
                     description="A feature-rich and lightweight text and code editor for
@@ -134,9 +175,9 @@ export default function Showcase() {
                 />
                 <ProjectSection
                     isFirstProject={false}
-                    isOddProject={true}
+                    isOddProject={false}
                     hasDemo={false}
-                    sectionId="project3scroll"
+                    sectionId="project4scroll"
                     textHeader="3D Unity Game"
                     textTitle="Glass Cannon"
                     description="A 3D wave survival game made in Unity. Try to survive as long as possible against an endless wave of enemies. One hit and you're dead."
@@ -161,9 +202,9 @@ export default function Showcase() {
                 />
                 <ProjectSection
                     isFirstProject={false}
-                    isOddProject={false}
+                    isOddProject={true}
                     hasDemo={false}
-                    sectionId="project4scroll"
+                    sectionId="project5scroll"
                     textHeader="Python GUI"
                     textTitle="Typo"
                     description="A typing speed test application that allows you to test both your typing speed and accuracy."

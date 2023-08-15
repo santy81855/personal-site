@@ -110,6 +110,7 @@
     animation-timing-function: ease;
     animation-iteration-count: 1;
     animation-play-state: running;
+    gap: var(--gap-medium);
 }
 
 .imagesContainer {
@@ -171,7 +172,7 @@
 .image {
     width: 650px;
     height: 441px;
-    border: 1px solid rgb(var(--accent-color-light-1-rgb));
+    outline: 1px solid rgb(var(--accent-color-light-1-rgb));
     box-shadow: var(--card-box-shadow);
     position: absolute;
     z-index: 1;
@@ -223,13 +224,18 @@
     gap: var(--gap-medium);
     align-self: center;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-around;
     max-width: 1200px;
     width: 100%;
 }
 
 .technologyContainer {
     padding-block-start: var(--padding-block-x2large);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: var(--gap-large);
 }
 
 .technologyList .item {
@@ -238,6 +244,10 @@
     padding-inline: 1rem;
     padding-block: 0.25rem;
     color: white;
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .mainImage {
@@ -427,7 +437,7 @@
     }
 }
 
-@media screen and (max-width: 585px) {
+@media screen and (max-width: 595px) {
     .image {
         width: 385px;
         height: 260px;
@@ -446,7 +456,7 @@
     }
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 515px) {
     .image {
         width: 315px;
         height: 215px;
@@ -466,7 +476,7 @@
 @media screen and (max-width: 394px) {
     .image {
         aspect-ratio: 1.474;
-        width: 100%;
+        width: 95%;
         height: auto;
         border: none;
     }
