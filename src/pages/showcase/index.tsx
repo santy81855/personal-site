@@ -72,8 +72,7 @@ export default function Showcase() {
                     sectionId="project1scroll"
                     textHeader="AI Web Application"
                     textTitle="AI Resume Builder"
-                    description="A web application to help build a professional resume in
-                    minutes with the help of artificial intelligence."
+                    description="Create a professional resume and cover letter in seconds with the help of AI. Create a different resume and cover letter for every job application."
                     techList={[
                         "Node.js",
                         "Express",
@@ -96,10 +95,10 @@ export default function Showcase() {
                             imageURL: "/images/ai-resume-feature-ai.gif",
                         },
                         {
-                            title: "Endless Resumes",
+                            title: "Endless Resumes & Cover Letters",
                             description:
-                                "Create a different resume for every application. Stand out from the rest by tailoring each resume to the job you are applying for.",
-                            imageURL: "/images/ai-resume-feature-resumes.png",
+                                "Create a different resume and cover letter for every application. Stand out from the rest by tailoring each resume to the job you are applying for.",
+                            imageURL: "/images/unlimited-resumes-feature.png",
                         },
                     ]}
                     firstButtonLink="https://myairesumes.com"
@@ -124,7 +123,8 @@ export default function Showcase() {
                         "Prisma",
                         "REST API",
                         "Git",
-                        "AWS",
+                        "AWS EC2",
+                        "AWS RDS",
                         "Nginx",
                     ]}
                     mainImageURL="/images/cozy-type-main.gif"
