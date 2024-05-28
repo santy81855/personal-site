@@ -4,7 +4,7 @@ import styles from "@/styles/Home.module.css";
 
 const BackgroundImage = () => {
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
-    const images = ["/images/personal-pic-4.png", "/images/personal-pic-6.png"];
+    const images = ["/images/personal-pic-6.png"];
 
     useEffect(() => {
         const element = document.getElementById("backgroundImage");

@@ -8,6 +8,7 @@ const ImageCycle = () => {
     var state = 0;
     // keep the titles in sync with the images
     const imageTitles = [
+        "My Resume Hero",
         "AI Resume",
         "Cozy Type",
         "Codon",
@@ -16,6 +17,7 @@ const ImageCycle = () => {
     ];
     // add new images to the bottom of the list
     const imageUrls = [
+        "/images/my-resume-hero-tile.png",
         "/images/ai-resume-tile.png",
         "/images/cozy-type-demo.png",
         "/images/codon-tile.png",
