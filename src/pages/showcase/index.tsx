@@ -183,7 +183,7 @@ export default function Showcase() {
                             imageURL: "/images/rank-feature.png",
                         },
                     ]}
-                    firstButtonLink="https://typing.santiagogarcia.dev"
+                    firstButtonLink="https://cozytype.santiagogarcia.dev"
                     githubLink="https://github.com/santy81855/typing-website"
                 />
                 <ProjectSection
