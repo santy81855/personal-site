@@ -88,40 +88,42 @@ const ProjectSection: FC<ProjectSectionProps> = ({
                         />
                     </div>
                 </div>
-                <div
-                    className={
-                        isOddProject === true
-                            ? styles.featureContainer
-                            : styles.featureContainerFlip
-                    }
-                >
-                    <h1 className={styles.featureTitle}>Features</h1>
-                    <div className={styles.featureList}>
-                        {featureList.map(
-                            (
-                                feature: {
-                                    title: string;
-                                    imageURL: string;
-                                    description: string;
-                                },
-                                index: number
-                            ) => (
-                                <div key={index} className={styles.feature}>
-                                    <h1>{feature.title}</h1>
-                                    <Image
-                                        src={feature.imageURL}
-                                        alt="feature"
-                                        className={styles.featureGif}
-                                        height={225}
-                                        width={400}
-                                        priority={true}
-                                    />
-                                    <p>{feature.description}</p>
-                                </div>
-                            )
-                        )}
+                {featureList.length > 0 && (
+                    <div
+                        className={
+                            isOddProject === true
+                                ? styles.featureContainer
+                                : styles.featureContainerFlip
+                        }
+                    >
+                        <h1 className={styles.featureTitle}>Features</h1>
+                        <div className={styles.featureList}>
+                            {featureList.map(
+                                (
+                                    feature: {
+                                        title: string;
+                                        imageURL: string;
+                                        description: string;
+                                    },
+                                    index: number
+                                ) => (
+                                    <div key={index} className={styles.feature}>
+                                        <h1>{feature.title}</h1>
+                                        <Image
+                                            src={feature.imageURL}
+                                            alt="feature"
+                                            className={styles.featureGif}
+                                            height={225}
+                                            width={400}
+                                            priority={true}
+                                        />
+                                        <p>{feature.description}</p>
+                                    </div>
+                                )
+                            )}
+                        </div>
                     </div>
-                </div>
+                )}
                 <div className={styles.downloadContainer}>
                     {hasDemo === true ? (
                         <a

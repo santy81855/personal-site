@@ -3,14 +3,16 @@ import Image from "next/image";
 import styles from "@/styles/Showcase.module.css";
 
 const ImageCycle = () => {
-    const [imageOffset, setImageOffset] = useState(10);
-    const [imageAngle, setImageAngle] = useState(-2);
+    const [imageOffset, setImageOffset] = useState(5);
+    const [imageAngle, setImageAngle] = useState(-1);
     var state = 0;
     // keep the titles in sync with the images
     const imageTitles = [
         "My Resume Hero",
         "AI Resume",
         "Cozy Type",
+        "Company Website",
+        "Book Sale Website",
         "Codon",
         "Glass Cannon",
         "Typo",
@@ -20,6 +22,8 @@ const ImageCycle = () => {
         "/images/my-resume-hero-tile.png",
         "/images/ai-resume-tile.png",
         "/images/cozy-type-demo.png",
+        "/images/spwebmanagement.png",
+        "/images/madalithpareja.png",
         "/images/codon-tile.png",
         "/images/glass-cannon-tile.png",
         "/images/typo-tile.png",
@@ -195,7 +199,7 @@ const ImageCycle = () => {
                                 className={styles.imageChild}
                                 id={`project${index + 1}`}
                                 src={url}
-                                alt="Project Image"
+                                alt={`Project image ${index + 1}`}
                                 height={441}
                                 width={650}
                                 priority={true}

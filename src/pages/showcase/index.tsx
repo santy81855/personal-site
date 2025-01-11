@@ -103,8 +103,8 @@ export default function Showcase() {
                                 "/images/my-resume-hero-feature-documents.png",
                         },
                     ]}
-                    firstButtonLink="https://myairesumes.com"
-                    githubLink="https://github.com/santy81855/ResumeBuilder_Frontend"
+                    firstButtonLink="https://myresumehero.com"
+                    githubLink="https://github.com/santy81855/myairesumes"
                 />
                 <ProjectSection
                     isFirstProject={false}
@@ -112,7 +112,7 @@ export default function Showcase() {
                     hasDemo={true}
                     sectionId="project2scroll"
                     textHeader="AI Web Application"
-                    textTitle="My AI Resume"
+                    textTitle="My AI Resume Version 1 (Deprecated)"
                     description="Create a professional resume and cover letter in seconds with the help of AI. Create a different resume and cover letter for every job application."
                     techList={[
                         "Node.js",
@@ -142,7 +142,7 @@ export default function Showcase() {
                             imageURL: "/images/unlimited-resumes-feature.png",
                         },
                     ]}
-                    firstButtonLink="https://myairesumes.com"
+                    firstButtonLink="https://github.com/santy81855/ResumeBuilder_Frontend"
                     githubLink="https://github.com/santy81855/ResumeBuilder_Frontend"
                 />
                 <ProjectSection
@@ -189,8 +189,37 @@ export default function Showcase() {
                 <ProjectSection
                     isFirstProject={false}
                     isOddProject={false}
-                    hasDemo={false}
+                    hasDemo={true}
                     sectionId="project4scroll"
+                    textHeader="Static Web Page"
+                    textTitle="Company Website"
+                    description="A website for a company that provides marketing and advertising services. The website is built with React, TypeScript, and CSS."
+                    techList={["TypeScript", "CSS", "React", "Git"]}
+                    mainImageURL="/images/spwebmanagement.png"
+                    featureList={[]}
+                    firstButtonLink="https://spwebmanagement.com"
+                    githubLink="https://github.com/santy81855/business-site"
+                />
+                <ProjectSection
+                    isFirstProject={false}
+                    isOddProject={true}
+                    hasDemo={true}
+                    sectionId="project5scroll"
+                    textHeader="Static Web Page"
+                    textTitle="Book Sale Website"
+                    description="A website for the sale of an art book. The website is built with React, TypeScript, and CSS. The website features a gallery, a store, and a contact form."
+                    techList={["TypeScript", "CSS", "React", "Stripe", "Git"]}
+                    mainImageURL="/images/madalithpareja.png"
+                    featureList={[]}
+                    firstButtonLink="https://madalithpareja.com"
+                    githubLink="https://github.com/santy81855/madalith-pareja"
+                />
+
+                <ProjectSection
+                    isFirstProject={false}
+                    isOddProject={false}
+                    hasDemo={false}
+                    sectionId="project6scroll"
                     textHeader="Python GUI"
                     textTitle="Codon Text Editor"
                     description="A feature-rich and lightweight text and code editor for
@@ -218,7 +247,7 @@ export default function Showcase() {
                     isFirstProject={false}
                     isOddProject={true}
                     hasDemo={false}
-                    sectionId="project5scroll"
+                    sectionId="project7scroll"
                     textHeader="3D Unity Game"
                     textTitle="Glass Cannon"
                     description="A 3D wave survival game made in Unity. Try to survive as long as possible against an endless wave of enemies. One hit and you're dead."
@@ -245,7 +274,7 @@ export default function Showcase() {
                     isFirstProject={false}
                     isOddProject={false}
                     hasDemo={false}
-                    sectionId="project6scroll"
+                    sectionId="project8scroll"
                     textHeader="Python GUI"
                     textTitle="Typo"
                     description="A typing speed test application that allows you to test both your typing speed and accuracy."
