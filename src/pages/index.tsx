@@ -139,6 +139,9 @@ export default function Home() {
                         <span className={`${styles.floatChip} ${styles.chipThree}`}>
                             Full-stack Development
                         </span>
+                        <span className={`${styles.floatChip} ${styles.chipFour}`}>
+                            More buzzwords
+                        </span>
                     </div>
                 </div>
                 <a href="#work" className={styles.scrollCue} aria-label="Scroll to selected work">

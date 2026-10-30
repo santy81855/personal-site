@@ -208,6 +208,15 @@
     animation-delay: -4s;
 }
 
+/* the joke one sits a little crooked */
+.chipFour {
+    bottom: 9%;
+    right: 2%;
+    rotate: -4deg;
+    color: var(--text-muted);
+    animation-delay: -3s;
+}
+
 @keyframes float {
     50% {
         transform: translateY(-10px);
