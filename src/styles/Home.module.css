@@ -155,8 +155,13 @@
     position: absolute;
     inset: 0;
     z-index: 1;
-    -webkit-mask-image: linear-gradient(to bottom, #000 70%, transparent 98%);
-    mask-image: linear-gradient(to bottom, #000 70%, transparent 98%);
+    /* the photo's shoulders run to its edges, so fade the sides and bottom */
+    -webkit-mask-image: linear-gradient(to bottom, #000 62%, transparent 96%),
+        linear-gradient(to right, transparent 2%, #000 24%, #000 76%, transparent 98%);
+    -webkit-mask-composite: source-in;
+    mask-image: linear-gradient(to bottom, #000 62%, transparent 96%),
+        linear-gradient(to right, transparent 2%, #000 24%, #000 76%, transparent 98%);
+    mask-composite: intersect;
     transform: translate(calc(var(--px) * 14px), calc(var(--py) * 10px));
     transition: transform 0.6s var(--ease-out);
 }
