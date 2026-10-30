@@ -128,6 +128,52 @@ export const projects: Project[] = [
         featured: true,
     },
     {
+        slug: "workout-tracker",
+        title: "Workout Tracker",
+        kind: "Progressive Web App",
+        category: "web-app",
+        status: "Live",
+        summary:
+            "A gym logger that runs a 12-week program and keeps working when the signal drops.",
+        description:
+            "A workout tracker made to use on your phone at the gym, installed to the home screen like an app. It runs a 12-week training program, lets you log sets with a few taps, and shows what you lifted last time. If you miss a day, the remaining workouts shift forward instead of getting lost. Everything saves on the phone first and syncs to Supabase when there's a connection, so bad gym wifi doesn't cost you a workout.",
+        techList: [
+            "Next.js 16",
+            "React 19",
+            "TypeScript",
+            "Supabase",
+            "PostgreSQL",
+            "IndexedDB",
+            "Tailwind CSS",
+            "PWA",
+            "Vitest",
+            "Git",
+        ],
+        tileURL: "/images/workout-tracker-tile.jpg",
+        mainImageURL: "/images/workout-tracker-screens.jpg",
+        featureList: [
+            {
+                title: "Flexible Schedule",
+                description:
+                    "Workouts are queued in order instead of pinned to weekdays. Drag them around to fit your recovery, or add a rest day and everything after it moves back a day.",
+                imageURL: "/images/workout-tracker-feature-queue.jpg",
+            },
+            {
+                title: "Muscle Map",
+                description:
+                    "A front and back body map shows how many sets each muscle group has gotten so far, with a toggle to compare against what the program expects.",
+                imageURL: "/images/workout-tracker-feature-progress.jpg",
+            },
+        ],
+        primaryLink: {
+            label: "Visit Site",
+            href: "https://gym.santiagogarcia.dev",
+            external: true,
+        },
+        githubLink: "https://github.com/santy81855/workout-tracker",
+        accent: "#5b9cff",
+    },
+    {
         slug: "nmg-remodeling",
         title: "NM&G Remodeling",
         kind: "Business Website",
