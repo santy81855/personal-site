@@ -187,6 +187,7 @@
     background: var(--bg-elevated);
     border: 1px solid var(--border);
     box-shadow: var(--shadow);
+    white-space: nowrap;
     animation: float 6s ease-in-out infinite;
 }
 

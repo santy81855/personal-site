@@ -131,13 +131,13 @@ export default function Home() {
                             />
                         </div>
                         <span className={`${styles.floatChip} ${styles.chipOne}`}>
-                            Next.js
+                            AI Workflows
                         </span>
                         <span className={`${styles.floatChip} ${styles.chipTwo}`}>
-                            OpenAI
+                            Interactive UI
                         </span>
                         <span className={`${styles.floatChip} ${styles.chipThree}`}>
-                            Unity 3D
+                            Full-stack Development
                         </span>
                     </div>
                 </div>
