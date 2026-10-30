@@ -1,212 +1,155 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import styles from "@/styles/Showcase.module.css";
+import styles from "@/styles/ImageCycle.module.css";
+import { Project } from "@/data/projects";
+import { ArrowLeft, ArrowRight } from "./Icons";
 
-const ImageCycle = () => {
-    const [imageOffset, setImageOffset] = useState(5);
-    const [imageAngle, setImageAngle] = useState(-1);
-    var state = 0;
-    // keep the titles in sync with the images
-    const imageTitles = [
-        "My Resume Hero",
-        "AI Resume",
-        "Cozy Type",
-        "Company Website",
-        "Book Sale Website",
-        "Codon",
-        "Glass Cannon",
-        "Typo",
-    ];
-    // add new images to the bottom of the list
-    const imageUrls = [
-        "/images/my-resume-hero-tile.png",
-        "/images/ai-resume-tile.png",
-        "/images/cozy-type-demo.png",
-        "/images/spwebmanagement.png",
-        "/images/madalithpareja.png",
-        "/images/codon-tile.png",
-        "/images/glass-cannon-tile.png",
-        "/images/typo-tile.png",
-    ];
+interface ImageCycleProps {
+    projects: Project[];
+    onOpen: (project: Project) => void;
+}
+
+// a stacked deck of project screenshots, cycled with arrows, keys or a swipe
+const ImageCycle: React.FC<ImageCycleProps> = ({ projects, onOpen }) => {
+    const [active, setActive] = useState(0);
+    const [isPaused, setIsPaused] = useState(false);
+    const dragStart = useRef<number | null>(null);
+    const count = projects.length;
+
+    // start over when the list of projects changes (e.g. a filter is applied)
+    useEffect(() => setActive(0), [projects]);
 
     useEffect(() => {
-        if (window.innerWidth < 440) {
-            setImageOffset(5);
-            setImageAngle(-1);
-        } else if (window.innerWidth < 585) {
-            setImageOffset(10);
-            setImageAngle(-2);
-        } else if (window.innerWidth < 700) {
-            setImageOffset(10);
-            setImageAngle(-2);
-        }
-        function handleResize() {
-            if (window.innerWidth < 440) {
-                setImageOffset(5);
-                setImageAngle(-1);
-            } else if (window.innerWidth < 585) {
-                setImageOffset(10);
-                setImageAngle(-2);
-            } else if (window.innerWidth < 700) {
-                setImageOffset(10);
-                setImageAngle(-2);
-            }
-        }
-        window.addEventListener("resize", handleResize);
-        // Clean up event listener when component is unmounted
-        return () => {
-            window.removeEventListener("resize", handleResize);
-        };
-    }, []);
+        if (isPaused || count < 2) return;
+        const interval = setInterval(() => {
+            setActive((index) => (index + 1) % count);
+        }, 6000);
+        return () => clearInterval(interval);
+    }, [isPaused, count]);
 
-    const showTitle = (index: number) => {
-        const element = document.getElementById("title");
-        if (element) {
-            element.textContent = imageTitles[index];
-        }
+    const cycle = (direction: 1 | -1) =>
+        setActive((index) => (index + direction + count) % count);
+
+    const handleKeyDown = (event: React.KeyboardEvent) => {
+        if (event.key === "ArrowRight") cycle(1);
+        if (event.key === "ArrowLeft") cycle(-1);
     };
 
-    const moveImage = (element: HTMLElement | null, a: number, b: number) => {
-        const len = imageUrls.length;
-        // if the index is negative then go from the end of the array
-        if (b < 0) {
-            b = len + b;
-        }
-        // if the index is too high then go from the beginning of the array
-        if (b > len - 1) {
-            b = b - len;
-        }
-        // if the element is about to take the first position
-        if (element === null) {
-            return;
-        }
-        // give it the proper z-index
-        element.style.zIndex = `${len - b}`;
-        // if the element is being moved back to its original position
-        if (a === b) {
-            element.style.transform = `rotate(${
-                imageAngle * b
-            }deg) translate(${0}px, ${0}px)`;
-        }
-        // if the element is moving to the right, e.g. (position 3 to 1)
-        else if (a > b) {
-            const distance = a - b;
-            element.style.transform = `rotate(${imageAngle * b}deg) translate(${
-                imageOffset * distance
-            }px, ${-imageOffset * distance}px)`;
-        }
-        // if the element is moving to the left, e.g. (position 1 to 3)
-        else if (a < b) {
-            const distance = b - a;
-            element.style.transform = `rotate(${imageAngle * b}deg) translate(${
-                -imageOffset * distance
-            }px, ${imageOffset * distance}px)`;
-        }
-        // give it the proper filter
-        element.style.filter =
-            b === 0 ? "blur(0px)" : "grayscale(100%)  brightness(0.4)";
+    const handlePointerUp = (event: React.PointerEvent) => {
+        if (dragStart.current === null) return;
+        const distance = event.clientX - dragStart.current;
+        dragStart.current = null;
+        if (Math.abs(distance) > 40) cycle(distance < 0 ? 1 : -1);
     };
 
-    const cycleImages = (direction: string) => {
-        // get the elements
-        var images: any[] = [];
-        for (let i = 0; i < imageUrls.length; i++) {
-            images.push(document.getElementById(`image${i + 1}`));
-        }
-        // move the images based on the direction
-        if (direction === "left") {
-            if (state === 0) {
-                state = imageUrls.length - 1;
-            } else {
-                state--;
-            }
-        } else if (direction === "right") {
-            if (state === imageUrls.length - 1) {
-                state = 0;
-            } else {
-                state++;
-            }
-        }
-        // update the images in the order starting from the one about to be in the front
-        if (state === 0) {
-            moveImage(images[images.length - 1], images.length - 1, -1);
-            for (let i = state; i < imageUrls.length - 1; i++) {
-                moveImage(images[i], i, i - state);
-            }
-        } else {
-            for (let i = state - 1; i < imageUrls.length; i++) {
-                moveImage(images[i], i, i - state);
-            }
-            for (let i = 0; i < state - 1; i++) {
-                moveImage(images[i], i, i - state);
-            }
-        }
-        showTitle(state);
-    };
-
-    const scrollToSection = (
-        event: React.MouseEvent<HTMLDivElement, MouseEvent>
-    ) => {
-        const { target } = event;
-        if (target) {
-            const eventId = (target as HTMLDivElement).id;
-            const element = document.getElementById(`${eventId}scroll`);
-            if (element !== null) {
-                document.body.scrollTo({
-                    top: element.getBoundingClientRect().top - 100,
-                    behavior: "smooth",
-                });
-            }
-        }
-    };
+    if (count === 0) return null;
+    const current = projects[Math.min(active, count - 1)];
 
     return (
-        <div id="carousel" className={styles.imageSectionContainer}>
-            <div className={styles.arrowContainer}>
-                <p id="title">{imageTitles[0]}</p>
-                <div
-                    className={styles.leftArrow}
-                    onClick={() => cycleImages("left")}
-                ></div>
-                <div className={styles.circle}></div>
-                <div
-                    className={styles.rightArrow}
-                    onClick={() => cycleImages("right")}
-                ></div>
-            </div>
-            <div className={styles.imagesContainer}>
-                {imageUrls.map((url: string, index: number) => {
-                    const isFirst = index === 0;
+        <div
+            className={styles.deckWrap}
+            onMouseEnter={() => setIsPaused(true)}
+            onMouseLeave={() => setIsPaused(false)}
+            onFocus={() => setIsPaused(true)}
+            onBlur={() => setIsPaused(false)}
+        >
+            <div
+                className={styles.deck}
+                role="region"
+                aria-roledescription="carousel"
+                aria-label="Project screenshots"
+                tabIndex={0}
+                onKeyDown={handleKeyDown}
+                onPointerDown={(event) => (dragStart.current = event.clientX)}
+                onPointerUp={handlePointerUp}
+                onPointerCancel={() => (dragStart.current = null)}
+            >
+                {projects.map((project, index) => {
+                    // position of this card relative to the front of the deck
+                    const offset = (index - active + count) % count;
+                    const isFront = offset === 0;
+                    const visible = offset < 4;
                     return (
-                        <div
-                            key={index}
-                            id={`image${index + 1}`}
-                            className={styles.image}
+                        <button
+                            key={project.slug}
+                            className={styles.card}
                             style={{
-                                top: imageOffset * index + "px",
-                                right: imageOffset * index + "px",
-                                filter: isFirst
+                                transform: `translate3d(calc(var(--deck-step) * ${offset}), calc(var(--deck-step) * ${-offset}), 0) rotate(${
+                                    offset * -2
+                                }deg) scale(${1 - offset * 0.04})`,
+                                zIndex: count - offset,
+                                opacity: visible ? 1 : 0,
+                                filter: isFront
                                     ? "none"
-                                    : "grayscale(100%) brightness(0.4)",
-                                transform: isFirst
-                                    ? "none"
-                                    : `rotate(${imageAngle * index}deg)`,
-                                zIndex: `${imageUrls.length - index}`,
+                                    : `grayscale(100%) brightness(${0.75 - offset * 0.1})`,
+                                pointerEvents: isFront ? "auto" : "none",
                             }}
-                            onClick={(event) => scrollToSection(event)}
+                            tabIndex={isFront ? 0 : -1}
+                            aria-hidden={!isFront}
+                            aria-label={`Open ${project.title}`}
+                            onClick={() => onOpen(project)}
                         >
                             <Image
-                                className={styles.imageChild}
-                                id={`project${index + 1}`}
-                                src={url}
-                                alt={`Project image ${index + 1}`}
-                                height={441}
-                                width={650}
-                                priority={true}
+                                src={project.tileURL}
+                                alt=""
+                                fill
+                                sizes="(max-width: 800px) 90vw, 720px"
+                                priority={index < 2}
+                                className={styles.cardImage}
                             />
-                        </div>
+                            <span className={styles.cardHint}>
+                                View case study <ArrowRight size={14} />
+                            </span>
+                        </button>
                     );
                 })}
+            </div>
+
+            <div className={styles.controls}>
+                <div className={styles.meta} aria-live="polite">
+                    <span className={styles.counter}>
+                        {String(active + 1).padStart(2, "0")}
+                        <span> / {String(count).padStart(2, "0")}</span>
+                    </span>
+                    <p key={current.slug} className={styles.currentTitle}>
+                        {current.title}
+                    </p>
+                    <p key={`${current.slug}-kind`} className={styles.currentKind}>
+                        {current.kind}
+                    </p>
+                </div>
+                <div className={styles.buttons}>
+                    <button
+                        className={styles.arrow}
+                        onClick={() => cycle(-1)}
+                        aria-label="Previous project"
+                    >
+                        <ArrowLeft size={18} />
+                    </button>
+                    <button
+                        className={styles.arrow}
+                        onClick={() => cycle(1)}
+                        aria-label="Next project"
+                    >
+                        <ArrowRight size={18} />
+                    </button>
+                </div>
+                <div className={styles.dots}>
+                    {projects.map((project, index) => (
+                        <button
+                            key={project.slug}
+                            className={`${styles.dot} ${
+                                index === active ? styles.dotActive : ""
+                            }`}
+                            onClick={() => setActive(index)}
+                            aria-label={`Show ${project.title}`}
+                        >
+                            {index === active && !isPaused && count > 1 && (
+                                <span className={styles.dotProgress} />
+                            )}
+                        </button>
+                    ))}
+                </div>
             </div>
         </div>
     );

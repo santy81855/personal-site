@@ -1,152 +1,151 @@
 import Image from "next/image";
 import styles from "@/styles/Showcase.module.css";
 import React, { FC } from "react";
-import { StaticImport } from "next/dist/shared/lib/get-img-props";
+import { Project } from "@/data/projects";
+import { ArrowUpRight, Download, Github } from "./Icons";
 
 interface ProjectSectionProps {
-    isFirstProject: boolean;
-    isOddProject: boolean;
-    hasDemo: boolean;
-    sectionId: string;
-    textHeader: string;
-    textTitle: string;
-    description: string;
-    techList: string[];
-    mainImageURL: string;
-    featureList: {
-        title: string;
-        imageURL: string;
-        description: string;
-    }[];
-    firstButtonLink: string;
-    githubLink: string;
+    project: Project;
+    index: number;
+    total: number;
 }
 
-const ProjectSection: FC<ProjectSectionProps> = ({
-    isFirstProject,
-    isOddProject,
-    hasDemo,
-    sectionId,
-    textHeader,
-    textTitle,
-    description,
-    techList,
-    mainImageURL,
-    featureList,
-    firstButtonLink,
-    githubLink,
-}) => {
+const isAnimated = (url: string) => url.endsWith(".gif");
+
+// the label shown in the fake window chrome around the main image
+const frameLabel = (project: Project) => {
+    if (project.primaryLink.external && project.status === "Live") {
+        return new URL(project.primaryLink.href).host;
+    }
+    return project.category === "game" ? `${project.title}.exe` : project.title;
+};
+
+const ProjectSection: FC<ProjectSectionProps> = ({ project, index, total }) => {
+    const {
+        slug,
+        kind,
+        title,
+        description,
+        techList,
+        mainImageURL,
+        featureList,
+        primaryLink,
+        githubLink,
+        status,
+    } = project;
+
     return (
-        <section
-            className={
-                isFirstProject === true
-                    ? styles.invertSection
-                    : styles.normalSection
-            }
-            style={
-                isOddProject === true
-                    ? {
-                          backgroundColor: "rgb(var(--text-color-rgb))",
-                          color: "rgb(var(--background-color-rgb))",
-                      }
-                    : {
-                          backgroundColor: "rgb(var(--background-color-rgb))",
-                          color: "rgb(var(--text-color-rgb))",
-                      }
-            }
+        <article
+            id={slug}
+            className={styles.caseStudy}
+            style={{ "--project-accent": project.accent } as React.CSSProperties}
+            aria-labelledby={`${slug}-title`}
         >
-            <div
-                id={sectionId}
-                key={sectionId}
-                className={
-                    isFirstProject === true
-                        ? styles.sectionContainerFirst
-                        : styles.sectionContainer
-                }
-            >
-                <p className={styles.textHeader}>{textHeader}</p>
-                <h1 className={styles.textTitle}>{textTitle}</h1>
-                <p className={styles.description}>{description}</p>
-                <div className={styles.technologyDescription}>
-                    <div className={styles.technologyContainer}>
-                        <div className={styles.technologyList}>
-                            {techList.map((item: string, index: number) => (
-                                <div key={index} className={styles.item}>
-                                    <p>{item}</p>
-                                </div>
-                            ))}
-                        </div>
-                        <Image
-                            className={styles.mainImage}
-                            src={mainImageURL}
-                            alt="Image"
-                            height={441}
-                            width={650}
-                            priority={true}
-                            quality={100}
-                            unoptimized={true}
-                        />
-                    </div>
+            <div className={styles.caseHeader}>
+                <div className={styles.caseTitleBlock} data-reveal>
+                    <p className={styles.caseMeta}>
+                        <span className={styles.caseIndex}>
+                            {String(index + 1).padStart(2, "0")} /{" "}
+                            {String(total).padStart(2, "0")}
+                        </span>
+                        <span className={styles.textHeader}>{kind}</span>
+                    </p>
+                    <h2 id={`${slug}-title`} className={styles.textTitle}>
+                        {title}
+                    </h2>
                 </div>
-                {featureList.length > 0 && (
-                    <div
-                        className={
-                            isOddProject === true
-                                ? styles.featureContainer
-                                : styles.featureContainerFlip
-                        }
-                    >
-                        <h1 className={styles.featureTitle}>Features</h1>
-                        <div className={styles.featureList}>
-                            {featureList.map(
-                                (
-                                    feature: {
-                                        title: string;
-                                        imageURL: string;
-                                        description: string;
-                                    },
-                                    index: number
-                                ) => (
-                                    <div key={index} className={styles.feature}>
-                                        <h1>{feature.title}</h1>
-                                        <Image
-                                            src={feature.imageURL}
-                                            alt="feature"
-                                            className={styles.featureGif}
-                                            height={225}
-                                            width={400}
-                                            priority={true}
-                                        />
-                                        <p>{feature.description}</p>
-                                    </div>
-                                )
-                            )}
-                        </div>
-                    </div>
-                )}
-                <div className={styles.downloadContainer}>
-                    {hasDemo === true ? (
+                <div className={styles.caseDetails} data-reveal>
+                    <p className={styles.description}>{description}</p>
+                    <ul className={styles.technologyList} aria-label="Technologies">
+                        {techList.map((item) => (
+                            <li key={item} className="chip">
+                                {item}
+                            </li>
+                        ))}
+                    </ul>
+                    <div className={styles.downloadContainer}>
                         <a
-                            href={firstButtonLink}
+                            href={primaryLink.href}
+                            target={primaryLink.external ? "_blank" : undefined}
+                            rel={primaryLink.external ? "noreferrer" : undefined}
+                            className={`button ${styles.primaryButton}`}
+                        >
+                            {primaryLink.label}
+                            {primaryLink.external ? <ArrowUpRight /> : <Download />}
+                        </a>
+                        <a
+                            href={githubLink}
                             target="_blank"
-                            className={styles.downloadButton}
+                            rel="noreferrer"
+                            className="button buttonGhost"
                         >
-                            View Demo
+                            <Github /> Source
                         </a>
-                    ) : (
-                        <a
-                            href={firstButtonLink}
-                            className={styles.downloadButton}
-                        >
-                            Download
-                        </a>
-                    )}
-                    <a href={githubLink}>
-                        <p> View on Github</p>
-                    </a>
+                        <span className={styles.statusText} data-status={status}>
+                            {status === "Live"
+                                ? "Live in production"
+                                : status === "Download"
+                                ? "Windows download"
+                                : "Archived"}
+                        </span>
+                    </div>
                 </div>
             </div>
-        </section>
+
+            <figure className={styles.frame} data-reveal>
+                <div className={styles.frameBar} aria-hidden="true">
+                    <span />
+                    <span />
+                    <span />
+                    <p>{frameLabel(project)}</p>
+                </div>
+                <Image
+                    className={styles.mainImage}
+                    src={mainImageURL}
+                    alt={`${title} screenshot`}
+                    width={1600}
+                    height={1000}
+                    sizes="(max-width: 1200px) 100vw, 1150px"
+                    unoptimized={isAnimated(mainImageURL)}
+                />
+            </figure>
+
+            {featureList.length > 0 && (
+                <div className={styles.featureList}>
+                    {featureList.map((feature, featureIndex) => (
+                        <div
+                            key={feature.title}
+                            className={styles.feature}
+                            data-reveal
+                            style={
+                                {
+                                    "--reveal-delay": `${featureIndex * 100}ms`,
+                                } as React.CSSProperties
+                            }
+                        >
+                            <div className={styles.featureMedia}>
+                                <Image
+                                    src={feature.imageURL}
+                                    alt={feature.title}
+                                    className={styles.featureGif}
+                                    width={800}
+                                    height={450}
+                                    sizes="(max-width: 860px) 100vw, 560px"
+                                    unoptimized={isAnimated(feature.imageURL)}
+                                />
+                            </div>
+                            <div className={styles.featureText}>
+                                <h3>
+                                    <span>{String(featureIndex + 1).padStart(2, "0")}</span>
+                                    {feature.title}
+                                </h3>
+                                <p>{feature.description}</p>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            )}
+        </article>
     );
 };
 

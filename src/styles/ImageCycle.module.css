@@ -1,0 +1,208 @@
+.deckWrap {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 260px;
+    align-items: end;
+    gap: 3rem;
+}
+
+.deck {
+    --deck-step: 22px;
+    position: relative;
+    aspect-ratio: 16 / 10;
+    margin-top: 70px;
+    margin-right: 70px;
+    touch-action: pan-y;
+    user-select: none;
+    border-radius: var(--radius-large);
+}
+
+.card {
+    position: absolute;
+    inset: 0;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-large);
+    overflow: hidden;
+    background: var(--surface);
+    box-shadow: var(--shadow-large);
+    cursor: pointer;
+    transform-origin: bottom left;
+    transition: transform 0.8s var(--ease-out), filter 0.6s ease,
+        opacity 0.5s ease;
+}
+
+.cardImage {
+    object-fit: cover;
+    object-position: top center;
+    pointer-events: none;
+}
+
+.cardHint {
+    position: absolute;
+    right: 1rem;
+    bottom: 1rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.55rem 0.95rem;
+    border-radius: 999px;
+    background: rgba(13, 14, 17, 0.8);
+    color: #fff;
+    font-size: 0.82rem;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 0.3s ease, transform 0.4s var(--ease-out);
+}
+
+.card:hover .cardHint,
+.card:focus-visible .cardHint {
+    opacity: 1;
+    transform: none;
+}
+
+.controls {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.counter {
+    font-family: var(--font-display);
+    font-size: 3.5rem;
+    font-weight: 600;
+    letter-spacing: -0.05em;
+    line-height: 1;
+}
+
+.counter span {
+    font-size: 1.25rem;
+    color: var(--text-faint);
+    letter-spacing: 0;
+}
+
+.currentTitle {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    margin-top: 1rem;
+    animation: swapIn 0.6s var(--ease-out);
+}
+
+.currentKind {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    animation: swapIn 0.6s var(--ease-out) 0.05s backwards;
+}
+
+@keyframes swapIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+}
+
+.buttons {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.arrow {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 1px solid var(--border-strong);
+    background: transparent;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease, transform 0.3s ease;
+}
+
+.arrow:hover {
+    background: var(--text);
+    color: var(--bg);
+}
+
+.arrow:active {
+    transform: scale(0.94);
+}
+
+.dots {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+}
+
+.dot {
+    position: relative;
+    width: 18px;
+    height: 6px;
+    border-radius: 999px;
+    border: none;
+    background: var(--border-strong);
+    cursor: pointer;
+    overflow: hidden;
+    transition: width 0.4s var(--ease-out), background-color 0.3s ease;
+}
+
+.dotActive {
+    width: 44px;
+    background: var(--border-strong);
+}
+
+.dotProgress {
+    position: absolute;
+    inset: 0;
+    background: var(--accent);
+    transform-origin: left;
+    animation: dotFill 6s linear forwards;
+}
+
+.dotActive:not(:has(.dotProgress)) {
+    background: var(--accent);
+}
+
+@keyframes dotFill {
+    from {
+        transform: scaleX(0);
+    }
+    to {
+        transform: scaleX(1);
+    }
+}
+
+@media screen and (max-width: 860px) {
+    .deckWrap {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    .controls {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        align-items: end;
+    }
+    .dots {
+        grid-column: 1 / -1;
+    }
+    .deck {
+        --deck-step: 16px;
+        margin-top: 50px;
+        margin-right: 50px;
+    }
+}
+
+@media screen and (max-width: 520px) {
+    .counter {
+        font-size: 2.5rem;
+    }
+    .deck {
+        --deck-step: 11px;
+        margin-top: 36px;
+        margin-right: 36px;
+    }
+}

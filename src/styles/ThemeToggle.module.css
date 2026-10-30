@@ -1,17 +1,31 @@
 .themeToggle {
-    background-color: rgb(var(--accent-color-light-2-rgb));
-    color: rgb(var(--text-color-rgb));
-    padding-inline: 1rem;
-    padding-block: 0.25rem;
-    border-radius: var(--border-radius);
-    border: none;
-
+    position: relative;
+    width: 40px;
+    height: 40px;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: transparent;
     cursor: pointer;
-    transition: all 0.1s ease-in-out;
+    overflow: hidden;
+    transition: border-color 0.2s ease, background-color 0.2s ease;
 }
 
-@media (pointer: fine) {
-    .themeToggle:hover {
-        outline-offset: 0.25rem;
-    }
+.themeToggle:hover {
+    border-color: var(--border-strong);
+    background: var(--surface);
+}
+
+.icon {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    opacity: 0;
+    transform: translateY(100%) rotate(-90deg);
+    transition: transform 0.5s var(--ease-out), opacity 0.3s ease;
+}
+
+.icon.active {
+    opacity: 1;
+    transform: none;
 }

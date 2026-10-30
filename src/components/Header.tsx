@@ -1,253 +1,143 @@
 import styles from "@/styles/Header.module.scss";
 import ThemeToggle from "@/components/ThemeToggle";
 import Link from "next/link";
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import Image from "next/image";
+import { contactEmail } from "@/data/projects";
+import { ArrowUpRight, Search } from "./Icons";
 
-const Header: React.FC = () => {
+const navLinks = [
+    { href: "/", label: "Home" },
+    { href: "/showcase", label: "Showcase" },
+];
+
+interface HeaderProps {
+    onOpenPalette: () => void;
+}
+
+const Header: React.FC<HeaderProps> = ({ onOpenPalette }) => {
     const router = useRouter();
-    const currentUrl = router.asPath;
-    const [shortNav, setshortNav] = useState(false);
-    const [isVerticalMenuOpen, setisVerticalMenuOpen] = useState(false);
-    const verticalMenuRef = useRef<HTMLDivElement>(null);
-    const homeRef = useRef<HTMLParagraphElement>(null);
-    const showcaseRef = useRef<HTMLParagraphElement>(null);
-    const contactRef = useRef<HTMLParagraphElement>(null);
-    const fadeInDelay = 1000;
-
-    const [isDarkTheme, setIsDarkTheme] = useState(false);
+    const [isScrolled, setIsScrolled] = useState(false);
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [progress, setProgress] = useState(0);
+    const [isMac, setIsMac] = useState(true);
 
     useEffect(() => {
-        if (window.innerWidth < 700) {
-            setshortNav(true);
-            setTimeout(() => {
-                const contactButton = document.getElementById("contactButton");
-                if (contactButton) {
-                    contactButton.style.opacity = "1";
-                }
-            }, fadeInDelay);
-            setTimeout(() => {
-                const hamburgerContainer =
-                    document.getElementById("hamburgerContainer");
-                if (hamburgerContainer) {
-                    hamburgerContainer.style.opacity = "1";
-                }
-            }, fadeInDelay * 2);
-        }
-        // if the window is big then show the fade in animations for the header items only on the home page
-        else {
-            if (currentUrl === "/") {
-                // do something 1 second after the component is mounted
-                setTimeout(() => {
-                    const logo = document.getElementById("logoContainer");
-                    if (logo) {
-                        logo.style.opacity = "1";
-                    }
-                }, fadeInDelay);
-                setTimeout(() => {
-                    const menu = document.getElementById(
-                        "horizontalMenuContainer"
-                    );
-                    if (menu) {
-                        menu.style.opacity = "1";
-                    }
-                }, fadeInDelay * 2);
-                setTimeout(() => {
-                    const rightContainer =
-                        document.getElementById("rightContainer");
-                    if (rightContainer) {
-                        rightContainer.style.opacity = "1";
-                    }
-                }, fadeInDelay * 3);
-            } else {
-                const rightContainer =
-                    document.getElementById("rightContainer");
-                if (rightContainer) {
-                    rightContainer.style.opacity = "1";
-                }
-                const menu = document.getElementById("horizontalMenuContainer");
-                if (menu) {
-                    menu.style.opacity = "1";
-                }
-                const logo = document.getElementById("logoContainer");
-                if (logo) {
-                    logo.style.opacity = "1";
-                }
-            }
-        }
-        function handleResize() {
-            if (window.innerWidth < 700) {
-                setshortNav(true);
-                const logo = document.getElementById("logoContainer");
-            } else {
-                setshortNav(false);
-                const logo = document.getElementById("logoContainer");
-                if (logo) {
-                    logo.style.opacity = "1";
-                }
-                const menu = document.getElementById("horizontalMenuContainer");
-                if (menu) {
-                    menu.style.opacity = "1";
-                }
-                const rightContainer =
-                    document.getElementById("rightContainer");
-                if (rightContainer) {
-                    rightContainer.style.opacity = "1";
-                }
-            }
-        }
-        const handleClick = (event: { target: any }) => {
-            if (isVerticalMenuOpen) {
-                if (
-                    verticalMenuRef.current &&
-                    !verticalMenuRef.current.contains(event.target)
-                ) {
-                    closeVerticalMenu();
-                }
-            }
+        setIsMac(/mac|iphone|ipad/i.test(navigator.userAgent));
+        const handleScroll = () => {
+            const scrollable =
+                document.documentElement.scrollHeight - window.innerHeight;
+            setIsScrolled(window.scrollY > 8);
+            setProgress(scrollable > 0 ? window.scrollY / scrollable : 0);
         };
-        window.addEventListener("resize", handleResize);
-        document.addEventListener("click", handleClick);
-        // Clean up event listener when component is unmounted
-        return () => {
-            window.removeEventListener("resize", handleResize);
-            document.removeEventListener("click", handleClick);
+        handleScroll();
+        window.addEventListener("scroll", handleScroll, { passive: true });
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
+
+    // close the mobile menu whenever the route changes
+    useEffect(() => {
+        setIsMenuOpen(false);
+    }, [router.asPath]);
+
+    useEffect(() => {
+        document.body.style.overflow = isMenuOpen ? "hidden" : "";
+        const handleKeyDown = (event: KeyboardEvent) => {
+            if (event.key === "Escape") setIsMenuOpen(false);
         };
-    }, [isVerticalMenuOpen]);
+        window.addEventListener("keydown", handleKeyDown);
+        return () => window.removeEventListener("keydown", handleKeyDown);
+    }, [isMenuOpen]);
 
-    const handleMenuClick = () => {
-        const element = document.getElementById("verticalMenu");
-        if (element) {
-            if (isVerticalMenuOpen === true) {
-                element.classList.remove(styles.openMenu);
-                element.classList.add(styles.closeMenu);
-                setisVerticalMenuOpen(false);
-            } else {
-                element.classList.add(styles.openMenu);
-                element.classList.remove(styles.closeMenu);
-                // add a class to the text representing the page you are currently on
-                if (currentUrl === "/") {
-                    homeRef?.current?.classList.add(styles.highlightedItem);
-                    showcaseRef?.current?.classList.remove(
-                        styles.highlightedItem
-                    );
-                    contactRef?.current?.classList.remove(
-                        styles.highlightedItem
-                    );
-                } else if (currentUrl === "/showcase") {
-                    showcaseRef?.current?.classList.add(styles.highlightedItem);
-                    homeRef?.current?.classList.remove(styles.highlightedItem);
-                    contactRef?.current?.classList.remove(
-                        styles.highlightedItem
-                    );
-                } else if (currentUrl === "/contact") {
-                    contactRef?.current?.classList.add(styles.highlightedItem);
-                    homeRef?.current?.classList.remove(styles.highlightedItem);
-                    showcaseRef?.current?.classList.remove(
-                        styles.highlightedItem
-                    );
-                }
-                setTimeout(() => {
-                    setisVerticalMenuOpen(true);
-                }, 1000);
-            }
-        }
-    };
-
-    const closeVerticalMenu = () => {
-        const element = document.getElementById("verticalMenu");
-        if (!element) return;
-        element.classList.remove(styles.openMenu);
-        element.classList.add(styles.closeMenu);
-        setisVerticalMenuOpen(false);
-    };
+    const isActive = (href: string) =>
+        href === "/" ? router.pathname === "/" : router.pathname.startsWith(href);
 
     return (
-        <header className={styles.header}>
-            <nav className={styles.navContainer}>
-                {!shortNav && (
-                    <div id="logoContainer" className={styles.logoContainer}>
-                        <Image
-                            id="logo"
-                            src="/images/logo.png"
-                            width={44}
-                            height={40}
-                            alt="Santiago Garcia Logo"
-                            unoptimized={true}
-                        />
-                        <ThemeToggle
-                            isDarkTheme={isDarkTheme}
-                            setIsDarkTheme={setIsDarkTheme}
-                        />
-                    </div>
-                )}
-                {!shortNav && (
-                    <ul
-                        id="horizontalMenuContainer"
-                        className={styles.horizontalMenu}
-                    >
-                        <li>
-                            <Link href="/">Home</Link>
-                        </li>
-                        <li>
-                            <Link href="/showcase">Showcase</Link>
-                        </li>
-                    </ul>
-                )}
-                <div id="rightContainer" className={styles.rightContainer}>
-                    <Link
-                        id="contactButton"
-                        className={styles.contactButton}
-                        aria-label="get-in-touch"
-                        tabIndex={0}
-                        href="mailto:santy@santiagogarcia.dev"
-                    >
-                        <p>Get in touch</p>
-                    </Link>
+        <header
+            className={`${styles.header} ${isScrolled ? styles.scrolled : ""} ${
+                isMenuOpen ? styles.menuOpen : ""
+            }`}
+        >
+            <nav className={styles.navContainer} aria-label="Main">
+                <Link href="/" className={styles.brand} aria-label="Santiago Garcia, home">
+                    <span className={styles.logo} aria-hidden="true" />
+                    <span className={styles.brandName}>Santiago Garcia</span>
+                </Link>
 
-                    <div
-                        id="hamburgerContainer"
-                        className={styles.hamburgerContainer}
-                        onClick={handleMenuClick}
-                    >
-                        {shortNav && <p>Menu</p>}
-                        <button className={styles.hamburgerButton}>
-                            &#9776;
-                        </button>
-                    </div>
-                </div>
-                <div
-                    id="verticalMenu"
-                    ref={verticalMenuRef}
-                    className={styles.verticalMenu}
-                >
-                    <div
-                        className={styles.closeButton}
-                        onClick={closeVerticalMenu}
-                    >
-                        &times;
-                    </div>
-                    <div className={styles.themeContainer}>
-                        <ThemeToggle
-                            isDarkTheme={isDarkTheme}
-                            setIsDarkTheme={setIsDarkTheme}
-                        />
-                    </div>
-                    <ul>
-                        <li>
-                            <Link href="/" onClick={closeVerticalMenu}>
-                                <p ref={homeRef}>Home</p>
+                <ul className={styles.horizontalMenu}>
+                    {navLinks.map((link) => (
+                        <li key={link.href}>
+                            <Link
+                                href={link.href}
+                                className={isActive(link.href) ? styles.active : ""}
+                                aria-current={isActive(link.href) ? "page" : undefined}
+                            >
+                                {link.label}
                             </Link>
                         </li>
-                        <li>
-                            <Link href="/showcase" onClick={closeVerticalMenu}>
-                                <p ref={showcaseRef}>Showcase</p>
-                            </Link>
-                        </li>
-                    </ul>
+                    ))}
+                </ul>
+
+                <div className={styles.rightContainer}>
+                    <button
+                        className={styles.paletteButton}
+                        onClick={onOpenPalette}
+                        aria-label="Open command menu"
+                    >
+                        <Search size={14} />
+                        <span className={styles.paletteLabel}>Jump to…</span>
+                        <kbd>{isMac ? "⌘" : "Ctrl"} K</kbd>
+                    </button>
+                    <ThemeToggle />
+                    <a
+                        className={`button buttonPrimary ${styles.contactButton}`}
+                        href={`mailto:${contactEmail}`}
+                    >
+                        Get in touch
+                    </a>
+                    <button
+                        className={styles.hamburgerButton}
+                        onClick={() => setIsMenuOpen((open) => !open)}
+                        aria-expanded={isMenuOpen}
+                        aria-controls="mobileMenu"
+                        aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+                    >
+                        <span />
+                        <span />
+                    </button>
                 </div>
             </nav>
+
+            <div
+                className={styles.progress}
+                style={{ transform: `scaleX(${progress})` }}
+                aria-hidden="true"
+            />
+
+            <div id="mobileMenu" className={styles.verticalMenu} aria-hidden={!isMenuOpen}>
+                <ul>
+                    {navLinks.map((link, index) => (
+                        <li key={link.href} style={{ transitionDelay: `${index * 70 + 120}ms` }}>
+                            <Link
+                                href={link.href}
+                                tabIndex={isMenuOpen ? 0 : -1}
+                                className={isActive(link.href) ? styles.highlightedItem : ""}
+                                onClick={() => setIsMenuOpen(false)}
+                            >
+                                <span className={styles.menuIndex}>0{index + 1}</span>
+                                {link.label}
+                            </Link>
+                        </li>
+                    ))}
+                    <li style={{ transitionDelay: `${navLinks.length * 70 + 120}ms` }}>
+                        <a href={`mailto:${contactEmail}`} tabIndex={isMenuOpen ? 0 : -1}>
+                            <span className={styles.menuIndex}>0{navLinks.length + 1}</span>
+                            Contact <ArrowUpRight size={28} />
+                        </a>
+                    </li>
+                </ul>
+                <p className={styles.menuFooter}>{contactEmail}</p>
+            </div>
         </header>
     );
 };

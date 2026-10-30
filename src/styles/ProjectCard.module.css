@@ -1,0 +1,214 @@
+.card {
+    --rx: 0deg;
+    --ry: 0deg;
+    --mx: 50%;
+    --my: 50%;
+    perspective: 1000px;
+    height: 100%;
+}
+
+.inner {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    text-align: left;
+    border-radius: var(--radius-large);
+    border: 1px solid var(--border);
+    background: var(--bg-elevated);
+    overflow: hidden;
+    cursor: pointer;
+    transform: rotateX(var(--rx)) rotateY(var(--ry));
+    transform-style: preserve-3d;
+    transition: transform 0.5s var(--ease-out), border-color 0.3s ease,
+        box-shadow 0.5s var(--ease-out);
+}
+
+/* cursor spotlight tinted with the project's accent color */
+.inner::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    background: radial-gradient(
+        500px circle at var(--mx) var(--my),
+        color-mix(in srgb, var(--card-accent) 18%, transparent),
+        transparent 45%
+    );
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.card:hover .inner {
+    border-color: color-mix(in srgb, var(--card-accent) 45%, var(--border));
+    box-shadow: var(--shadow-large);
+}
+
+.card:hover .inner::after {
+    opacity: 1;
+}
+
+.media {
+    position: relative;
+    aspect-ratio: 16 / 10;
+    margin: 0.6rem 0.6rem 0;
+    border-radius: calc(var(--radius-large) - 0.6rem);
+    overflow: hidden;
+    background: var(--surface);
+}
+
+.image {
+    object-fit: cover;
+    object-position: top center;
+    transition: transform 1s var(--ease-out);
+}
+
+.card:hover .image {
+    transform: scale(1.045);
+}
+
+.status {
+    position: absolute;
+    top: 0.75rem;
+    left: 0.75rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.3rem 0.65rem;
+    border-radius: 999px;
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.04em;
+    background: rgba(13, 14, 17, 0.72);
+    color: #fff;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+.status::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #9ca3af;
+}
+
+.status[data-status="Live"]::before {
+    background: #34d399;
+    box-shadow: 0 0 0 0 rgba(52, 211, 153, 0.6);
+    animation: pulse 2s infinite;
+}
+
+.status[data-status="Download"]::before {
+    background: #60a5fa;
+}
+
+@keyframes pulse {
+    70% {
+        box-shadow: 0 0 0 6px rgba(52, 211, 153, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(52, 211, 153, 0);
+    }
+}
+
+.body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1.1rem 1.25rem 1.3rem;
+    flex: 1;
+}
+
+.titleRow {
+    display: flex;
+    align-items: baseline;
+    gap: 0.6rem;
+}
+
+.index {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--text-faint);
+}
+
+.title {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+}
+
+.arrow {
+    margin-left: auto;
+    align-self: center;
+    display: grid;
+    place-items: center;
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    transition: transform 0.5s var(--ease-out), background-color 0.3s ease,
+        color 0.3s ease, border-color 0.3s ease;
+}
+
+.card:hover .arrow {
+    transform: rotate(45deg);
+    background: var(--card-accent);
+    border-color: var(--card-accent);
+    color: #fff;
+}
+
+.kind {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--card-accent);
+}
+
+.summary {
+    font-size: 0.92rem;
+    color: var(--text-muted);
+}
+
+.tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: auto;
+    padding-top: 0.5rem;
+}
+
+.large .title {
+    font-size: clamp(1.5rem, 2.5vw, 2rem);
+}
+
+@media screen and (min-width: 900px) {
+    .large .inner {
+        display: grid;
+        grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+    }
+    .large .media {
+        aspect-ratio: 16 / 10;
+        margin: 0.6rem;
+    }
+    .large .body {
+        padding: 2rem 2rem 2rem 1.25rem;
+        justify-content: center;
+        gap: 0.75rem;
+    }
+    .large .summary {
+        font-size: 1.02rem;
+    }
+}
+
+@media (hover: none) {
+    .inner {
+        transform: none;
+    }
+}

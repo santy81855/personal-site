@@ -1,0 +1,391 @@
+export type ProjectCategory = "web-app" | "website" | "desktop" | "game";
+
+export interface ProjectFeature {
+    title: string;
+    description: string;
+    imageURL: string;
+}
+
+export interface Project {
+    slug: string;
+    title: string;
+    kind: string;
+    category: ProjectCategory;
+    status: "Live" | "Download" | "Archived";
+    summary: string;
+    description: string;
+    techList: string[];
+    // static image used for cards, the deck and previews
+    tileURL: string;
+    // image (or gif) shown in the project's case study
+    mainImageURL: string;
+    featureList: ProjectFeature[];
+    primaryLink: { label: string; href: string; external: boolean };
+    githubLink: string;
+    accent: string;
+    featured?: boolean;
+}
+
+export const categoryLabels: Record<ProjectCategory, string> = {
+    "web-app": "Web Apps",
+    website: "Websites",
+    desktop: "Desktop",
+    game: "Games",
+};
+
+// add new projects here, the order of this list is the order they are shown in
+export const projects: Project[] = [
+    {
+        slug: "my-resume-hero",
+        title: "My Resume Hero",
+        kind: "AI Web Application",
+        category: "web-app",
+        status: "Live",
+        summary:
+            "AI-powered job application hub that writes tailored resumes and cover letters in seconds.",
+        description:
+            "Overhaul to MyAiResume. Keep all your job applications organized in one place. Create a professional resume and cover letter in seconds with the help of AI. Stand out from the rest by tailoring each resume to the job you are applying for.",
+        techList: [
+            "NextJS",
+            "Stripe",
+            "AI",
+            "React",
+            "Supabase",
+            "PostgreSQL",
+            "Git",
+            "OpenAI",
+            "Cloudflare R2",
+            "Vercel",
+            "Lucia Auth",
+        ],
+        tileURL: "/images/my-resume-hero-tile.png",
+        mainImageURL: "/images/my-resume-hero-tile.png",
+        featureList: [
+            {
+                title: "AI Generator",
+                description:
+                    "Keep all of your job applications in one place. Create a professional resume and cover letter in seconds with the help of AI.",
+                imageURL: "/images/my-resume-hero-feature-applications.png",
+            },
+            {
+                title: "Resumes & Cover Letters",
+                description:
+                    "Create a different resume and cover letter for every application. Stand out from the rest by tailoring each resume to the job you are applying for.",
+                imageURL: "/images/my-resume-hero-feature-documents.png",
+            },
+        ],
+        primaryLink: {
+            label: "Visit Site",
+            href: "https://myresumehero.com",
+            external: true,
+        },
+        githubLink: "https://github.com/santy81855/myairesumes",
+        accent: "#7c6cf2",
+        featured: true,
+    },
+    {
+        slug: "nmg-remodeling",
+        title: "NM&G Remodeling",
+        kind: "Business Website",
+        category: "website",
+        status: "Live",
+        summary:
+            "Marketing site for a home remodeling company with a filterable project gallery and lead capture.",
+        description:
+            "A full marketing website for NM&G Remodeling, a kitchen, bath, deck and basement remodeling company. Visitors can browse finished work in a project gallery filtered by category, read about the team, and request an estimate through a contact form that delivers inquiries straight to the business inbox.",
+        techList: [
+            "Next.js 15",
+            "React 19",
+            "TypeScript",
+            "Motion",
+            "Resend",
+            "CSS Modules",
+            "Git",
+        ],
+        tileURL: "/images/nmg-remodeling-tile.jpg",
+        mainImageURL: "/images/nmg-remodeling-tile.jpg",
+        featureList: [
+            {
+                title: "Project Gallery",
+                description:
+                    "Finished kitchens, bathrooms, decks and basements organized into tabs so homeowners can jump straight to the kind of work they care about.",
+                imageURL: "/images/nmg-remodeling-feature-gallery.jpg",
+            },
+            {
+                title: "Brand Storytelling",
+                description:
+                    "Bold, image-led pages that introduce the company, its commitment to craftsmanship, and funnel visitors toward a free estimate.",
+                imageURL: "/images/nmg-remodeling-feature-about.jpg",
+            },
+        ],
+        primaryLink: {
+            label: "Visit Site",
+            href: "https://nmgremodeling.com",
+            external: true,
+        },
+        githubLink: "https://github.com/santy81855/nmg-website",
+        accent: "#f27a5e",
+        featured: true,
+    },
+    {
+        slug: "cozy-type",
+        title: "Cozy Type",
+        kind: "React Web Application",
+        category: "web-app",
+        status: "Live",
+        summary:
+            "A cozy typing test with ranked progression from Bronze to Legend and rain-and-thunder ambiance.",
+        description:
+            "Embark on a typing journey on a cozy typing test website. Achieve rankings from Bronze 1 all the way up to Legend, track progress, and enjoy a relaxing ambiance with rain and thunder. Start typing today!",
+        techList: [
+            "Node.js",
+            "Next.js",
+            "TypeScript",
+            "OAuth",
+            "NextAuth",
+            "React",
+            "PostgreSQL",
+            "Prisma",
+            "REST API",
+            "Git",
+            "AWS EC2",
+            "AWS RDS",
+            "Nginx",
+        ],
+        tileURL: "/images/cozy-type-demo.png",
+        mainImageURL: "/images/cozy-type-main.gif",
+        featureList: [
+            {
+                title: "Track Your Progress",
+                description:
+                    "Store every typing test you take and track your progress over time.",
+                imageURL: "/images/test-result-feature.gif",
+            },
+            {
+                title: "Get Ranked in Typing",
+                description:
+                    "Increase your rank as you increase your typing speed. Try to make it to the top rank: Legend.",
+                imageURL: "/images/rank-feature.png",
+            },
+        ],
+        primaryLink: {
+            label: "Visit Site",
+            href: "https://cozytype.santiagogarcia.dev",
+            external: true,
+        },
+        githubLink: "https://github.com/santy81855/typing-website",
+        accent: "#e0a458",
+        featured: true,
+    },
+    {
+        slug: "my-ai-resume",
+        title: "My AI Resume v1",
+        kind: "AI Web Application",
+        category: "web-app",
+        status: "Archived",
+        summary:
+            "The original AI resume and cover letter builder that grew into My Resume Hero.",
+        description:
+            "Create a professional resume and cover letter in seconds with the help of AI. Create a different resume and cover letter for every job application.",
+        techList: [
+            "Node.js",
+            "Express",
+            "Stripe",
+            "Passport",
+            "AI",
+            "React",
+            "MongoDB",
+            "Git",
+            "OpenAI",
+            "AWS",
+            "Nginx",
+        ],
+        tileURL: "/images/ai-resume-tile.png",
+        mainImageURL: "/images/resume-mockup-no-shadow.png",
+        featureList: [
+            {
+                title: "AI Generator",
+                description:
+                    "Let the AI do the work for you. Simply enter your information and let the AI generate a professional resume for you.",
+                imageURL: "/images/ai-resume-feature-ai.gif",
+            },
+            {
+                title: "Endless Resumes & Cover Letters",
+                description:
+                    "Create a different resume and cover letter for every application. Stand out from the rest by tailoring each resume to the job you are applying for.",
+                imageURL: "/images/unlimited-resumes-feature.png",
+            },
+        ],
+        primaryLink: {
+            label: "View Project",
+            href: "https://github.com/santy81855/ResumeBuilder_Frontend",
+            external: true,
+        },
+        githubLink: "https://github.com/santy81855/ResumeBuilder_Frontend",
+        accent: "#4f9dde",
+    },
+    {
+        slug: "company-website",
+        title: "Company Website",
+        kind: "Static Web Page",
+        category: "website",
+        status: "Live",
+        summary:
+            "Marketing site for an agency that provides marketing and advertising services.",
+        description:
+            "A website for a company that provides marketing and advertising services. The website is built with React, TypeScript, and CSS.",
+        techList: ["TypeScript", "CSS", "React", "Git"],
+        tileURL: "/images/spwebmanagement.png",
+        mainImageURL: "/images/spwebmanagement.png",
+        featureList: [],
+        primaryLink: {
+            label: "Visit Site",
+            href: "https://spwebmanagement.com",
+            external: true,
+        },
+        githubLink: "https://github.com/santy81855/business-site",
+        accent: "#3fb39b",
+    },
+    {
+        slug: "book-sale-website",
+        title: "Book Sale Website",
+        kind: "Static Web Page",
+        category: "website",
+        status: "Live",
+        summary:
+            "Storefront for an art book with a gallery, Stripe checkout and a contact form.",
+        description:
+            "A website for the sale of an art book. The website is built with React, TypeScript, and CSS. The website features a gallery, a store, and a contact form.",
+        techList: ["TypeScript", "CSS", "React", "Stripe", "Git"],
+        tileURL: "/images/madalithpareja.png",
+        mainImageURL: "/images/madalithpareja.png",
+        featureList: [],
+        primaryLink: {
+            label: "Visit Site",
+            href: "https://madalithpareja.com",
+            external: true,
+        },
+        githubLink: "https://github.com/santy81855/madalith-pareja",
+        accent: "#d9668f",
+    },
+    {
+        slug: "codon",
+        title: "Codon Text Editor",
+        kind: "Python GUI",
+        category: "desktop",
+        status: "Download",
+        summary:
+            "A feature-rich, lightweight text and code editor for Windows.",
+        description:
+            "A feature-rich and lightweight text and code editor for Windows computers.",
+        techList: ["Python", "PyQt5", "QScintilla", "CSS", "Git"],
+        tileURL: "/images/codon-tile.png",
+        mainImageURL: "/images/codon-mockup-no-shadow-cropped.png",
+        featureList: [
+            {
+                title: "Syntax Highlighting",
+                description:
+                    "Syntax highlighting will automatically detect the file type and is available for python, c, c#, c++, css, java,  and json.",
+                imageURL: "/images/codon-syntax.gif",
+            },
+            {
+                title: "Code Map",
+                description:
+                    "Easily and efficiently scroll through your files with the help of the code, which is always in view.",
+                imageURL: "/images/codon-map.gif",
+            },
+        ],
+        primaryLink: {
+            label: "Download",
+            href: "https://github.com/santy81855/Codon/raw/main/Codon_Installer.exe",
+            external: false,
+        },
+        githubLink: "https://github.com/santy81855/Codon",
+        accent: "#5d8fa8",
+    },
+    {
+        slug: "glass-cannon",
+        title: "Glass Cannon",
+        kind: "3D Unity Game",
+        category: "game",
+        status: "Download",
+        summary:
+            "A 3D wave-survival game where one hit means game over.",
+        description:
+            "A 3D wave survival game made in Unity. Try to survive as long as possible against an endless wave of enemies. One hit and you're dead.",
+        techList: ["Unity 3D", "Blender", "C#", "AI", "Git"],
+        tileURL: "/images/glass-cannon-tile.png",
+        mainImageURL: "/images/glass-cannon-tile.png",
+        featureList: [
+            {
+                title: "Power-up Store",
+                description:
+                    "Use the points you earn from killing enemies to buy power-ups to help you survive longer.",
+                imageURL: "/images/cannon-feature-store.gif",
+            },
+            {
+                title: "AI Level Scaling",
+                description:
+                    "The AI will scale in difficulty as you progress through the waves. The longer you survive, the harder it gets.",
+                imageURL: "/images/cannon-feature-scaling.gif",
+            },
+        ],
+        primaryLink: {
+            label: "Download",
+            href: "https://github.com/santy81855/Glass_Cannon/archive/refs/heads/main.zip",
+            external: false,
+        },
+        githubLink: "https://github.com/santy81855/Glass_Cannon",
+        accent: "#c4544a",
+    },
+    {
+        slug: "typo",
+        title: "Typo",
+        kind: "Python GUI",
+        category: "desktop",
+        status: "Download",
+        summary:
+            "Desktop typing test for speed and accuracy, with AI-generated practice text.",
+        description:
+            "A typing speed test application that allows you to test both your typing speed and accuracy.",
+        techList: [
+            "Python",
+            "PyQt5",
+            "Firebase",
+            "Firestore",
+            "CSS",
+            "Git",
+            "AI",
+        ],
+        tileURL: "/images/typo-tile.png",
+        mainImageURL: "/images/typo-main-image.gif",
+        featureList: [
+            {
+                title: "Multiple Modes",
+                description:
+                    "Test your typing speed and accuracy with multiple modes, including a custom mode where you can type AI generated text.",
+                imageURL: "/images/typo-feature-mode.gif",
+            },
+            {
+                title: "Pick a Theme",
+                description:
+                    "Choose from a variety of themes to customize your typing experience.",
+                imageURL: "/images/typo-feature-theme.gif",
+            },
+        ],
+        primaryLink: {
+            label: "Download",
+            href: "https://github.com/santy81855/Typo/raw/main/Typo_Installer.exe",
+            external: false,
+        },
+        githubLink: "https://github.com/santy81855/Typo",
+        accent: "#8a7fd1",
+    },
+];
+
+export const allTechnologies = Array.from(
+    new Set(projects.flatMap((project) => project.techList))
+);
+
+export const contactEmail = "santy@santiagogarcia.dev";
+export const githubProfile = "https://github.com/santy81855";

@@ -1,29 +1,40 @@
-"use client";
-
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
+import Head from "next/head";
+import { Inter, JetBrains_Mono, Space_Grotesk } from "next/font/google";
 import Layout from "@/components/Layout";
-import { useEffect, useState } from "react";
-import Header from "@/components/Header";
+
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
+const spaceGrotesk = Space_Grotesk({
+    subsets: ["latin"],
+    variable: "--font-space-grotesk",
+});
+const jetBrainsMono = JetBrains_Mono({
+    subsets: ["latin"],
+    variable: "--font-jetbrains-mono",
+});
 
 export default function App({ Component, pageProps }: AppProps) {
-    // set the correct theme based on the user's preference
-    useEffect(() => {
-        let curTheme = localStorage.getItem("theme");
-        if (curTheme === null) {
-            localStorage.setItem("theme", "light");
-        } else {
-            if (localStorage.getItem("theme") === "light") {
-                document.documentElement.classList.toggle("dark-theme", false);
-            } else {
-                document.documentElement.classList.toggle("dark-theme", true);
-            }
-        }
-    }, []);
-
     return (
-        <Layout>
-            <Component {...pageProps} />
-        </Layout>
+        <>
+            <Head>
+                <meta
+                    name="viewport"
+                    content="width=device-width, initial-scale=1"
+                />
+                <link rel="icon" href="/favicon.ico" />
+            </Head>
+            {/* expose the font variables to elements rendered outside the layout too */}
+            <style jsx global>{`
+                :root {
+                    --font-inter: ${inter.style.fontFamily};
+                    --font-space-grotesk: ${spaceGrotesk.style.fontFamily};
+                    --font-jetbrains-mono: ${jetBrainsMono.style.fontFamily};
+                }
+            `}</style>
+            <Layout>
+                <Component {...pageProps} />
+            </Layout>
+        </>
     );
 }

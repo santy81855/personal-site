@@ -1,48 +1,44 @@
-"use client";
-import { useEffect, FC } from "react";
+import { useEffect, useState } from "react";
 import styles from "@/styles/ThemeToggle.module.css";
+import { Moon, Sun } from "./Icons";
 
-interface ProjectSectionProps {
-    // setting the interfacec for the props for the dark theme
-    isDarkTheme: boolean;
-    setIsDarkTheme: (isDarkTheme: boolean) => void;
-}
+export const toggleTheme = () => {
+    const isDark = document.documentElement.classList.toggle("dark-theme");
+    try {
+        localStorage.setItem("theme", isDark ? "dark" : "light");
+    } catch (e) {}
+    window.dispatchEvent(new Event("themechange"));
+    return isDark;
+};
 
-const ThemeToggle: FC<ProjectSectionProps> = ({
-    isDarkTheme,
-    setIsDarkTheme,
-}) => {
+const ThemeToggle = () => {
+    const [isDarkTheme, setIsDarkTheme] = useState(false);
+
     useEffect(() => {
-        let curTheme = localStorage.getItem("theme");
-        if (curTheme === null) {
-            localStorage.setItem("theme", "light");
-        } else {
-            if (localStorage.getItem("theme") === "light") {
-                setIsDarkTheme(false);
-            } else {
-                setIsDarkTheme(true);
-            }
-        }
+        // the inline script in _document already applied the theme, just sync with it
+        const sync = () =>
+            setIsDarkTheme(
+                document.documentElement.classList.contains("dark-theme")
+            );
+        sync();
+        window.addEventListener("themechange", sync);
+        return () => window.removeEventListener("themechange", sync);
     }, []);
 
-    const toggleTheme = () => {
-        setIsDarkTheme(!isDarkTheme);
-        document.documentElement.classList.toggle("dark-theme", !isDarkTheme);
-        // set the theme in local storage
-
-        if (localStorage.getItem("theme") === "light") {
-            localStorage.setItem("theme", "dark");
-        } else {
-            localStorage.setItem("theme", "light");
-        }
-    };
-
     return (
-        <>
-            <button className={styles.themeToggle} onClick={toggleTheme}>
-                {isDarkTheme ? "Light" : "Dark"}
-            </button>
-        </>
+        <button
+            className={styles.themeToggle}
+            onClick={toggleTheme}
+            aria-label={isDarkTheme ? "Switch to light theme" : "Switch to dark theme"}
+            title={isDarkTheme ? "Light theme" : "Dark theme"}
+        >
+            <span className={`${styles.icon} ${isDarkTheme ? "" : styles.active}`}>
+                <Moon />
+            </span>
+            <span className={`${styles.icon} ${isDarkTheme ? styles.active : ""}`}>
+                <Sun />
+            </span>
+        </button>
     );
 };
 
