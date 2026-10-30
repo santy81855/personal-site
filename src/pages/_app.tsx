@@ -1,17 +1,24 @@
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
 import Head from "next/head";
-import { Inter, JetBrains_Mono, Space_Grotesk } from "next/font/google";
+import localFont from "next/font/local";
 import Layout from "@/components/Layout";
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
-const spaceGrotesk = Space_Grotesk({
-    subsets: ["latin"],
-    variable: "--font-space-grotesk",
+// fonts are self-hosted so builds never depend on reaching Google Fonts
+const inter = localFont({
+    src: "../fonts/inter-latin.woff2",
+    weight: "100 900",
+    display: "swap",
 });
-const jetBrainsMono = JetBrains_Mono({
-    subsets: ["latin"],
-    variable: "--font-jetbrains-mono",
+const spaceGrotesk = localFont({
+    src: "../fonts/space-grotesk-latin.woff2",
+    weight: "300 700",
+    display: "swap",
+});
+const jetBrainsMono = localFont({
+    src: "../fonts/jetbrains-mono-latin.woff2",
+    weight: "100 800",
+    display: "swap",
 });
 
 export default function App({ Component, pageProps }: AppProps) {
