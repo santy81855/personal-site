@@ -84,6 +84,50 @@ export const projects: Project[] = [
         featured: true,
     },
     {
+        slug: "slipstream",
+        title: "Slipstream",
+        kind: "React Web Application",
+        category: "web-app",
+        status: "Live",
+        summary:
+            "A typing test with animated themes, from a crackling fireplace to rain on a window.",
+        description:
+            "A typing test built with React, TypeScript and Vite. Pick a timed run, a word count, a quote or numbers, and get your WPM, accuracy and a pace chart when you finish. Ten of the thirteen themes have animated scenery behind the page, like a fireplace, rain on a window, a snowy mountain range and a black hole. All of it is drawn in code, so there are no image assets to download.",
+        techList: [
+            "React 19",
+            "TypeScript",
+            "Vite",
+            "Canvas API",
+            "CSS Animations",
+            "Vercel",
+            "Git",
+        ],
+        tileURL: "/images/slipstream-tile.jpg",
+        mainImageURL: "/images/slipstream-themes.jpg",
+        featureList: [
+            {
+                title: "Fireplace Theme",
+                description:
+                    "Flames and embers drift up behind the page, and the fire gets a little brighter while you type.",
+                imageURL: "/images/slipstream-fireplace.gif",
+            },
+            {
+                title: "Rain Theme",
+                description:
+                    "Rain streaks down a dark window behind the test, with warm lamplight colors for the text.",
+                imageURL: "/images/slipstream-rain.gif",
+            },
+        ],
+        primaryLink: {
+            label: "Visit Site",
+            href: "https://slipstream.santiagogarcia.dev",
+            external: true,
+        },
+        githubLink: "https://github.com/santy81855/slipstream",
+        accent: "#f59e2f",
+        featured: true,
+    },
+    {
         slug: "nmg-remodeling",
         title: "NM&G Remodeling",
         kind: "Business Website",
@@ -175,7 +219,6 @@ export const projects: Project[] = [
         },
         githubLink: "https://github.com/santy81855/typing-website",
         accent: "#e0a458",
-        featured: true,
     },
     {
         slug: "my-ai-resume",

@@ -89,8 +89,8 @@ export default function Home() {
                         <p className={`${styles.intro} ${styles.fadeUp}`}>
                             I design and build software end to end — AI-powered web
                             apps, websites for real businesses, desktop tools and
-                            games. Currently shipping{" "}
-                            <Link href="/showcase#my-resume-hero">My Resume Hero</Link>{" "}
+                            games. Most recently I shipped{" "}
+                            <Link href="/showcase#slipstream">Slipstream</Link>{" "}
                             and{" "}
                             <Link href="/showcase#nmg-remodeling">NM&amp;G Remodeling</Link>.
                         </p>
