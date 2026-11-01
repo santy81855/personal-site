@@ -314,6 +314,51 @@ export const projects: Project[] = [
         accent: "#4f9dde",
     },
     {
+        slug: "latebis",
+        title: "Latebis Art Portfolio",
+        kind: "Artist Portfolio",
+        category: "website",
+        status: "Live",
+        summary:
+            "Portfolio and gallery site for an illustrator, with a Sanity-backed masonry grid and contact form.",
+        description:
+            "A portfolio website built for the illustrator and multimedia artist Latebis (Juni). Artwork is managed through an embedded Sanity Studio and arranged into a responsive masonry grid sorted across drawings, digital illustrations and sketchbook pages, with a slide-over contact card for inquiries.",
+        techList: [
+            "Next.js 15",
+            "React 19",
+            "TypeScript",
+            "Sanity CMS",
+            "Motion",
+            "Resend",
+            "CSS Modules",
+            "Vercel",
+            "Git",
+        ],
+        tileURL: "/images/latebis-tile.jpg",
+        mainImageURL: "/images/latebis-tile.jpg",
+        featureList: [
+            {
+                title: "Sanity-Powered Masonry Grid",
+                description:
+                    "New pieces uploaded in Sanity Studio are balanced across columns by aspect ratio, with blur placeholders and category tabs for drawings, digital work and sketchbook pages.",
+                imageURL: "/images/latebis-feature-gallery.jpg",
+            },
+            {
+                title: "Slide-Over Contact Card",
+                description:
+                    "Opening the contact tab blurs the full gallery in the background and slides up a tarot-framed form that sends inquiries straight to the artist's inbox through Resend.",
+                imageURL: "/images/latebis-feature-contact.jpg",
+            },
+        ],
+        primaryLink: {
+            label: "Visit Site",
+            href: "https://latebis.com",
+            external: true,
+        },
+        githubLink: "https://github.com/santy81855/juanita-site",
+        accent: "#c23b6b",
+    },
+    {
         slug: "company-website",
         title: "Company Website",
         kind: "Static Web Page",
