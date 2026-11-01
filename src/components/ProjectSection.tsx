@@ -14,7 +14,7 @@ const isAnimated = (url: string) => url.endsWith(".gif");
 
 // the label shown in the fake window chrome around the main image
 const frameLabel = (project: Project) => {
-    if (project.primaryLink.external && project.status === "Live") {
+    if (project.primaryLink?.external && project.status === "Live") {
         return new URL(project.primaryLink.href).host;
     }
     return project.category === "game" ? `${project.title}.exe` : project.title;
@@ -64,20 +64,22 @@ const ProjectSection: FC<ProjectSectionProps> = ({ project, index, total }) => {
                         ))}
                     </ul>
                     <div className={styles.downloadContainer}>
-                        <a
-                            href={primaryLink.href}
-                            target={primaryLink.external ? "_blank" : undefined}
-                            rel={primaryLink.external ? "noreferrer" : undefined}
-                            className={`button ${styles.primaryButton}`}
-                        >
-                            {primaryLink.label}
-                            {primaryLink.external ? <ArrowUpRight /> : <Download />}
-                        </a>
+                        {primaryLink && (
+                            <a
+                                href={primaryLink.href}
+                                target={primaryLink.external ? "_blank" : undefined}
+                                rel={primaryLink.external ? "noreferrer" : undefined}
+                                className={`button ${styles.primaryButton}`}
+                            >
+                                {primaryLink.label}
+                                {primaryLink.external ? <ArrowUpRight /> : <Download />}
+                            </a>
+                        )}
                         <a
                             href={githubLink}
                             target="_blank"
                             rel="noreferrer"
-                            className="button buttonGhost"
+                            className={`button ${primaryLink ? "buttonGhost" : styles.primaryButton}`}
                         >
                             <Github /> Source
                         </a>
@@ -86,6 +88,8 @@ const ProjectSection: FC<ProjectSectionProps> = ({ project, index, total }) => {
                                 ? "Live in production"
                                 : status === "Download"
                                 ? "Windows download"
+                                : status === "Open Source"
+                                ? "Source on GitHub"
                                 : "Archived"}
                         </span>
                     </div>

@@ -11,7 +11,7 @@ export interface Project {
     title: string;
     kind: string;
     category: ProjectCategory;
-    status: "Live" | "Download" | "Archived";
+    status: "Live" | "Download" | "Open Source" | "Archived";
     summary: string;
     description: string;
     techList: string[];
@@ -20,7 +20,7 @@ export interface Project {
     // image (or gif) shown in the project's case study
     mainImageURL: string;
     featureList: ProjectFeature[];
-    primaryLink: { label: string; href: string; external: boolean };
+    primaryLink?: { label: string; href: string; external: boolean };
     githubLink: string;
     accent: string;
     featured?: boolean;
@@ -216,6 +216,62 @@ export const projects: Project[] = [
         githubLink: "https://github.com/santy81855/nmg-website",
         accent: "#f27a5e",
         featured: true,
+    },
+    {
+        slug: "course-manager-lms",
+        title: "Course Manager LMS",
+        kind: "Full-Stack Web Application",
+        category: "web-app",
+        status: "Open Source",
+        summary:
+            "Full-stack learning management system with AI syllabus-to-course generation, quiz authoring and student enrollment.",
+        description:
+            "A learning management system built with a React and TypeScript frontend backed by a Java 21 Spring Boot REST API and MySQL. Teachers can paste a raw syllabus to generate an entire draft curriculum with OpenAI, organize courses into ordered modules, lessons and timed quizzes, and track student submissions and rosters. Students join classes with a course code, work through published modules and take auto-graded assessments.",
+        techList: [
+            "Java 21",
+            "Spring Boot",
+            "Spring Security",
+            "Spring JDBC",
+            "React 19",
+            "TypeScript",
+            "Vite",
+            "MySQL",
+            "OpenAI",
+            "Docker",
+            "JUnit 5",
+            "CSS Modules",
+            "Git",
+        ],
+        tileURL: "/images/lms-tile.jpg",
+        mainImageURL: "/images/lms-main.jpg",
+        featureList: [
+            {
+                title: "AI Syllabus-to-Course Generator",
+                description:
+                    "Paste a course syllabus, choose a grade level and module count, and let the Spring Boot backend generate a complete draft curriculum—modules, lessons, quizzes, questions and answer keys—through OpenAI.",
+                imageURL: "/images/lms-feature-ai.jpg",
+            },
+            {
+                title: "Curriculum & Module Builder",
+                description:
+                    "Organize courses into ordered modules, lessons with reading-time estimates, and assessments, with draft, published and archived states and shareable 8-character class join codes.",
+                imageURL: "/images/lms-feature-curriculum.jpg",
+            },
+            {
+                title: "Interactive Student Quizzes",
+                description:
+                    "Author multiple-choice, true/false and short-answer questions with point values and explanations, while students take timed multi-attempt quizzes with instant grading.",
+                imageURL: "/images/lms-feature-quiz.jpg",
+            },
+            {
+                title: "Course Roster & Submissions",
+                description:
+                    "Monitor active, completed and dropped student enrollments alongside quiz submission scores and attempt history for every assessment.",
+                imageURL: "/images/lms-feature-roster.jpg",
+            },
+        ],
+        githubLink: "https://github.com/santy81855/lms",
+        accent: "#2eb8a6",
     },
     {
         slug: "cozy-type",
