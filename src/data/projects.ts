@@ -524,6 +524,41 @@ export const projects: Project[] = [
         accent: "#c4544a",
     },
     {
+        slug: "vr-cell",
+        title: "VR Cell",
+        kind: "3D Unity VR Game",
+        category: "game",
+        status: "Download",
+        summary:
+            "An immersive VR biology experience exploring a 3D animal cell and the endomembrane system.",
+        description:
+            "An educational 3D virtual reality application built in Unity that lets users shrink down to explore an interactive animal cell from the inside, inspect organelles up close in a virtual lab, and follow the step-by-step protein synthesis pathway through the endomembrane system.",
+        techList: ["Unity 3D", "C#", "OpenXR", "Blender", "VR", "Git"],
+        tileURL: "/images/vr-cell-tile.jpg",
+        mainImageURL: "/images/vr-cell-main.gif",
+        featureList: [
+            {
+                title: "Inside the Cell (Immersive Mode)",
+                description:
+                    "Step directly inside a living 3D animal cell surrounded by the nucleus, rough and smooth endoplasmic reticulum, Golgi apparatus, mitochondria, and motor proteins walking along cytoskeletal microtubules.",
+                imageURL: "/images/vr-cell-feature-nucleus.jpg",
+            },
+            {
+                title: "Interactive Lab & Endomembrane Tour",
+                description:
+                    "Examine a cross-section of the cell on the virtual laboratory table, grab individual 3D organelle models with VR controllers, or take a guided tour tracing transcription, translation, and vesicle transport.",
+                imageURL: "/images/vr-cell-feature-lab.jpg",
+            },
+        ],
+        primaryLink: {
+            label: "Download",
+            href: "https://github.com/santy81855/VR_Cell/archive/refs/heads/main.zip",
+            external: false,
+        },
+        githubLink: "https://github.com/santy81855/VR_Cell",
+        accent: "#3ca370",
+    },
+    {
         slug: "typo",
         title: "Typo",
         kind: "Python GUI",
