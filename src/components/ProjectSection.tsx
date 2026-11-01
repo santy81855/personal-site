@@ -1,6 +1,6 @@
 import Image from "next/image";
 import styles from "@/styles/Showcase.module.css";
-import React, { FC, useEffect, useState } from "react";
+import React, { FC } from "react";
 import { Project } from "@/data/projects";
 import { ArrowUpRight, Download, Github } from "./Icons";
 
@@ -28,23 +28,11 @@ const ProjectSection: FC<ProjectSectionProps> = ({ project, index, total }) => {
         description,
         techList,
         mainImageURL,
-        mainImages,
         featureList,
         primaryLink,
         githubLink,
         status,
     } = project;
-
-    const slides = mainImages && mainImages.length > 1 ? mainImages : null;
-    const [activeSlide, setActiveSlide] = useState(0);
-
-    useEffect(() => {
-        if (!slides) return;
-        const timer = window.setInterval(() => {
-            setActiveSlide((prev) => (prev + 1) % slides.length);
-        }, 5000);
-        return () => window.clearInterval(timer);
-    }, [slides]);
 
     return (
         <article
@@ -115,40 +103,15 @@ const ProjectSection: FC<ProjectSectionProps> = ({ project, index, total }) => {
                     <span />
                     <p>{frameLabel(project)}</p>
                 </div>
-                {slides ? (
-                    <div className={styles.mainImageStage}>
-                        {slides.map((src, slideIndex) => (
-                            <Image
-                                key={src}
-                                className={`${styles.mainSlide} ${
-                                    slideIndex === 0
-                                        ? styles.mainSlideBase
-                                        : styles.mainSlideOverlay
-                                } ${
-                                    slideIndex === activeSlide
-                                        ? styles.mainSlideActive
-                                        : ""
-                                }`}
-                                src={src}
-                                alt={`${title} screenshot ${slideIndex + 1}`}
-                                width={1600}
-                                height={1000}
-                                sizes="(max-width: 1200px) 100vw, 1150px"
-                                unoptimized={isAnimated(src)}
-                            />
-                        ))}
-                    </div>
-                ) : (
-                    <Image
-                        className={styles.mainImage}
-                        src={mainImageURL}
-                        alt={`${title} screenshot`}
-                        width={1600}
-                        height={1000}
-                        sizes="(max-width: 1200px) 100vw, 1150px"
-                        unoptimized={isAnimated(mainImageURL)}
-                    />
-                )}
+                <Image
+                    className={styles.mainImage}
+                    src={mainImageURL}
+                    alt={`${title} screenshot`}
+                    width={1600}
+                    height={1000}
+                    sizes="(max-width: 1200px) 100vw, 1150px"
+                    unoptimized={isAnimated(mainImageURL)}
+                />
             </figure>
 
             {featureList.length > 0 && (

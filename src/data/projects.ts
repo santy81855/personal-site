@@ -19,8 +19,6 @@ export interface Project {
     tileURL: string;
     // image (or gif) shown in the project's case study
     mainImageURL: string;
-    // optional list of images to auto-cycle through in the case study hero frame
-    mainImages?: string[];
     featureList: ProjectFeature[];
     primaryLink?: { label: string; href: string; external: boolean };
     githubLink: string;
@@ -152,14 +150,6 @@ export const projects: Project[] = [
         ],
         tileURL: "/images/ticket-tracker-tile.jpg",
         mainImageURL: "/images/ticket-tracker-main.jpg",
-        mainImages: [
-            "/images/ticket-tracker-tile.jpg",
-            "/images/ticket-tracker-main.jpg",
-            "/images/ticket-tracker-theme-bonsai.jpg",
-            "/images/ticket-tracker-theme-cabin.jpg",
-            "/images/ticket-tracker-theme-skyline.jpg",
-            "/images/ticket-tracker-theme-rain.jpg",
-        ],
         featureList: [
             {
                 title: "Custom Workflow Editor & Test Drive",

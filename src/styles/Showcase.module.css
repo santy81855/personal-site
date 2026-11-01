@@ -368,38 +368,6 @@
     height: auto;
 }
 
-.mainImageStage {
-    position: relative;
-    width: 100%;
-    overflow: hidden;
-    background: var(--bg-elevated);
-}
-
-.mainSlide {
-    display: block;
-    width: 100%;
-    height: auto;
-    opacity: 0;
-    transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1);
-    will-change: opacity;
-}
-
-.mainSlideBase {
-    position: relative;
-}
-
-.mainSlideOverlay {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.mainSlideActive {
-    opacity: 1;
-}
-
 /* features */
 
 .featureList {
