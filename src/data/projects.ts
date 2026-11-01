@@ -174,6 +174,58 @@ export const projects: Project[] = [
         accent: "#5b9cff",
     },
     {
+        slug: "ticket-tracker",
+        title: "Ticket Tracker",
+        kind: "Native macOS Application",
+        category: "desktop",
+        status: "Open Source",
+        summary:
+            "Native macOS developer workspace that tracks tickets, handoffs, stand-ups and AI coding assistant context.",
+        description:
+            "A native macOS application built in Swift 6 and SwiftUI that tracks engineering tickets and all the small actions around them—moving Jira cards, posting kickoff threads, requesting pod approvals, handing off to QE, and merging. Everything is stored locally in SQLite via GRDB, with a bundled CLI and Model Context Protocol (MCP) server so AI coding assistants like GitHub Copilot can read and update your active ticket workflow.",
+        techList: [
+            "Swift 6",
+            "SwiftUI",
+            "macOS",
+            "SQLite",
+            "GRDB",
+            "MCP",
+            "SwiftTerm",
+            "WebKit",
+            "Git",
+        ],
+        tileURL: "/images/ticket-tracker-tile.jpg",
+        mainImageURL: "/images/ticket-tracker-main.jpg",
+        featureList: [
+            {
+                title: "Custom Workflow Editor & Test Drive",
+                description:
+                    "Customize workflow steps, owners, conditional paths for QA vs. toggle-only tickets, and message templates—then test-drive a sample ticket through the draft workflow before publishing.",
+                imageURL: "/images/ticket-tracker-feature-workflow.jpg",
+            },
+            {
+                title: "Cycle-Time Insights",
+                description:
+                    "See where time actually goes across building, pod review, QA, and merge stages with 30-day and 90-day breakdowns and in-flight ticket tracking.",
+                imageURL: "/images/ticket-tracker-feature-insights.jpg",
+            },
+            {
+                title: "Stand-Up Summaries & Daily Reviews",
+                description:
+                    "Generate one-click stand-up and end-of-day summaries showing active tickets, merge request approval counts, and what each item is currently waiting on.",
+                imageURL: "/images/ticket-tracker-feature-standup.jpg",
+            },
+            {
+                title: "Brag Doc & Shipped Impact",
+                description:
+                    "Automatically collect shipped tickets, merged MRs, and calculated release fix versions into a quarterly brag doc with impact notes ready to export as Markdown.",
+                imageURL: "/images/ticket-tracker-feature-brag.jpg",
+            },
+        ],
+        githubLink: "https://github.com/santy81855/ticket-tracker",
+        accent: "#6366f1",
+    },
+    {
         slug: "nmg-remodeling",
         title: "NM&G Remodeling",
         kind: "Business Website",

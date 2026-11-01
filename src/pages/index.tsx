@@ -30,7 +30,7 @@ const renderName = (word: string, accentIndexes: number[], offset: number) =>
 const categoryBlurbs: Record<ProjectCategory, string> = {
     "web-app": "Full-stack products with auth, payments, databases and AI.",
     website: "Fast, polished sites for businesses and creators.",
-    desktop: "Native-feeling desktop tools built with Python and Qt.",
+    desktop: "Native desktop apps and developer tools for macOS and Windows.",
     game: "Real-time 3D gameplay built in Unity.",
 };
 
