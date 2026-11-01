@@ -419,7 +419,7 @@ export const projects: Project[] = [
         title: "Company Website",
         kind: "Static Web Page",
         category: "website",
-        status: "Live",
+        status: "Archived",
         summary:
             "Marketing site for an agency that provides marketing and advertising services.",
         description:
@@ -428,11 +428,6 @@ export const projects: Project[] = [
         tileURL: "/images/spwebmanagement.png",
         mainImageURL: "/images/spwebmanagement.png",
         featureList: [],
-        primaryLink: {
-            label: "Visit Site",
-            href: "https://spwebmanagement.com",
-            external: true,
-        },
         githubLink: "https://github.com/santy81855/business-site",
         accent: "#3fb39b",
     },
