@@ -440,7 +440,7 @@
         padding-block: 2rem 4rem;
     }
     .heroGrid {
-        grid-template-columns: 1fr;
+        grid-template-columns: minmax(0, 1fr);
     }
     .portraitWrap {
         order: -1;
@@ -454,13 +454,13 @@
 
 @media screen and (max-width: 700px) {
     .bento {
-        grid-template-columns: 1fr;
+        grid-template-columns: minmax(0, 1fr);
     }
 }
 
 @media screen and (max-width: 520px) {
     .categories {
-        grid-template-columns: 1fr;
+        grid-template-columns: minmax(0, 1fr);
     }
     .portraitWrap {
         max-width: 240px;

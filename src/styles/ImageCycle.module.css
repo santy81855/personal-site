@@ -178,12 +178,12 @@
 
 @media screen and (max-width: 860px) {
     .deckWrap {
-        grid-template-columns: 1fr;
+        grid-template-columns: minmax(0, 1fr);
         gap: 2rem;
     }
     .controls {
         display: grid;
-        grid-template-columns: 1fr auto;
+        grid-template-columns: minmax(0, 1fr) auto;
         align-items: end;
     }
     .dots {

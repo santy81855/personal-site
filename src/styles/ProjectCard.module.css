@@ -5,6 +5,8 @@
     --my: 50%;
     perspective: 1000px;
     height: 100%;
+    width: 100%;
+    min-width: 0;
 }
 
 .inner {
@@ -13,6 +15,7 @@
     flex-direction: column;
     height: 100%;
     width: 100%;
+    min-width: 0;
     text-align: left;
     border-radius: var(--radius-large);
     border: 1px solid var(--border);
@@ -41,17 +44,10 @@
     transition: opacity 0.4s ease;
 }
 
-.card:hover .inner {
-    border-color: color-mix(in srgb, var(--card-accent) 45%, var(--border));
-    box-shadow: var(--shadow-large);
-}
-
-.card:hover .inner::after {
-    opacity: 1;
-}
-
 .media {
     position: relative;
+    width: calc(100% - 1.2rem);
+    flex-shrink: 0;
     aspect-ratio: 16 / 10;
     margin: 0.6rem 0.6rem 0;
     border-radius: calc(var(--radius-large) - 0.6rem);
@@ -63,10 +59,6 @@
     object-fit: cover;
     object-position: top center;
     transition: transform 1s var(--ease-out);
-}
-
-.card:hover .image {
-    transform: scale(1.045);
 }
 
 .status {
@@ -160,13 +152,6 @@
         color 0.3s ease, border-color 0.3s ease;
 }
 
-.card:hover .arrow {
-    transform: rotate(45deg);
-    background: var(--card-accent);
-    border-color: var(--card-accent);
-    color: #fff;
-}
-
 .kind {
     font-family: var(--font-mono);
     font-size: 0.72rem;
@@ -198,6 +183,7 @@
         grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
     }
     .large .media {
+        width: calc(100% - 1.2rem);
         aspect-ratio: 16 / 10;
         margin: 0.6rem;
     }
@@ -211,8 +197,34 @@
     }
 }
 
-@media (hover: none) {
+@media (hover: hover) and (pointer: fine) {
+    .card:hover .inner {
+        border-color: color-mix(in srgb, var(--card-accent) 45%, var(--border));
+        box-shadow: var(--shadow-large);
+    }
+
+    .card:hover .inner::after {
+        opacity: 1;
+    }
+
+    .card:hover .image {
+        transform: scale(1.045);
+    }
+
+    .card:hover .arrow {
+        transform: rotate(45deg);
+        background: var(--card-accent);
+        border-color: var(--card-accent);
+        color: #fff;
+    }
+}
+
+@media (hover: none), (pointer: coarse) {
+    .card {
+        perspective: none;
+    }
     .inner {
         transform: none;
+        transform-style: flat;
     }
 }
